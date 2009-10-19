@@ -7,7 +7,6 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
 
 import fr.imag.adele.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.cadse.test.GTScreenshot;
 import fr.imag.adele.cadse.test.GTTestParameters;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
@@ -30,7 +29,6 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		GTTestParameters.banner();
 		//SWTBotPreferences.PLAYBACK_DELAY = 100;
 		SWTBotPreferences.TIMEOUT = 30000;
-		GTScreenshot.setScreenshotPath(System.getProperty("test.screenshotPath"));
 	}
 
 	/**
@@ -66,7 +64,7 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(mapping_jsp).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu(GTCadseRTConstants.CONTEXTMENU_FILE_CONTENT_MODEL).click();
 		shell = new GTShell(CadseGCST.FILE_CONTENT_MODEL);
 		// TODO see Bugzilla #280562
-		shell.findField(CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_).typeText("myFile.jsp"); //${#short-name}.jsp
+		shell.findField(CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_).typeText(/*"myFile.jsp"); //*/"${#short-name}.jsp");
 		shell.findField(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText("/");
 		shell.capture("image135");
 		shell.close();

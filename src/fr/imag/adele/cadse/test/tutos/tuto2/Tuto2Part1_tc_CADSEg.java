@@ -1,22 +1,11 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
-import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
-import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.inGroup;
-import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widgetOfType;
-
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotCombo;
-import org.hamcrest.Matcher;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
-
 import fr.imag.adele.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.cadse.test.GTEclipseConstants;
-import fr.imag.adele.cadse.test.GTScreenshot;
 import fr.imag.adele.cadse.test.GTTestParameters;
-import fr.imag.adele.cadse.test.gtmenu.GTMenu;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
@@ -38,8 +27,7 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 
 		GTTestParameters.banner();
 		//SWTBotPreferences.PLAYBACK_DELAY = 100;
-		SWTBotPreferences.TIMEOUT = 5000;
-		GTScreenshot.setScreenshotPath(System.getProperty("test.screenshotPath"));
+		SWTBotPreferences.TIMEOUT = 30000;
 	}
 	
 	/**
@@ -68,14 +56,10 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 
 		propertiesView.showTab("View");
 		propertiesView.findField("sel").check(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebApp", "hasComp");
-		propertiesView.findField("sel").check(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebApp");
-		propertiesView.findField("sel").check(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent");
-		propertiesView.findField("sel").expand(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent");
-	//	propertiesView.findField("sel").check(false, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent", "#invert_part_hasComp_to_WebApp"); /* This two lines performs scrolling */
-		propertiesView.findField("sel").check(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent", "uses"); /* This two lines performs scrolling */ 
+		propertiesView.findField("sel").check(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent", "uses");
 		propertiesView.findField("sel").check(false, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent", "uses");
 		propertiesView.findField("sel").scroll();
-		propertiesView.capture("image020");
+		propertiesView.capture("image020"); // TODO pourquoi le capture enlève t-il le scrolling?
 
 		/* Can create item and Can create link check boxes */
 		workspaceView.findTree().collapse();
@@ -86,6 +70,8 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 		propertiesView.findField("can-create-link").check(false);
 		propertiesView.capture("image026");
 		
+		//TODO next line to prevent CADSE from throwing an exception. Should be removed soon (sept. 30, 2009)  
+		bot.sleep(2000);
 	}
 	
 	@Test

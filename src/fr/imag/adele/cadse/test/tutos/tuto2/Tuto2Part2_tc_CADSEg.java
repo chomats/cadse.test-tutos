@@ -1,5 +1,7 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
+import java.io.File;
+
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.junit.Test;
 
@@ -30,8 +32,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		GTTestParameters.banner();
 		//SWTBotPreferences.PLAYBACK_DELAY = 100;
-		SWTBotPreferences.TIMEOUT = 5000;
-		GTScreenshot.setScreenshotPath(System.getProperty("test.screenshotPath"));
+		SWTBotPreferences.TIMEOUT = 30000;
 	}
 	
 	/**
@@ -67,16 +68,15 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_manager_structure() throws Exception {
 
-		// Getting samples into resources
 		packageExplorerView.findTree().selectNode(project_package).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
 		shell = new GTShell("Import");
 		shell.findTree().selectNode(importArchiveFile);
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
-		shell.setComboBoxWithLabelText("From archive file:", System.getProperty("test.resourcesPath")+"samples.zip");
+		shell.setComboBoxWithLabelText("From archive file:", System.getProperty("test.resourcesPath") + File.separator + "samples.zip");
 		shell.findTree().selectNode(archivePath);
 		shell.findButton("Select All").click();
-		shell.findCheckBox("Overwrite existing resources without warning").click();
+		shell.findCheckBox("Overwrite existing resources without warning").select();
 		shell.close();
 
 		// Copying content into clipboard
@@ -106,8 +106,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(webAppModel);
 		propertiesView.showTab("Cadse definition");
 		// TODO C'est l'un ou l'autre!
-		propertiesView.findField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); // c'est l'un ou l'autre
-		//propertiesView.findField(WorkspaceCST.CADSE_DEFINITION_at_IMPORTS_).add("org.eclipse.core.runtime"); // c'est l'un ou l'autre
+		propertiesView.findField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
 		
 		// Copying imports into clipboard
 		packageExplorerView.findTree().selectNode(file_import1).doubleClick();

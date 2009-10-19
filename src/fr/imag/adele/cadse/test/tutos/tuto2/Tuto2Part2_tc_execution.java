@@ -7,7 +7,6 @@ import org.junit.Test;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.GTEclipseConstants;
-import fr.imag.adele.cadse.test.GTScreenshot;
 import fr.imag.adele.cadse.test.GTTestParameters;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTEditor;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
@@ -20,8 +19,7 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 		
 		GTTestParameters.banner();
 		//SWTBotPreferences.PLAYBACK_DELAY = 100;
-		SWTBotPreferences.TIMEOUT = 5000;
-		GTScreenshot.setScreenshotPath(System.getProperty("test.screenshotPath"));
+		SWTBotPreferences.TIMEOUT = 30000;
 	}
 
 

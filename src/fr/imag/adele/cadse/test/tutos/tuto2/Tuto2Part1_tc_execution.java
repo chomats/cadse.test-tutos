@@ -6,7 +6,6 @@ import org.junit.Test;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.GTEclipseConstants;
-import fr.imag.adele.cadse.test.GTScreenshot;
 import fr.imag.adele.cadse.test.GTTestParameters;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
@@ -20,8 +19,7 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		
 		GTTestParameters.banner();
 		//SWTBotPreferences.PLAYBACK_DELAY = 100;
-		SWTBotPreferences.TIMEOUT = 5000;
-		GTScreenshot.setScreenshotPath(System.getProperty("test.screenshotPath"));
+		SWTBotPreferences.TIMEOUT = 30000;
 	}
 		
 	
@@ -30,7 +28,7 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		
 		// cadses selection
 		shell = new GTShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE);
-		shell.selectCadses("WebAppModel");
+		shell.selectCadses("Cadse Model.Workspace.WebAppModel");
 		shell.capture("image030");
 		shell.close();
 	}
@@ -63,7 +61,7 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		workspaceView.findTree().selectNode("HelloApp").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("JSP").click();
 		shell = new GTShell("WebComponent URL Definition");
 		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("HelloJSP");
-		shell.close();	
+		shell.close();
 
 		/* MyLibrary */
 		workspaceView.contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Library").click();

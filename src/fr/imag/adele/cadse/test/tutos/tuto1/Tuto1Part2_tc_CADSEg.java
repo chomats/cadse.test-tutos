@@ -1,12 +1,13 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
+import java.io.File;
+
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.GTEclipseConstants;
-import fr.imag.adele.cadse.test.GTScreenshot;
 import fr.imag.adele.cadse.test.GTTestParameters;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
@@ -26,7 +27,6 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		GTTestParameters.banner();
 		//GTTestParameters.PLAYBACK_DELAY = 100;
 		SWTBotPreferences.TIMEOUT = 300000;
-		GTScreenshot.setScreenshotPath(System.getProperty("test.screenshotPath"));
 	}
 	
 	/**
@@ -63,12 +63,11 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		shell.capture("image096");
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		
-		System.out.println(System.getProperty("test.resourcesPath")+"resources.zip");
-		shell.setComboBoxWithLabelText("From archive file:", System.getProperty("test.resourcesPath")+"resources.zip");
+		shell.setComboBoxWithLabelText("From archive file:", System.getProperty("test.resourcesPath") + File.separator + "resources.zip");
 		shell.findTree().selectNode(archivePath);
 		shell.findButton("Select All").click();
 		shell.capture("image098");
-		shell.findCheckBox("Overwrite existing resources without warning").click();
+		shell.findCheckBox("Overwrite existing resources without warning").select();
 		shell.close();
 
 		packageExplorerView.findTree().selectNode(project_resources).expand();

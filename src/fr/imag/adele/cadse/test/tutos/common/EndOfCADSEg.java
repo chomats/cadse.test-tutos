@@ -1,21 +1,15 @@
 package fr.imag.adele.cadse.test.tutos.common;
 
-import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
-
-import java.util.List;
 
 import model.workspace.copycomposer.CopyComposerCST;
-
-import org.eclipse.swt.widgets.Widget;
-import org.hamcrest.Matcher;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.GTEclipseConstants;
-import fr.imag.adele.cadse.test.gtmenu.GTMenu;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTEditor;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
+import fr.imag.adele.cadse.test.gtmenu.GTMenu;
 
 public class EndOfCADSEg extends TutoTestCase {
 
@@ -154,19 +148,5 @@ public class EndOfCADSEg extends TutoTestCase {
 		editor.quickfix("Import 'WarFileUtil' (model.webapp.template)");
 		
 		editor.save();
-	}
-
-	/**
-	 * End of test.
-	 * 
-	 * @throws Exception the exception
-	 */
-	@Test
-	@SuppressWarnings("unchecked")
-	public void test_close() throws Exception {
-
-		Matcher matcher = allOf() ;
-		List<? extends Widget> lw = bot.widgets(matcher);
-		System.out.println("Fin");
 	}
 }

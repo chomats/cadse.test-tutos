@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.cadse.test.GTScreenshot;
 import fr.imag.adele.cadse.test.GTTestParameters;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
@@ -19,7 +18,6 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 		GTTestParameters.banner();
 		//SWTBotPreferences.PLAYBACK_DELAY = 100;
 		SWTBotPreferences.TIMEOUT = 30000;
-		GTScreenshot.setScreenshotPath(System.getProperty("test.screenshotPath"));
 	}
 			
 	@Test
@@ -33,7 +31,6 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 		
 		/* hello2Servlet */
 		workspaceView.findTree().selectNode("Hello2App", "hello2Servlet");
-		Thread.sleep(100); /* TODO pour attendre l'affichage du tab */
 		propertiesView.showTab("WebComponent Options");
 		propertiesView.findButton("Add...").click();
 		
@@ -42,5 +39,4 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 		shell.capture("image128");
 		shell.close();
 	}
-	
 }

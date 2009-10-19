@@ -4,7 +4,6 @@ import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.test.GTScreenshot;
 import fr.imag.adele.cadse.test.GTTestParameters;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
@@ -25,7 +24,6 @@ public class Tuto1Part5_tc_CADSEg extends TutoTestCase {
 		GTTestParameters.banner();
 		//SWTBotPreferences.PLAYBACK_DELAY = 100;
 		SWTBotPreferences.TIMEOUT = 30000;
-		GTScreenshot.setScreenshotPath(System.getProperty("test.screenshotPath"));
 	}
 
 	/**

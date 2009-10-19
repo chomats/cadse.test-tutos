@@ -16,13 +16,11 @@ import fr.imag.adele.cadse.core.Item;
 
 import fr.imag.adele.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.GTEclipseConstants;
-import fr.imag.adele.cadse.test.GTScreenshot;
 import fr.imag.adele.cadse.test.GTTestParameters;
 import fr.imag.adele.cadse.test.gtmenu.GTMenu;
 import fr.imag.adele.cadse.test.gttree.GTTreeNode;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
-
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 
 /**
@@ -42,7 +40,6 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		GTTestParameters.banner();
 		//SWTBotPreferences.PLAYBACK_DELAY = 100;
 		SWTBotPreferences.TIMEOUT = 30000;
-		GTScreenshot.setScreenshotPath(System.getProperty("test.screenshotPath"));
 	}
 
 	/**
@@ -133,7 +130,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(it_servlet); /* Assert item has been displayed */
 
 		// Attribute relativeURL
-		workspaceView.findTree().selectNode(it_webComponent).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("String").click();
+		workspaceView.contextMenu(it_webComponent, GTCadseRTConstants.CONTEXTMENU_NEW, "String").click();
 		shell = new GTShell(CadseGCST.STRING);
 		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("relativeURL");
 		shell.capture("image046");
@@ -146,14 +143,14 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		shell = new GTShell(CadseGCST.STRING);
 		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("className");
 		shell.close();
-		workspaceView.findTree().selectNode(attr_className).expand();  /* Assert item has been displayed */
+		workspaceView.findTree().selectNode(attr_className);  /* Assert item has been displayed */
 
 		// Attribute packageName
 		workspaceView.contextMenu(it_servlet, GTCadseRTConstants.CONTEXTMENU_NEW, "String").click();
 		shell = new GTShell(CadseGCST.STRING);
 		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("packageName");
 		shell.close();
-		workspaceView.findTree().selectNode(attr_packageName).expand();  /* Assert item has been displayed */
+		workspaceView.findTree().selectNode(attr_packageName);  /* Assert item has been displayed */
 
 		// hasComp link
 		workspaceView.contextMenu(it_webApp, GTCadseRTConstants.CONTEXTMENU_NEW, "Link").click();
@@ -176,7 +173,6 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 
 		workspaceView.findTree().collapse();
 		// Waits until filtering option refreshes view
-		workspaceView.findTree().waitUntilPathBecomesValid(it_webApp.concat("hasComp","WebComponent"));
 		workspaceView.findTree().selectNode(it_webApp.concat("hasComp","WebComponent"));
 		workspaceView.capture("image064");
 

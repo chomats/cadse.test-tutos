@@ -86,7 +86,7 @@ public abstract class TutoTestCase extends GTCadseTestCase {
 	protected GTTreePath file_sample4 = project_resources.concat("sample4.java");
 	protected GTTreePath file_import1 = project_resources.concat("imports1.java");
 	
-	protected GTTreePath project_sources = project_package.concat("sources");
+	protected GTTreePath project_sources = project_package.concat("src-gen");
 	protected GTTreePath servletManagerClass = project_sources.concat("model.webapp.managers","ServletManager.java", "ServletManager");
 	protected GTTreePath servletContentItem = servletManagerClass.concat("ServletContent");
 	protected GTTreePath webappManagerClass = project_sources.concat("model.webapp.managers","WebAppManager.java", "WebAppManager");
@@ -95,7 +95,6 @@ public abstract class TutoTestCase extends GTCadseTestCase {
 	
 	protected GTTreePath importArchiveFile = new GTTreePath("General", "Archive File");
 	protected GTTreePath archivePath = new GTTreePath("/", "resources");
-	
 	
 	
 	protected GTView webAppListView = new GTView("WebAppList");
