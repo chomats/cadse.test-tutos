@@ -5,6 +5,7 @@ import org.junit.Test;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.GTEclipseConstants;
+import fr.imag.adele.cadse.test.gttree.GTTreePath;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.cadse.test.gtmenu.GTMenu;
@@ -47,7 +48,7 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		shell.close();	
 		
 		/* JSP */
-		workspaceView.findTree().selectNode("HelloApp").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("JSP").click();
+		workspaceView.contextMenu(new GTTreePath("HelloApp"), GTCadseRTConstants.CONTEXTMENU_NEW, "JSP").click();
 		shell = new GTShell("WebComponent URL Definition");
 		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("HelloJSP");
 		shell.close();

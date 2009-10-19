@@ -47,13 +47,10 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 
 		workspaceView.findTree().selectNode(mapping_jsp).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu(GTCadseRTConstants.CONTEXTMENU_FILE_CONTENT_MODEL).click();
 		shell = new GTShell(CadseGCST.FILE_CONTENT_MODEL);
-		// TODO see Bugzilla #280562
-		shell.findField(CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_).typeText(/*"myFile.jsp"); //*/"${#short-name}.jsp");
+		shell.findField(CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_).typeText("${#short-name}.jsp");
 		shell.findField(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText("/");
 		shell.capture("image135");
 		shell.close();
-		
-		// set attribute via api not swtbot (see Bugzilla #280562)
 		Item conten_jsp_item = workspaceView.findTree().selectNode(content_jsp).getItem();
 		conten_jsp_item.setAttribute(CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_, "${#short-name}.jsp");
 //		workspaceView.findTree().selectNode(content_jsp).getItem().setAttribute(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/");
@@ -63,6 +60,6 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 	
 	@Test
 	public void test_zp14_check_compilation() throws Exception {
-		checkCompilationWebApp();
+		checkCompilationErrors(workspaceView, webAppModel);
 	}
 }

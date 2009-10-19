@@ -33,7 +33,7 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 		
 		/* edition */
 		packageExplorerView.show();
-		packageExplorerView.findTree().selectNode("test.HelloServlet", "sources", "test", "helloServlet.java", "helloServlet").doubleClick();
+		packageExplorerView.findTree().selectNode("HelloApp.test.HelloServlet", "sources", "test", "helloServlet.java", "helloServlet").doubleClick();
 		packageExplorerView.capture("image060");
 		GTEditor editor = new GTEditor("helloServlet.java");
 		editor.show();

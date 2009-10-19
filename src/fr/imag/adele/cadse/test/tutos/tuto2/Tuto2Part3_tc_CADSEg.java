@@ -57,22 +57,12 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		editor.buttonInSection("Add...", "Imported Packages").click();
 		shell = new GTShell("Package Selection");
 		shell.findText().typeText("fr.imag.adele.cadse.core.transaction");
-		try {
-			shell.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		shell.close();
 
 		editor.buttonInSection("Add...", "Imported Packages").click();
 		shell = new GTShell("Package Selection");
 		shell.findText().typeText("fr.imag.adele.cadse.core.delta");
-		try {
-			shell.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		shell.close();
 
 		editor.save();
 		editor.capture("image064");	
@@ -101,6 +91,6 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 	
 	@Test
 	public void test_zp23_check_compilation() throws Exception {
-		checkCompilationWebApp();
+		checkCompilationErrors(workspaceView, webAppModel);
 	}
 }

@@ -22,6 +22,7 @@ import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 
+
 /**
  * Performs the official simple tutorial
  */
@@ -217,9 +218,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Do you really want to clear the run-time workspace data in...
 		long oldTimeout = SWTBotPreferences.TIMEOUT;
 		try {
-			
-			SWTBotPreferences.TIMEOUT = 500;
-			
+			SWTBotPreferences.TIMEOUT = 500;	
 			shell = new GTShell(GTEclipseConstants.LAUNCHER_SHELL);
 			shell.capture("image078");
 			shell.close("Cancel");
@@ -231,6 +230,6 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 	
 	@Test
 	public void test_zp11_check_compilation() throws Exception {
-		checkCompilationWebApp();
+		checkCompilationErrors(workspaceView, webAppModel);
 	}
 }

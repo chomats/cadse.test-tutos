@@ -31,6 +31,6 @@ public class Tuto1Part5_tc_CADSEg extends TutoTestCase {
 	
 	@Test
 	public void test_zp15_check_compilation() throws Exception {
-		checkCompilationWebApp();
+		checkCompilationErrors(workspaceView, webAppModel);
 	}
 }

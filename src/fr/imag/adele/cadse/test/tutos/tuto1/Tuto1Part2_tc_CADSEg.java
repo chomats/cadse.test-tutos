@@ -108,12 +108,11 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		propertiesView.capture("image114");
 		propertiesView.findField(CadseGCST.PAGE_lt_FIELDS).check(true, "className");
 		propertiesView.findField(CadseGCST.PAGE_lt_FIELDS).check(true, "packageName");
-		propertiesView.findField(CadseGCST.PAGE_lt_FIELDS).scroll();
 	}
 	
 	@Test
 	public void test_zp12_check_compilation() throws Exception {
-		checkCompilationWebApp();
+		checkCompilationErrors(workspaceView, webAppModel);
 	}
 }
 

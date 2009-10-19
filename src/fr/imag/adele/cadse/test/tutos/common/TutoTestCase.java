@@ -8,6 +8,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jdt.core.IJavaModelMarker;
 import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
+import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.Item;
@@ -100,21 +102,47 @@ public abstract class TutoTestCase extends GTCadseTestCase {
 	protected GTView webAppListView = new GTView("WebAppList");
 	
 	
+	/**
+	 * Check if webAppModel compiles.
+	 * 
+	 * @throws TimeoutException if WebAppModel does't compiles.
+	 */
+	public void checkCompilationErrors(GTView view, GTTreePath element)
+	throws TimeoutException {
+
+		long timeout=SWTBotPreferences.TIMEOUT;
+		long limit = System.currentTimeMillis() + timeout;
+
+		while (true) {
+			try {
+				checkCompilationErrorsInternal(view, element);
+				System.out.println("Compilation check OK");
+				return;
+			} catch (Throwable e) {
+				// do nothing
+			}
+
+			if (System.currentTimeMillis() > limit) 
+				throw new TimeoutException("Timeout after: " + timeout + " ms. Compilation errors in WebApp.");
+			
+			bot.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
+		}
+	}
 	
 	/**
 	 * Check if webAppModel compiles. 
 	 * 
 	 * @throws Exception   if WebAppModel does't compiles.
 	 */
-	public void checkCompilationWebApp() throws Exception {
-		GTTreeNode node = workspaceView.findTree().selectNode(webAppModel);
-		assertNotNull("cannot find WebAppModel", node);
+	private void checkCompilationErrorsInternal(GTView view, GTTreePath element) 
+	throws Exception {
+		GTTreeNode node = view.findTree().selectNode(element);
+		assertNotNull("cannot find tree node", node);
 		Item cadseWEB_AppModel = node.getItem();
-		assertNotNull("cannot find WebAppModel", cadseWEB_AppModel);
+		assertNotNull("cannot find item", cadseWEB_AppModel);
 		IJavaProject jp = cadseWEB_AppModel.getMainMappingContent(IJavaProject.class);
-		assertNotNull("cannot find JavaProject of WebAppModel", jp);
-		checkError(jp, new NullProgressMonitor()); // throw an exception if errors compilation
-		System.out.println("Test check compilation ok");
+		assertNotNull("cannot find JavaProject", jp);
+		checkError(jp, new NullProgressMonitor()); // throw an exception if compilation errors
 	}
 	
 	/**

@@ -13,65 +13,13 @@ import fr.imag.adele.cadse.test.gtmenu.GTMenu;
 
 public class EndOfCADSEg extends TutoTestCase {
 
-
-
 	/**
 	 * 
 	 * 
 	 * @throws Exception the exception
 	 */
 	@Test
-	public void test_build_model_definition() throws Exception {
-
-		// Composition link
-		workspaceView.findTree().collapse();
-		workspaceView.findTree().selectNode(attr_hasComp);
-		workspaceView.capture("image094");
-
-		propertiesView.showTab("Link");
-		propertiesView.findField(CadseGCST.LINK_at_COMPOSITION_).check(true);
-		propertiesView.capture("image096");
-
-
-		// Execute CADSE
-		workspaceView.findTree().selectNode(webAppModel).contextMenu("Execute cadse").click();
-		shell = new GTShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE);
-		shell.selectCadses("CopyComposer");
-		shell.capture("image097");
-		shell.close();
-
-
-		// JavaRefExporter
-		workspaceView.findTree().selectNode(mapping_servlet).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("JavaRefExporter").click();
-		shell = new GTShell(CopyComposerCST.JAVA_REF_EXPORTER);
-		shell.capture("image102");
-		shell.close();
-
-		workspaceView.findTree().collapse();
-		workspaceView.findTree().selectNode(refExporter);
-		workspaceView.capture("image104");
-	}
-
-	/**
-	 * 
-	 * 
-	 * @throws Exception the exception
-	 */
-	@Test
-	public void test_copy_composer() throws Exception {
-
-		workspaceView.findTree().collapse();
-		workspaceView.findTree().selectNode(composite);
-		workspaceView.capture("image106");
-		workspaceView.findTree().selectNode(composite).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("CopyIntoFolderComposer").click();
-		shell = new GTShell(CopyComposerCST.COPY_INTO_FOLDER_COMPOSER);
-		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("GenWarComposer");
-		shell.findField(CopyComposerCST.COPY_INTO_FOLDER_COMPOSER_at_TARGET_FOLDER_).typeText("WEB-INF/classes");
-		shell.findField(CadseGCST.COMPOSER_at_EXTENDS_CLASS_).check(true);
-		shell.findField(CadseGCST.COMPOSER_at_TYPES_).add("ref-classes"); 
-		shell.capture("image112");
-		shell.close();
-
+	public void endo_of_test_copy_composer() throws Exception {
 
 		// WebAppManager implementation		
 		packageExplorerView.findTree().selectNode(webappManagerClass).doubleClick();
