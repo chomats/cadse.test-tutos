@@ -1,10 +1,8 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
 
-import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.junit.Test;
 
-import fr.imag.adele.cadse.test.GTTestParameters;
 import fr.imag.adele.cadse.test.gtmenu.GTMenu;
 import fr.imag.adele.cadse.test.gtmenu.GTMenuConstants;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTEditor;
@@ -16,20 +14,6 @@ import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
  * Performs the official simple tutorial
  */
 public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
-	
-	/**
-	 * Performs initializations for this test.
-	 * Sets the timeout, velocity,...
-	 * 
-	 * @throws Exception the exception
-	 */
-	@Test
-	public void test_tuto1_init() throws Exception {
-
-		GTTestParameters.banner();
-		//SWTBotPreferences.PLAYBACK_DELAY = 100;
-		SWTBotPreferences.TIMEOUT = 30000;
-	}
 	
 	/**
 	 * 

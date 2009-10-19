@@ -16,7 +16,6 @@ import fr.imag.adele.cadse.core.Item;
 
 import fr.imag.adele.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.GTEclipseConstants;
-import fr.imag.adele.cadse.test.GTTestParameters;
 import fr.imag.adele.cadse.test.gtmenu.GTMenu;
 import fr.imag.adele.cadse.test.gttree.GTTreeNode;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
@@ -27,20 +26,6 @@ import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
  * Performs the official simple tutorial
  */
 public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
-
-	/**
-	 * Performs initializations for this test.
-	 * Sets the timeout, velocity,...
-	 * 
-	 * @throws Exception the exception
-	 */
-	@Test
-	public void test_tuto1_init() throws Exception {
-
-		GTTestParameters.banner();
-		//SWTBotPreferences.PLAYBACK_DELAY = 100;
-		SWTBotPreferences.TIMEOUT = 30000;
-	}
 
 	/**
 	 * Selects CADSEg in the launcher, and closes useless views. 
