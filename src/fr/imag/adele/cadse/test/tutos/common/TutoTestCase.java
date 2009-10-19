@@ -50,7 +50,7 @@ public abstract class TutoTestCase extends GTCadseTestCase {
 	protected GTTreePath content_servlet = mapping_servlet.concat("content-item");
 	protected GTTreePath content_webApp = mapping_webApp.concat("content-item");
 	
-	protected GTTreePath refExporter = mapping_servlet.concat("java-ref-exporter");
+	protected GTTreePath refExporter = mapping_servlet.concat("JavaContentExporter");
 
 	protected GTTreePath attr_hasComp = it_webApp.concat("hasComp");
 	protected GTTreePath attr_packageName = it_servlet.concat("packageName");
@@ -87,6 +87,7 @@ public abstract class TutoTestCase extends GTCadseTestCase {
 	protected GTTreePath file_sample3 = project_resources.concat("sample3.java");
 	protected GTTreePath file_sample4 = project_resources.concat("sample4.java");
 	protected GTTreePath file_import1 = project_resources.concat("imports1.java");
+	protected GTTreePath file_postCompose = project_resources.concat("sample-postCompose.java");
 	
 	protected GTTreePath project_sources = project_package.concat("src-gen");
 	protected GTTreePath servletManagerClass = project_sources.concat("model.webapp.managers","ServletManager.java", "ServletManager");
