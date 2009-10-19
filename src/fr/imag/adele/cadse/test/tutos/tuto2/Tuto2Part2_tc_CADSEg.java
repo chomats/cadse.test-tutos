@@ -90,7 +90,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		// Takes screenshot
 		packageExplorerView.findTree().collapse();
 		packageExplorerView.maximize(); // Toggle maximize
-		packageExplorerView.findTree().selectNode(servletContentItem, true);
+		packageExplorerView.findTree().selectNode(servletContentItem).expand();
 		packageExplorerView.capture("image058");
 		packageExplorerView.maximize(); // Toggle maximize
 
