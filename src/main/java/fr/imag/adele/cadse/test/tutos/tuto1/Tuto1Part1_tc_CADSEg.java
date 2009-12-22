@@ -140,11 +140,11 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 
 		// hasComp link
 		workspaceView.contextMenu(it_webApp, GTCadseRTConstants.CONTEXTMENU_NEW, "Link").click();
-		shell = new GTShell(CadseGCST.LINK);
+		shell = new GTShell(CadseGCST.LINK_TYPE);
 		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("hasComp");
-		shell.findField(CadseGCST.LINK_lt_DESTINATION).browser("WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent");
-		shell.findField(CadseGCST.LINK_at_PART_).check(true);
-		shell.findField(CadseGCST.LINK_at_REQUIRE_).check(true);
+		shell.findField(CadseGCST.LINK_TYPE_lt_DESTINATION).browser("WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent");
+		shell.findField(CadseGCST.LINK_TYPE_at_PART_).check(true);
+		shell.findField(CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
 		shell.capture("image052");
 		shell.close();
 		workspaceView.findTree().selectNode(attr_hasComp);  /* Assert item has been displayed */
@@ -164,10 +164,10 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 
 		// uses link
 		workspaceView.findTree().selectNode(it_webComponent).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Link").click();
-		shell = new GTShell(CadseGCST.LINK);
+		shell = new GTShell(CadseGCST.LINK_TYPE);
 		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("uses");
-		shell.findField(CadseGCST.LINK_lt_DESTINATION).browser("WebAppModel", CadseDefinitionManager.DATA_MODEL, "Library");
-		shell.findField(CadseGCST.LINK_at_AGGREGATION_).check(false);
+		shell.findField(CadseGCST.LINK_TYPE_lt_DESTINATION).browser("WebAppModel", CadseDefinitionManager.DATA_MODEL, "Library");
+		shell.findField(CadseGCST.LINK_TYPE_at_AGGREGATION_).check(false);
 		shell.findField(CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_).check(false);
 		shell.close();
 		workspaceView.findTree().selectNode(link_uses); /* Assert item has been displayed */
@@ -187,7 +187,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(it_webComponent);
 		propertiesView.showTab("ItemType");
 		propertiesView.findField(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
-		propertiesView.findField(CadseGCST.ITEM_TYPE_at_IS_ABSTRACT_).check(true);
+		propertiesView.findField(CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_).check(true);
 	}
 
 	/**

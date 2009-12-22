@@ -24,8 +24,8 @@ public class Tuto1Part5_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image144");
 
 		propertiesView.showTab("Link");
-		propertiesView.findField(CadseGCST.LINK_at_REQUIRE_).scroll();
-		propertiesView.findField(CadseGCST.LINK_at_REQUIRE_).check(true);
+		propertiesView.findField(CadseGCST.LINK_TYPE_at_REQUIRE_).scroll();
+		propertiesView.findField(CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
 		propertiesView.capture("image146");
 	}
 	
