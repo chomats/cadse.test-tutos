@@ -4,9 +4,10 @@ import org.junit.Test;
 
 
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 
 public class Tuto1Part3_tc_execution extends TutoTestCase {
 
@@ -15,8 +16,8 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 		
 		/* ServletAPI library */
 		workspaceView.contextMenu(null, GTCadseRTConstants.CONTEXTMENU_NEW, "Library").click();
-		shell = new GTShell("Create Library");
-		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("ServletAPI");
+		shell = new GTCadseShell("Create Library");
+		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("ServletAPI");
 		shell.close();
 		
 		/* hello2Servlet */
@@ -24,7 +25,7 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 		propertiesView.showTab("WebComponent Options");
 		propertiesView.findButton("Add...").click();
 		
-		shell = new GTShell("Select a value.");
+		shell = new GTCadseShell("Select a value.");
 		shell.findTree().selectNode("ServletAPI");
 		shell.capture("image128");
 		shell.close();

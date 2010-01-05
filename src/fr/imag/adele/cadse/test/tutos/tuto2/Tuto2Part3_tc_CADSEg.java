@@ -3,10 +3,10 @@ package fr.imag.adele.cadse.test.tutos.tuto2;
 
 import org.junit.Test;
 
-import fr.imag.adele.cadse.test.gtmenu.GTMenu;
-import fr.imag.adele.cadse.test.gtmenu.GTMenuConstants;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTEditor;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.gtmenu.GTMenu;
+import fr.imag.adele.graphictests.gtmenu.GTMenuConstants;
+import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
 
@@ -34,7 +34,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		packageExplorerView.findTree().selectNode(webapp_package);
 		GTMenu.clickItem(GTMenuConstants.FILE_MENU, "New", "Class");
 			
-		shell = new GTShell("New Java Class");
+		shell = new GTCadseShell("New Java Class");
 		shell.findTextWithLabel("Name:").typeText("WebAppServletSynchro");
 		shell.close();
 
@@ -55,12 +55,12 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		editor.showCTab("Dependencies") ;
 
 		editor.buttonInSection("Add...", "Imported Packages").click();
-		shell = new GTShell("Package Selection");
+		shell = new GTCadseShell("Package Selection");
 		shell.findText().typeText("fr.imag.adele.cadse.core.transaction");
 		shell.close();
 
 		editor.buttonInSection("Add...", "Imported Packages").click();
-		shell = new GTShell("Package Selection");
+		shell = new GTCadseShell("Package Selection");
 		shell.findText().typeText("fr.imag.adele.cadse.core.delta");
 		shell.close();
 
@@ -76,7 +76,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		packageExplorerView.findTree().selectNode(servletManagerClass);
 		GTMenu.clickItem(GTMenuConstants.SOURCE_MENU, "Override/Implement Methods...");
 		editor = new GTEditor("ServletManager.java");
-		shell = new GTShell("Override/Implement Methods");
+		shell = new GTCadseShell("Override/Implement Methods");
 		shell.findTree().selectNode("DefaultItemManager", "init()").check(true);
 		shell.close();
 

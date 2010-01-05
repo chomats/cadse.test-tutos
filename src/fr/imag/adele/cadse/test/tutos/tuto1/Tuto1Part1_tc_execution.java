@@ -4,8 +4,9 @@ import org.junit.Test;
 
 
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
 public class Tuto1Part1_tc_execution extends TutoTestCase {
@@ -14,7 +15,7 @@ public class Tuto1Part1_tc_execution extends TutoTestCase {
 	public void test_selection() throws Exception {
 		
 		// cadses selection
-		shell = new GTShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE);
+		shell = new GTCadseShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE);
 		shell.selectCadses("Cadse Model.Workspace.WebAppModel");
 		shell.capture("image080");
 		shell.close();
@@ -26,8 +27,8 @@ public class Tuto1Part1_tc_execution extends TutoTestCase {
 		
 		workspaceView.contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("WebApp").click();
 		
-		shell = new GTShell("Create WebApp");
-		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("HelloApp");
+		shell = new GTCadseShell("Create WebApp");
+		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("HelloApp");
 		shell.capture("image082");
 		shell.close();	
 	}

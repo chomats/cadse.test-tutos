@@ -6,10 +6,11 @@ import model.workspace.copycomposer.CopyComposerCST;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.cadse.test.gtmenu.GTMenu;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTEditor;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.gtmenu.GTMenu;
+import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
 
@@ -32,13 +33,13 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image094");
 
 		propertiesView.showTab("Link");
-		propertiesView.findField(CadseGCST.LINK_at_COMPOSITION_).check(true);
+		GTCadseFactory.findField(propertiesView, CadseGCST.LINK_at_COMPOSITION_).check(true);
 		propertiesView.capture("image096");
 
 
 		// Executed CADSEs
 		workspaceView.contextMenu(webAppModel, "Executed CADSEs").click();
-		shell = new GTShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE);
+		shell = new GTCadseShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE);
 		shell.selectCadses("CopyComposer");
 		shell.capture("image097");
 		shell.close();
@@ -46,7 +47,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 
 		// JavaRefExporter
 		workspaceView.contextMenu(mapping_servlet, GTCadseRTConstants.CONTEXTMENU_NEW, "Java Content Exporter").click();
-		shell = new GTShell(/*CopyComposerCST.JAVA_REF_EXPORTER*/ ""); // TODO to be updated with next cadse release
+		shell = new GTCadseShell(/*CopyComposerCST.JAVA_REF_EXPORTER*/ ""); // TODO to be updated with next cadse release
 		shell.capture("image102");
 		shell.close();
 
@@ -68,11 +69,12 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(composite);
 		workspaceView.capture("image106");
 		workspaceView.contextMenu(composite, GTCadseRTConstants.CONTEXTMENU_NEW, "Copy Folder Content Composer").click();
-		shell = new GTShell(CopyComposerCST.COPY_INTO_FOLDER_COMPOSER);  
-		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("GenWarComposer");
-		shell.findField(CopyComposerCST.COPY_INTO_FOLDER_COMPOSER_at_TARGET_FOLDER_).typeText("WEB-INF/classes");
-		shell.findField(CadseGCST.COMPOSER_at_TYPES_).add("ref-classes");
-		shell.findField(CadseGCST.COMPOSER_at_EXTENDS_CLASS_).check(true);
+		shell = new GTCadseShell(CopyComposerCST.COPY_INTO_FOLDER_COMPOSER);  
+		
+		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("GenWarComposer");
+		GTCadseFactory.findField(shell, CopyComposerCST.COPY_INTO_FOLDER_COMPOSER_at_TARGET_FOLDER_).typeText("WEB-INF/classes");
+		GTCadseFactory.findField(shell, CadseGCST.COMPOSER_at_TYPES_).add("ref-classes");
+		GTCadseFactory.findField(shell, CadseGCST.COMPOSER_at_EXTENDS_CLASS_).check(true);
 		shell.capture("image112");
 		shell.close();
 		

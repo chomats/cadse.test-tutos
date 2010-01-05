@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 
 /**
  * Performs the official simple tutorial
@@ -24,8 +25,8 @@ public class Tuto1Part5_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image144");
 
 		propertiesView.showTab("Link");
-		propertiesView.findField(CadseGCST.LINK_at_REQUIRE_).scroll();
-		propertiesView.findField(CadseGCST.LINK_at_REQUIRE_).check(true);
+		GTCadseFactory.findField(propertiesView, CadseGCST.LINK_at_REQUIRE_).scroll();
+		GTCadseFactory.findField(propertiesView, CadseGCST.LINK_at_REQUIRE_).check(true);
 		propertiesView.capture("image146");
 	}
 	

@@ -5,11 +5,12 @@ import java.io.File;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.cadse.test.GTEclipseConstants;
-import fr.imag.adele.cadse.test.gtmenu.GTMenu;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTEditor;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.test.GTEclipseConstants;
+import fr.imag.adele.graphictests.gtmenu.GTMenu;
+import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
 
@@ -32,14 +33,14 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image042");
 		propertiesView.showTab("Cadse definition");
 
-		propertiesView.findField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("model.webapp.template");
+		GTCadseFactory.findField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("model.webapp.template");
 		propertiesView.capture("image044");
 
 		// extends class check box
 		workspaceView.findTree().selectNode(content_servlet);
 		workspaceView.capture("image048");
 		propertiesView.showTab("Java Project Content");
-		propertiesView.findField(CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
+		GTCadseFactory.findField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
 		propertiesView.capture("image050");
 	}	
 
@@ -53,7 +54,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		packageExplorerView.findTree().selectNode(project_package).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
-		shell = new GTShell("Import");
+		shell = new GTCadseShell("Import");
 		shell.findTree().selectNode(importArchiveFile);
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		shell.setComboBoxWithLabelText("From archive file:", System.getProperty("test.resourcesPath") + File.separator + "samples.zip");
@@ -89,7 +90,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(webAppModel);
 		propertiesView.showTab("Cadse definition");
 		// TODO C'est l'un ou l'autre!
-		propertiesView.findField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
+		GTCadseFactory.findField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
 		
 		// Copying imports into clipboard
 		packageExplorerView.findTree().selectNode(file_import1).doubleClick();

@@ -5,8 +5,9 @@ import org.junit.Test;
 
 
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
 public class Tuto1Part5_tc_execution extends TutoTestCase {
@@ -18,13 +19,13 @@ public class Tuto1Part5_tc_execution extends TutoTestCase {
 		
 		/* ServletAPI deletion */
 		workspaceView.findTree().selectNode("ServletAPI").contextMenu("Delete ServletAPI").click();
-		shell = new GTShell(GTCadseRTConstants.DELETE_TITLE);
+		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.close();
 
 		/* ServletAPI creation */
 		workspaceView.contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Library").click();
-		shell = new GTShell("Create Library");
-		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("ServletAPI");
+		shell = new GTCadseShell("Create Library");
+		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("ServletAPI");
 		shell.close();
 		
 		/* hello3Servlet */
@@ -32,7 +33,7 @@ public class Tuto1Part5_tc_execution extends TutoTestCase {
 		propertiesView.showTab("WebComponent Options");
 		propertiesView.findButton("Add...").click();
 		
-		shell = new GTShell("Select a value.");
+		shell = new GTCadseShell("Select a value.");
 		shell.findTree().selectNode("ServletAPI");
 		shell.close();
 		

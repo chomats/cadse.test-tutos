@@ -5,9 +5,11 @@ import java.io.File;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.cadse.test.GTEclipseConstants;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.test.GTEclipseConstants;
+import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
 
@@ -25,8 +27,8 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(it_webApp);
 		workspaceView.capture("image086");
 		propertiesView.showTab("Instance name control");
-		propertiesView.findField(CadseGCST.MANAGER_at_VALID_PATTERN_ID_).typeText(".*App");
-		propertiesView.findField(CadseGCST.MANAGER_at_MESSAGE_ERROR_ID_).typeText("The Web application name must end with App.");
+		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_VALID_PATTERN_ID_).typeText(".*App");
+		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_MESSAGE_ERROR_ID_).typeText("The Web application name must end with App.");
 		propertiesView.capture("image092");		
 	}
 
@@ -42,7 +44,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		packageExplorerView.capture("image094");
 		packageExplorerView.findTree().selectNode(project_package).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
-		shell = new GTShell("Import");
+		shell = new GTCadseShell("Import");
 		shell.findTree().selectNode(importArchiveFile);
 		shell.capture("image096");
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
@@ -61,19 +63,19 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 
 		workspaceView.findTree().selectNode(it_webApp);
 		propertiesView.showTab("ItemType");
-		propertiesView.findField(CadseGCST.MANAGER_at_ICON_).browser("resources", "WarFile.gif");
+		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "WarFile.gif");
 
 		workspaceView.findTree().selectNode(it_jsp);
 		propertiesView.showTab("ItemType");
-		propertiesView.findField(CadseGCST.MANAGER_at_ICON_).browser("resources", "JSP.gif");
+		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "JSP.gif");
 
 		workspaceView.findTree().selectNode(it_library);
 		propertiesView.showTab("ItemType");
-		propertiesView.findField(CadseGCST.MANAGER_at_ICON_).browser("resources", "Library.gif");
+		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "Library.gif");
 
 		workspaceView.findTree().selectNode(it_servlet);
 		propertiesView.showTab("ItemType");
-		propertiesView.findField(CadseGCST.MANAGER_at_ICON_).browser("resources", "Servlet.gif");	
+		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "Servlet.gif");	
 	}	
 
 	/**
@@ -91,10 +93,10 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image106");
 
 		propertiesView.showTab("Page");
-		propertiesView.findField(CadseGCST.PAGE_at_TITLE_).typeText("WebComponent URL Definition");
-		propertiesView.findField(CadseGCST.PAGE_at_DESCRIPTION_).typeText("Relative URL definition");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_TITLE_).typeText("WebComponent URL Definition");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_DESCRIPTION_).typeText("Relative URL definition");
 		propertiesView.capture("image108");
-		propertiesView.findField(CadseGCST.PAGE_lt_FIELDS).scroll();
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_lt_FIELDS).scroll();
 		propertiesView.capture("image110");
 
 
@@ -103,11 +105,11 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image112");
 
 		propertiesView.showTab("Page");
-		propertiesView.findField(CadseGCST.PAGE_at_TITLE_).typeText("Servlet Definition");
-		propertiesView.findField(CadseGCST.PAGE_at_DESCRIPTION_).typeText("Servlet Java class definition");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_TITLE_).typeText("Servlet Definition");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_DESCRIPTION_).typeText("Servlet Java class definition");
 		propertiesView.capture("image114");
-		propertiesView.findField(CadseGCST.PAGE_lt_FIELDS).check(true, "className");
-		propertiesView.findField(CadseGCST.PAGE_lt_FIELDS).check(true, "packageName");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_lt_FIELDS).check(true, "className");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_lt_FIELDS).check(true, "packageName");
 	}
 	
 	@Test

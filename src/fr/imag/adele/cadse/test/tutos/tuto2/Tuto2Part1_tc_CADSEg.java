@@ -6,9 +6,11 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
-import fr.imag.adele.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.cadse.test.gttree.GTTreeNode;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.gttree.GTTreeNode;
+import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
@@ -32,8 +34,8 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 		GTTreeNode select_model_nodel = workspaceView.findTree().selectNode(view_model);
 		workspaceView.capture("image014");
 		workspaceView.findTree().selectNode(view_model).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu(GTCadseRTConstants.CONTEXTMENU_VIEW).click();
-		shell = new GTShell(CadseGCST.VIEW);
-		shell.findField(CadseGCST.ITEM_at_NAME_).typeText("WebAppList");
+		shell = new GTCadseShell(CadseGCST.VIEW);
+		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebAppList");
 		shell.capture("image016");
 		shell.close();
 
@@ -43,10 +45,10 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image018");
 
 		propertiesView.showTab("View");
-		propertiesView.findField("sel").check(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebApp", "hasComp");
-		propertiesView.findField("sel").check(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent", "uses");
-		propertiesView.findField("sel").check(false, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent", "uses");
-		propertiesView.findField("sel").scroll();
+		GTCadseFactory.findField(propertiesView, "sel").check(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebApp", "hasComp");
+		GTCadseFactory.findField(propertiesView, "sel").check(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent", "uses");
+		GTCadseFactory.findField(propertiesView, "sel").check(false, "WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent", "uses");
+		GTCadseFactory.findField(propertiesView, "sel").scroll();
 		propertiesView.capture("image020");
 
 		/* Can create item and Can create link check boxes */
@@ -54,8 +56,8 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(vi_link_hasComp);
 		workspaceView.capture("image024");
 		propertiesView.showTab("ViewLinkType");
-		propertiesView.findField("can-create-item").check(false);
-		propertiesView.findField("can-create-link").check(false);
+		GTCadseFactory.findField(propertiesView, "can-create-item").check(false);
+		GTCadseFactory.findField(propertiesView, "can-create-link").check(false);
 		propertiesView.capture("image026");
 		
 		//TODO next line to prevent CADSE from throwing an exception. Should be removed soon (sept. 30, 2009)  

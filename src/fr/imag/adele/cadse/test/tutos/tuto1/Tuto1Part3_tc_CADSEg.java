@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 
 
 public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
@@ -20,14 +21,14 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 
 		workspaceView.findTree().selectNode(mp_servlet);
 		propertiesView.showTab("Page");
-		propertiesView.findField(CadseGCST.PAGE_at_TITLE_).typeText("Servlet Options");
-		propertiesView.findField(CadseGCST.PAGE_at_DESCRIPTION_).typeText("You can change the library dependencies");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_TITLE_).typeText("Servlet Options");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_DESCRIPTION_).typeText("You can change the library dependencies");
 		propertiesView.capture("image124");
 		
 		workspaceView.findTree().selectNode(mp_webComponent);
 		propertiesView.showTab("Page");
-		propertiesView.findField(CadseGCST.PAGE_at_TITLE_).typeText("WebComponent Options");
-		propertiesView.findField(CadseGCST.PAGE_at_DESCRIPTION_).typeText("You can change the WebComponent options");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_TITLE_).typeText("WebComponent Options");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_DESCRIPTION_).typeText("You can change the WebComponent options");
 		propertiesView.capture("image126");
 	}
 	

@@ -1,15 +1,12 @@
 package fr.imag.adele.cadse.test.tutos.common;
 
 
-import model.workspace.copycomposer.CopyComposerCST;
 import org.junit.Test;
 
-import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.cadse.test.GTEclipseConstants;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTEditor;
-import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
-import fr.imag.adele.cadse.test.gtmenu.GTMenu;
+import fr.imag.adele.graphictests.test.GTEclipseConstants;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
+import fr.imag.adele.graphictests.gtmenu.GTMenu;
 
 public class EndOfCADSEg extends TutoTestCase {
 
@@ -58,7 +55,7 @@ public class EndOfCADSEg extends TutoTestCase {
 		
 		// suppresses the extra parentesis
 		GTMenu.clickFindAndReplace();
-		shell = new GTShell(GTEclipseConstants.FIND_REPLACE_SHELL);
+		shell = new GTCadseShell(GTEclipseConstants.FIND_REPLACE_SHELL);
 		shell.findComboBox().setText("}");
 		shell.findButton(GTEclipseConstants.FIND_BUTTON).click();
 		shell.findButton(GTEclipseConstants.REPLACE_BUTTON).click();
