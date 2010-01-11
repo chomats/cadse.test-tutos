@@ -13,11 +13,11 @@ import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.Item;
+import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTreeNode;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreeNode;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.graphictests.gtworkbench_part.GTView;
 
 
@@ -140,7 +140,7 @@ public abstract class TutoTestCase extends GTCadseTestCase {
 	throws Exception {
 		GTTreeNode node = view.findTree().selectNode(element);
 		assertNotNull("cannot find tree node", node);
-		Item cadseWEB_AppModel = node.getItem();
+		Item cadseWEB_AppModel = new GTCadseTreeNode(node).getItem();
 		assertNotNull("cannot find item", cadseWEB_AppModel);
 		IJavaProject jp = cadseWEB_AppModel.getMainMappingContent(IJavaProject.class);
 		assertNotNull("cannot find JavaProject", jp);

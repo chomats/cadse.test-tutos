@@ -6,11 +6,11 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
+import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTreeNode;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreeNode;
-import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
@@ -64,7 +64,7 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 		bot.sleep(2000);
 
 		// Assert generation is correct
-		Item cadseDef = select_model_nodel.getItem().getPartParent(CadseGCST.CADSE_DEFINITION);
+		Item cadseDef = new GTCadseTreeNode(select_model_nodel).getItem().getPartParent(CadseGCST.CADSE_DEFINITION);
 		IJavaProject jp = cadseDef.getMainMappingContent(IJavaProject.class);
 		IType findType = jp.findType("model.webapp.views.webAppList.WebAppListView");
 		assertNotNull(findType);

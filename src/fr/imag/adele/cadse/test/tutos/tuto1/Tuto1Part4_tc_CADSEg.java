@@ -6,8 +6,9 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
 
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.gttree.GTTreeNode;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
+import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTreeNode;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 
@@ -53,7 +54,8 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findField(shell, CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText("/");
 		shell.capture("image135");
 		shell.close();
-		Item conten_jsp_item = workspaceView.findTree().selectNode(content_jsp).getItem();
+		GTTreeNode node = workspaceView.findTree().selectNode(content_jsp);
+		Item conten_jsp_item = new GTCadseTreeNode(node).getItem();
 		conten_jsp_item.setAttribute(CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_, "${#short-name}.jsp");
 //		workspaceView.findTree().selectNode(content_jsp).getItem().setAttribute(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/");
 		

@@ -62,19 +62,19 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.show();
 
 		workspaceView.findTree().selectNode(it_webApp);
-		propertiesView.showTab("ItemType");
+		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "WarFile.gif");
 
 		workspaceView.findTree().selectNode(it_jsp);
-		propertiesView.showTab("ItemType");
+		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "JSP.gif");
 
 		workspaceView.findTree().selectNode(it_library);
-		propertiesView.showTab("ItemType");
+		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "Library.gif");
 
 		workspaceView.findTree().selectNode(it_servlet);
-		propertiesView.showTab("ItemType");
+		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "Servlet.gif");	
 	}	
 
@@ -96,7 +96,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_TITLE_).typeText("WebComponent URL Definition");
 		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_DESCRIPTION_).typeText("Relative URL definition");
 		propertiesView.capture("image108");
-		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_lt_FIELDS).scroll();
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_lt_ATTRIBUTES).scroll();
 		propertiesView.capture("image110");
 
 
@@ -108,8 +108,8 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_TITLE_).typeText("Servlet Definition");
 		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_DESCRIPTION_).typeText("Servlet Java class definition");
 		propertiesView.capture("image114");
-		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_lt_FIELDS).check(true, "className");
-		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_lt_FIELDS).check(true, "packageName");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_lt_ATTRIBUTES).check(true, "className");
+		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_lt_ATTRIBUTES).check(true, "packageName");
 	}
 	
 	@Test

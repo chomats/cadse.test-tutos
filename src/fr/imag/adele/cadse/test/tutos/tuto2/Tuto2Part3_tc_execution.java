@@ -10,13 +10,13 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
+import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTreeNode;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.gttree.GTTreeNode;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
 public class Tuto2Part3_tc_execution extends TutoTestCase {
@@ -51,7 +51,7 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
 		
 		/* Gets the IJavaProject */
 		GTTreeNode node = workspaceView.findTree().selectNode("ServletAPI");
-		Item servlet_item = node.getItem();
+		Item servlet_item = new GTCadseTreeNode(node).getItem();
 		IJavaProject jp = servlet_item.getMainMappingContent(IJavaProject.class);
 
 		/* Creates a new entry */

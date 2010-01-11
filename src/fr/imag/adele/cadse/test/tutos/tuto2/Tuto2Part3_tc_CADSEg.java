@@ -54,12 +54,12 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		editor = new GTEditor("Model.Workspace.WebAppModel");
 		editor.showCTab("Dependencies") ;
 
-		editor.buttonInSection("Add...", "Imported Packages").click();
+		editor.findSection("Imported Packages").findButton("Add...").click();
 		shell = new GTCadseShell("Package Selection");
 		shell.findText().typeText("fr.imag.adele.cadse.core.transaction");
 		shell.close();
 
-		editor.buttonInSection("Add...", "Imported Packages").click();
+		editor.findSection("Imported Packages").findButton("Add...").click();
 		shell = new GTCadseShell("Package Selection");
 		shell.findText().typeText("fr.imag.adele.cadse.core.delta");
 		shell.close();

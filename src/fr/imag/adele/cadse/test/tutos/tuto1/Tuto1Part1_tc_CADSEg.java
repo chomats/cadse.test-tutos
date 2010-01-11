@@ -3,7 +3,6 @@ package fr.imag.adele.cadse.test.tutos.tuto1;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.inGroup;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widgetOfType;
-import static org.junit.Assert.*;
 
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
@@ -15,13 +14,13 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
 
 
+import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTreeNode;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreeNode;
-import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 
@@ -67,7 +66,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Querying model
 		GTTreeNode cadseWebAppModelNode = workspaceView.findTree().selectNode(webAppModel);
 		cadseWebAppModelNode.expand() ;
-		Item cadseWebApp = cadseWebAppModelNode.getItem();
+		Item cadseWebApp = new GTCadseTreeNode(cadseWebAppModelNode).getItem();
 		assertNotNull(cadseWebApp);
 		assertEquals("WebAppModel", cadseWebApp.getName());
 		assertEquals("model.webapp", cadseWebApp.getAttribute(CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_));
@@ -179,16 +178,16 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().collapse();
 		workspaceView.findTree().selectNode(it_jsp);
 		workspaceView.capture("image068");
-		propertiesView.showTab("ItemType");
+		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		propertiesView.capture("image070");
 
 		workspaceView.findTree().selectNode(it_servlet);
-		propertiesView.showTab("ItemType");
+		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		
 		workspaceView.findTree().selectNode(it_webComponent);
-		propertiesView.showTab("ItemType");
+		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ABSTRACT_).check(true);
 	}
