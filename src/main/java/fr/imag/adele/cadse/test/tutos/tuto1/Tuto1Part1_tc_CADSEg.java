@@ -14,7 +14,6 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
 
 
-<<<<<<< local
 import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTreeNode;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
@@ -22,13 +21,11 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreeNode;
-=======
 import fr.imag.adele.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.GTEclipseConstants;
 import fr.imag.adele.cadse.test.gtmenu.GTMenu;
 import fr.imag.adele.cadse.test.gttree.GTTreeNode;
 import fr.imag.adele.cadse.test.gtworkbench_part.GTShell;
->>>>>>> other
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 
@@ -186,34 +183,18 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().collapse();
 		workspaceView.findTree().selectNode(it_jsp);
 		workspaceView.capture("image068");
-<<<<<<< local
 		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
-=======
-		propertiesView.showTab("ItemType");
-		propertiesView.findField(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
->>>>>>> other
 		propertiesView.capture("image070");
 
 		workspaceView.findTree().selectNode(it_servlet);
-<<<<<<< local
 		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
-=======
-		propertiesView.showTab("ItemType");
-		propertiesView.findField(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
->>>>>>> other
 		
 		workspaceView.findTree().selectNode(it_webComponent);
-<<<<<<< local
 		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
-		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ABSTRACT_).check(true);
-=======
-		propertiesView.showTab("ItemType");
-		propertiesView.findField(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
-		propertiesView.findField(CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_).check(true);
->>>>>>> other
+		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_).check(true);
 	}
 
 	/**
