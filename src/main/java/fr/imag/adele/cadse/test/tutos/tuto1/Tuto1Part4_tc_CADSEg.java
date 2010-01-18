@@ -30,7 +30,7 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image132");
 
 		// FIXME the has source folder check box disappeared!
-		/* workspaceView.findTree().selectNode(mapping_webApp).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu(GTCadseRTConstants.CONTEXTMENU_JAVA_PROJECT_CONTENT_MODEL).click();
+		/*workspaceView.findTree().selectNode(mapping_webApp).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu(GTCadseRTConstants.CONTEXTMENU_JAVA_PROJECT_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
 		GTCadseFactory.findField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true); 
 		shell.capture("image134");

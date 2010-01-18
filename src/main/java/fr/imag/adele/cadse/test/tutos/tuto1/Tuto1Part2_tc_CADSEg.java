@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.junit.Test;
 
+import fr.imag.adele.cadse.cadseg.pages.CADSEG_UICST;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
@@ -25,7 +26,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().collapse();
 		workspaceView.findTree().selectNode(it_webApp);
 		workspaceView.capture("image086");
-		propertiesView.showTab("Name control");
+		propertiesView.showTab(CADSEG_UICST.INSTANCE_NAME_CONTROL_PAGE_TITLE);
 		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_VALID_PATTERN_ID_).typeText(".*App");
 		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_MESSAGE_ERROR_ID_).typeText("The Web application name must end with App.");
 		propertiesView.capture("image092");		
@@ -58,25 +59,24 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		packageExplorerView.findTree().selectNode(project_resources).expand();
 		packageExplorerView.capture("image100");
 
-		workspaceView.show();
-		// FIXME icons Le browser n'affiche rien
-		/* 
+		workspaceView.show();		
+		 
 		workspaceView.findTree().selectNode(it_webApp);
 		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "WarFile.gif");
+		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "WarFile.gif");
 
 		workspaceView.findTree().selectNode(it_jsp);
 		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "JSP.gif");
+		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "JSP.gif");
 
 		workspaceView.findTree().selectNode(it_library);
 		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "Library.gif");
+		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "Library.gif");
 
 		workspaceView.findTree().selectNode(it_servlet);
 		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "Servlet.gif");
-		*/
+		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "Servlet.gif");
+		
 	}	
 
 	/**
