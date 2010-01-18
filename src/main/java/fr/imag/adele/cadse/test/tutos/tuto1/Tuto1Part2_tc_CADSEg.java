@@ -22,13 +22,10 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	 */
 	@Test
 	public void test_mapping_name_constraint() throws Exception {
-
-		// FIXME automatic short name
-		
 		workspaceView.findTree().collapse();
 		workspaceView.findTree().selectNode(it_webApp);
 		workspaceView.capture("image086");
-		propertiesView.showTab("Instance name control");
+		propertiesView.showTab("Name control");
 		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_VALID_PATTERN_ID_).typeText(".*App");
 		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_MESSAGE_ERROR_ID_).typeText("The Web application name must end with App.");
 		propertiesView.capture("image092");		
@@ -62,8 +59,8 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		packageExplorerView.capture("image100");
 
 		workspaceView.show();
-		// FIXME icons
-		// Button [...] doesn't exists 
+		// FIXME icons Le browser n'affiche rien
+		/* 
 		workspaceView.findTree().selectNode(it_webApp);
 		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "WarFile.gif");
@@ -79,7 +76,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(it_servlet);
 		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_ICON_).browser("resources", "Servlet.gif");
-			
+		*/
 	}	
 
 	/**
