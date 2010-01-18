@@ -172,7 +172,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findField(shell, CadseGCST.LINK_TYPE_at_AGGREGATION_).check(false);
 		GTCadseFactory.findField(shell, CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_).check(false);
 		shell.close();
-		// FIXME remove this comment workspaceView.findTree().selectNode(link_uses); /* Assert item has been displayed */
+		workspaceView.findTree().selectNode(link_uses); /* Assert item has been displayed */
 
 		// Root element attribute + is abstract
 		workspaceView.findTree().collapse();
