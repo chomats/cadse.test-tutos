@@ -76,7 +76,6 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(it_servlet);
 		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "Servlet.gif");
-		
 	}	
 
 	/**
