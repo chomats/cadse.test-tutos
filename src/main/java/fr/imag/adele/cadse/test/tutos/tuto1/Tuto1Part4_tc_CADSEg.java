@@ -25,12 +25,12 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 	 */
 	@Test
 	public void test_item_content() throws Exception {
+		
 		workspaceView.findTree().collapse();
 		workspaceView.findTree().selectNode(mapping_webApp);
 		workspaceView.capture("image132");
 
-		// FIXME the has source folder check box disappeared!
-		/*workspaceView.findTree().selectNode(mapping_webApp).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu(GTCadseRTConstants.CONTEXTMENU_JAVA_PROJECT_CONTENT_MODEL).click();
+		workspaceView.findTree().selectNode(mapping_webApp).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu(GTCadseRTConstants.CONTEXTMENU_JAVA_PROJECT_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
 		GTCadseFactory.findField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true); 
 		shell.capture("image134");
@@ -47,10 +47,8 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
 		GTCadseFactory.findField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true);
 		shell.close();
-		workspaceView.findTree().selectNode(content_servlet);*/
+		workspaceView.findTree().selectNode(content_servlet);
 
-		// FIXME File content model : same problem
-		/*
 		workspaceView.findTree().selectNode(mapping_jsp).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu(GTCadseRTConstants.CONTEXTMENU_FILE_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.FILE_CONTENT_MODEL);
 		GTCadseFactory.findField(shell, CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_).typeText("${#short-name}.jsp");
@@ -62,7 +60,7 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		conten_jsp_item.setAttribute(CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_, "${#short-name}.jsp");
 //		workspaceView.findTree().selectNode(content_jsp).getItem().setAttribute(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/");
 		
-		workspaceView.findTree().selectNode(content_jsp);*/
+		workspaceView.findTree().selectNode(content_jsp);
 	}
 	
 	@Test
