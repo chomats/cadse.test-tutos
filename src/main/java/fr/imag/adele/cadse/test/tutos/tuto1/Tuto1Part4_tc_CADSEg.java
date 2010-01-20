@@ -55,11 +55,6 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findField(shell, CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText("/");
 		shell.capture("image135");
 		shell.close();
-		GTTreeNode node = workspaceView.findTree().selectNode(content_jsp);
-		Item conten_jsp_item = new GTCadseTreeNode(node).getItem();
-		conten_jsp_item.setAttribute(CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_, "${#short-name}.jsp");
-//		workspaceView.findTree().selectNode(content_jsp).getItem().setAttribute(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/");
-		
 		workspaceView.findTree().selectNode(content_jsp);
 	}
 	
