@@ -33,14 +33,14 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image042");
 		propertiesView.showTab("Cadse definition");
 
-		GTCadseFactory.findField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("model.webapp.template");
+		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("model.webapp.template");
 		propertiesView.capture("image044");
 
 		// extends class check box
 		workspaceView.findTree().selectNode(content_servlet);
 		workspaceView.capture("image048");
 		propertiesView.showTab("Java Project Content");
-		GTCadseFactory.findField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
+		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
 		propertiesView.capture("image050");
 	}	
 
@@ -90,7 +90,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(webAppModel);
 		propertiesView.showTab("Cadse definition");
 		// TODO C'est l'un ou l'autre!
-		GTCadseFactory.findField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
+		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
 		
 		// Copying imports into clipboard
 		packageExplorerView.findTree().selectNode(file_import1).doubleClick();
