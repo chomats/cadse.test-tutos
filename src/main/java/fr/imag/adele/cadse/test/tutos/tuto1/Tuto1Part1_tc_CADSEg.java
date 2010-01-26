@@ -93,7 +93,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("Library");
 		shell.close();
 		workspaceView.findTree().selectNode(it_library); /* Assert item has been displayed */
-
+		
 		// Item Type WebComponent
 		workspaceView.contextMenu(data_model, GTCadseRTConstants.CONTEXTMENU_NEW, "Item type").click();
 		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);

@@ -28,7 +28,7 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_view() throws Exception {
 
-		/* TO BE UPDATED WITH NEW RUNTIME
+		/* FIXME TO BE UPDATED WITH NEW RUNTIME
 		workspaceView.findTree().collapse();
 
 		/* Creates a new view 
