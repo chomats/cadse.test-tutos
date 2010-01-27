@@ -30,6 +30,7 @@ import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
  */
 public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 
+
 	/**
 	 * Selects CADSEg in the launcher, and closes useless views. 
 	 * 

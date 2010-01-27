@@ -14,7 +14,6 @@ import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTreeNode;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreeNode;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
@@ -22,10 +21,6 @@ import fr.imag.adele.graphictests.gtworkbench_part.GTView;
 
 
 public abstract class TutoTestCase extends GTCadseTestCase {
-	
-	/** A shell variable, used everywhere... */
-	protected GTCadseShell shell;
-
 
 	protected GTTreePath webAppModel = new GTTreePath("WebAppModel");
 
