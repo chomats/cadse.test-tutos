@@ -42,6 +42,7 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 		shell.selectCadses(GTCadseRTConstants.CADSEG_MODEL);
 		shell.close();
 		welcomeView.close();
+		workspaceView.show();
 	}
 
 	/**
@@ -51,11 +52,9 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	 */
 	@Test
 	public void test_CADSE_definition() throws Exception {
-		workspaceView.show();		
-
-		// CADSE creation
 		String[] expected_creationCST = {"ITEM_at_NAME_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_lt_EXTENDS"};
-		checkCreationPage(null, GTCadseRTConstants.CONTEXTMENU_NEW_CADSE_DEFINITION, cadse_name, CadseGCST.CADSE_DEFINITION, expected_creationCST);
+		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "CADSE_DEFINITION_at_CADSE_NAME_", "CADSE_DEFINITION_at_COMMENTARY_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_DEFINITION_at_VENDOR_NAME_", "CADSE_DEFINITION_at_VERSION_CADSE_", "CADSE_at_DESCRIPTION_", "CADSE_at_ITEM_REPO_LOGIN_", "CADSE_at_ITEM_REPO_PASSWD_", "CADSE_at_ITEM_REPO_URL_", "CADSE_at_DEFAULT_CONTENT_REPO_URL_", "CADSE_DEFINITION_at_IMPORTS_", "CADSE_lt_EXTENDS"};
+		itemCreationTest(null, GTCadseRTConstants.CONTEXTMENU_NEW_CADSE_DEFINITION, cadse_name, CadseGCST.CADSE_DEFINITION, expected_creationCST, expected_modifCST);
 	}
 	
 	/**
@@ -136,10 +135,10 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	throws WidgetNotFoundException {
 
 		// Attribute creation and creation page checking
-		checkCreationPage(path, attributeTypeName, attributeName, itConstant, expected_creationCST);
+		GTTreePath completePath = checkCreationPage(path, attributeTypeName, attributeName, itConstant, expected_creationCST);
 		
 		// Modification page
-		checkModificationPage(path.concat(attributeName), attributeTypeName, attributeTypeName, expected_modifCST);		
+		checkModificationPage(completePath, attributeTypeName, attributeTypeName, expected_modifCST);		
 	}
 	
 	/**
@@ -150,8 +149,10 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	 * @param attributeName          The name of the new attribute
 	 * @param itConstant             The ItemType constant of this attribute
 	 * @param expected_creationCST   The list of expected fields attributes constants.
+	 * 
+	 * @return the tree path to find the created item in the workspace view
 	 */
-	private void checkCreationPage(GTTreePath path, String attributeTypeName, String attributeName, ItemType itConstant, String[] expected_creationCST)
+	private GTTreePath checkCreationPage(GTTreePath path, String attributeTypeName, String attributeName, ItemType itConstant, String[] expected_creationCST)
 	{
 		// Creation
 		workspaceView.contextMenu(path, GTCadseRTConstants.CONTEXTMENU_NEW, attributeTypeName).click();
@@ -167,15 +168,22 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ENUM_TYPE_at_VALUES_).add("one", "two", "three");
 	    shell.close();
 		
-	    // Assert item has been created
+	    // Compute complete path
+	    GTTreePath completePath = null;
 	    if (path != null)
-	    	workspaceView.findTree().selectNode(path.concat(attributeName));
+	    	completePath = path.concat(attributeName);
 	    else
-	    	workspaceView.findTree().selectNode(attributeName);
+	    	completePath = new GTTreePath(attributeName);
+	    
+	    // Assert item has been created
+	    workspaceView.findTree().selectNode(completePath);
+	    
 	    
 		// Performs test
 		if (attributesCSTEquals(creationCST, expected_creationCST) == false)
 			throw new WidgetNotFoundException("The workbench part doesn't contains expected attributes. Expected String : " + creationStr);
+		
+		return completePath;
 	}
 	
 	/**
