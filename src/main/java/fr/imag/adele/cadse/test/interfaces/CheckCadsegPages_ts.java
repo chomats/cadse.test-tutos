@@ -11,11 +11,11 @@ import junit.framework.Test;
 
 @RunWith(Suite.class)
 @SuiteClasses(value={
-	CheckCreationPages_tc.class
+	CheckCadsegPages_tc.class
 })
 
-public class CheckCreationPages_ts {
+public class CheckCadsegPages_ts {
 	public static Test suite() {
-		return (Test) new JUnit4TestAdapter(CheckCreationPages_ts.class);
+		return (Test) new JUnit4TestAdapter(CheckCadsegPages_ts.class);
 	}
 }
