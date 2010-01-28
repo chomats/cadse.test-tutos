@@ -10,6 +10,7 @@ import fr.imag.adele.cadse.core.ItemType;
 import fr.imag.adele.cadse.core.attribute.IAttributeType;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseWorkbenchPart;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
@@ -50,20 +51,11 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	 */
 	@Test
 	public void test_CADSE_definition() throws Exception {
-
 		workspaceView.show();		
-		
-		workspaceView.contextMenu(null, GTCadseRTConstants.CONTEXTMENU_NEW, GTCadseRTConstants.CONTEXTMENU_NEW_CADSE_DEFINITION).click();
-		shell = new GTCadseShell(CadseGCST.CADSE_DEFINITION);
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText(cadse_name);
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.myCadse");
-		String[] attributesCST = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeConstants();
-		shell.close();
 
-		// Checks is all the attributes are displayed 
-		String[] expected_attributesCST = {"ITEM_at_NAME_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_lt_EXTENDS"};
-		if (attributesCSTEquals(attributesCST, expected_attributesCST) == false)
-			throw new WidgetNotFoundException("The workbench part doesn't contains expected attributes.");
+		// CADSE creation
+		String[] expected_creationCST = {"ITEM_at_NAME_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_lt_EXTENDS"};
+		checkCreationPage(null, GTCadseRTConstants.CONTEXTMENU_NEW_CADSE_DEFINITION, cadse_name, CadseGCST.CADSE_DEFINITION, expected_creationCST);
 	}
 	
 	/**
@@ -73,101 +65,154 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	 */
 	@Test
 	public void test_Item_Type() throws Exception {
-		// Item Type
-		workspaceView.contextMenu(data_model, GTCadseRTConstants.CONTEXTMENU_NEW, "Item type").click();
-		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);		
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText(item_type_name);
-		String[] attributesCST = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeConstants();
-		shell.close();
-		
-		workspaceView.findTree().selectNode(it_mit); /* Assert item has been displayed */
-		
-		// Checks is all the attributes are displayed
-		String[] expected_attributesCST = {"ITEM_at_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
-		if (attributesCSTEquals(attributesCST, expected_attributesCST) == false)
-			throw new WidgetNotFoundException("The workbench part doesn't contains expected attributes.");
+		String[] expected_creationCST = {"ITEM_at_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
+		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_ICON_", "ITEM_TYPE_at_PACKAGE_NAME_", "ITEM_TYPE_at_ITEM_FACTORY_", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_INSTANCE_HIDDEN_", "ITEM_TYPE_at_IS_META_ITEM_TYPE_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
+		itemCreationTest(data_model, "Item type", item_type_name ,CadseGCST.ITEM_TYPE, expected_creationCST, expected_modifCST);
 	}
-		
+	
 	@Test
 	public void test_Boolean_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_"};
-		attributeCreationTest("Boolean", CadseGCST.BOOLEAN, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "Boolean", "my_boolean", CadseGCST.BOOLEAN, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_Double_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_"};
-		attributeCreationTest("Double", CadseGCST.DOUBLE, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "Double", "my_double", CadseGCST.DOUBLE, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_Integer_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_"};
-		attributeCreationTest("Integer", CadseGCST.INTEGER, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "Integer", "my_integer", CadseGCST.INTEGER, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_Long_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_"};
-		attributeCreationTest("Long", CadseGCST.LONG, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "Long", "my_long", CadseGCST.LONG, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_String_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_", "STRING_at_NOT_EMPTY_"};
-		attributeCreationTest("String", CadseGCST.STRING, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "String", "my_string", CadseGCST.STRING, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test
 	public void test_LinkType_Attribute() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "LINK_TYPE_lt_DESTINATION", "LINK_TYPE_at_ANNOTATION_", "LINK_TYPE_at_AGGREGATION_", "LINK_TYPE_at_COMPOSITION_", "LINK_TYPE_at_PART_", "LINK_TYPE_at_REQUIRE_", "LINK_TYPE_at_MAPPING_", "LINK_TYPE_at_GROUP_", "LINK_TYPE_at_HIDDEN_", "LINK_TYPE_at_MIN_", "LINK_TYPE_at_MAX_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "LINK_TYPE_at_TWCOUPLED_", "LINK_TYPE_at_TWDEST_EVOL_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "LINK_TYPE_lt_SOURCE", "LINK_TYPE_lt_DESTINATION", "LINK_TYPE_lt_INVERSE_LINK", "LINK_TYPE_at_ANNOTATION_", "LINK_TYPE_at_AGGREGATION_", "LINK_TYPE_at_COMPOSITION_", "LINK_TYPE_at_PART_", "LINK_TYPE_at_REQUIRE_", "LINK_TYPE_at_MAPPING_", "LINK_TYPE_at_GROUP_", "LINK_TYPE_at_HIDDEN_", "LINK_TYPE_at_SELECTION_", "LINK_TYPE_at_LINK_MANAGER_", "LINK_TYPE_at_MIN_", "LINK_TYPE_at_MAX_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "LINK_TYPE_at_TWCOUPLED_", "LINK_TYPE_at_TWDEST_EVOL_", "ATTRIBUTE_at_TRANSIENT_"};
-		attributeCreationTest("LinkType", CadseGCST.LINK_TYPE, expected_creationCST, expected_modifCST);
+		itemCreationTest(it_mit, "LinkType", "my_link_type", CadseGCST.LINK_TYPE, expected_creationCST, expected_modifCST);
 	}
+	
+	@Test
+	public void test_EnumType() throws Exception {
+		String[] expected_creationCST = {"ITEM_at_NAME_", "ENUM_TYPE_at_VALUES_"};
+		String[] expected_modifCST = {};
+		itemCreationTest(data_model, "Enum type", "my_enum", CadseGCST.ENUM_TYPE, expected_creationCST, expected_modifCST);
+	}
+	
 		
 	/**
 	 * Attribute creation test.
 	 * 
-	 * @param attributeName            the name of the attribue as it appears in the contextual new menu
+	 * @param path                     the path to an item in the workspace view which will be the source for the creation
+	 * @param attributeTypeName        the name of the attribute type as it appears in the contextual new menu
+	 * @param attributeName            the name of the new item
 	 * @param itConstant               the CADSEG item type constant
 	 * @param expected_creationCST     the expected creation page attributes constants
 	 * @param expected_modifCST        the expected modification page attributes constants
 	 * 
 	 * @throws WidgetNotFoundException the widget not found exception
 	 */
-	private void attributeCreationTest(String attributeName, ItemType itConstant, String[] expected_creationCST, String[] expected_modifCST)
+	private void itemCreationTest(GTTreePath path, String attributeTypeName, String attributeName, ItemType itConstant, String[] expected_creationCST, String[] expected_modifCST)
 	throws WidgetNotFoundException {
 
-		// Attribute creation
-		workspaceView.contextMenu(it_mit, GTCadseRTConstants.CONTEXTMENU_NEW, attributeName).click();
-		GTCadseShell shell = new GTCadseShell(itConstant);
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText(attributeName);
-		String[] creationCST = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeConstants();
-	    String creationStr = getStringDef(shell);
-	    if (itConstant == CadseGCST.LINK_TYPE)
-	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.LINK_TYPE_lt_DESTINATION).browser(cadse_name, CadseDefinitionManager.DATA_MODEL, item_type_name);
-		shell.close();
-		workspaceView.findTree().selectNode(it_mit.concat(attributeName)); /* Assert item has been displayed */
+		// Attribute creation and creation page checking
+		checkCreationPage(path, attributeTypeName, attributeName, itConstant, expected_creationCST);
 		
-		// Attribute comparison
-		if (attributesCSTEquals(creationCST, expected_creationCST) == false)
-			throw new WidgetNotFoundException("The workbench part doesn't contains expected attributes. Expected String : " + creationStr);
-		
-		// Property view
-		propertiesView.showTab(attributeName);
-		String[] modifCST = GTCadseFactory.findCadseWorkbenchPart(propertiesView.findSection(attributeName)).findAttributeConstants();
-		String modifStr = getStringDef(propertiesView.findSection(attributeName));
-		
-		// Attribute comparison
-		if (attributesCSTEquals(modifCST, expected_modifCST) == false)
-			throw new WidgetNotFoundException("The workbench part doesn't contains expected attributes. Expected String : " + modifStr);		
+		// Modification page
+		checkModificationPage(path.concat(attributeName), attributeTypeName, attributeTypeName, expected_modifCST);		
 	}
 	
+	/**
+	 * Creates an item and checks if the creation page displays the correct set of fields.
+	 * 
+	 * @param path                   The path in the workspace view used for item creation
+	 * @param attributeTypeName      The name of the type of attribute, in the contextual menu
+	 * @param attributeName          The name of the new attribute
+	 * @param itConstant             The ItemType constant of this attribute
+	 * @param expected_creationCST   The list of expected fields attributes constants.
+	 */
+	private void checkCreationPage(GTTreePath path, String attributeTypeName, String attributeName, ItemType itConstant, String[] expected_creationCST)
+	{
+		// Creation
+		workspaceView.contextMenu(path, GTCadseRTConstants.CONTEXTMENU_NEW, attributeTypeName).click();
+		GTCadseShell shell = new GTCadseShell(itConstant);
+		String[] creationCST = GTCadseFactory.findCadseWorkbenchPart(shell).findAttributeConstants();
+	    String creationStr = getStringDef(shell);
+	    GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText(attributeName);
+	    if (itConstant == CadseGCST.LINK_TYPE)
+	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.LINK_TYPE_lt_DESTINATION).browser(cadse_name, CadseDefinitionManager.DATA_MODEL, item_type_name);
+	    if (itConstant == CadseGCST.CADSE_DEFINITION)
+	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.myCadse");
+	    if (itConstant == CadseGCST.ENUM_TYPE)
+	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ENUM_TYPE_at_VALUES_).add("one", "two", "three");
+	    shell.close();
+		
+	    // Assert item has been created
+	    if (path != null)
+	    	workspaceView.findTree().selectNode(path.concat(attributeName));
+	    else
+	    	workspaceView.findTree().selectNode(attributeName);
+	    
+		// Performs test
+		if (attributesCSTEquals(creationCST, expected_creationCST) == false)
+			throw new WidgetNotFoundException("The workbench part doesn't contains expected attributes. Expected String : " + creationStr);
+	}
+	
+	/**
+	 *  Checks if a modification page displays correct fields in a given section for a given item.
+	 * 
+	 * @param path       The item path in the workspace view 
+	 * @param tab        The tab of the property page. Can be null.
+	 * @param section    The section where to look for constants. Can be null.
+	 * @param expected   The list of expected fields attributes constants.
+	 */
+	private void checkModificationPage(GTTreePath path, String tab, String section, String[] expected)
+	{
+		// Selects node into the tree
+		workspaceView.findTree().selectNode(path);
+		
+		// Displays property view
+		if (tab != null)
+			propertiesView.showTab(tab);
+		else
+			propertiesView.show();
+		
+		// Section decoding
+		GTCadseWorkbenchPart wp;
+		if (section != null)
+			wp = GTCadseFactory.findCadseWorkbenchPart(propertiesView.findSection(section));
+		else
+			wp = GTCadseFactory.findCadseWorkbenchPart(propertiesView);
+		
+		// Gets attributes constants
+		String[] modifCST = wp.findAttributeConstants();
+		String modifStr = getStringDef(propertiesView.findSection(section));
+		
+		// Attribute comparison
+		if (attributesCSTEquals(modifCST, expected) == false)
+			throw new WidgetNotFoundException("The workbench part doesn't contains expected attributes. Expected String : " + modifStr);
+	}
+
 	/**
 	 * Tests is two string arrays are equal.
 	 * 
