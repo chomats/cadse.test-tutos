@@ -45,23 +45,13 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 		workspaceView.show();
 	}
 
-	/**
-	 * Creates a new CADSE definition and checks if correct fields are displayed in creation page.
-	 * 
-	 * @throws Exception
-	 */
 	@Test
-	public void test_CADSE_definition() throws Exception {
+	public void test_CADSE_Definition() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_lt_EXTENDS"};
-		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "CADSE_DEFINITION_at_CADSE_NAME_", "CADSE_DEFINITION_at_COMMENTARY_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_DEFINITION_at_VENDOR_NAME_", "CADSE_DEFINITION_at_VERSION_CADSE_", "CADSE_at_DESCRIPTION_", "CADSE_at_ITEM_REPO_LOGIN_", "CADSE_at_ITEM_REPO_PASSWD_", "CADSE_at_ITEM_REPO_URL_", "CADSE_at_DEFAULT_CONTENT_REPO_URL_", "CADSE_DEFINITION_at_IMPORTS_", "CADSE_lt_EXTENDS"};
+		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "CADSE_DEFINITION_at_PACKAGENAME_", "CADSE_DEFINITION_at_CADSE_NAME_", "CADSE_at_DESCRIPTION_", "CADSE_DEFINITION_at_COMMENTARY_", "CADSE_DEFINITION_at_VENDOR_NAME_", "CADSE_DEFINITION_at_VERSION_CADSE_", "CADSE_at_ITEM_REPO_LOGIN_", "CADSE_at_ITEM_REPO_PASSWD_", "CADSE_at_ITEM_REPO_URL_", "CADSE_at_DEFAULT_CONTENT_REPO_URL_", "CADSE_DEFINITION_at_IMPORTS_", "CADSE_lt_EXTENDS"};
 		itemCreationTest(null, GTCadseRTConstants.CONTEXTMENU_NEW_CADSE_DEFINITION, cadse_name, CadseGCST.CADSE_DEFINITION, expected_creationCST, expected_modifCST);
 	}
 	
-	/**
-	 * Creates a new Item Type and checks if correct fields are displayed in creation page.
-	 * 
-	 * @throws Exception
-	 */
 	@Test
 	public void test_Item_Type() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
@@ -112,13 +102,19 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	}
 	
 	@Test
-	public void test_EnumType() throws Exception {
+	public void test_Enum_Type() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ENUM_TYPE_at_VALUES_"};
-		String[] expected_modifCST = {};
-		itemCreationTest(data_model, "Enum type", "my_enum", CadseGCST.ENUM_TYPE, expected_creationCST, expected_modifCST);
+		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ENUM_TYPE_at_JAVA_CLASS_", "ENUM_TYPE_at_MUST_BE_GENERATED_", "ENUM_TYPE_at_VALUES_"};		
+		itemCreationTest(data_model, "Enum type", "my_enum_type", CadseGCST.ENUM_TYPE, expected_creationCST, expected_modifCST);
 	}
 	
-		
+	@Test
+	public void test_Enum_Attribute() throws Exception {
+		String[] expected_creationCST = {"ITEM_at_NAME_", "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_"};
+		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ENUM_lt_ENUM_TYPE", "ATTRIBUTE_at_DEFAULT_VALUE_", "ATTRIBUTE_at_HIDDEN_IN_COMPUTED_PAGES_", "ATTRIBUTE_at_MUST_BE_INITIALIZED_", "ATTRIBUTE_at_IS_LIST_", "ATTRIBUTE_at_TWEVOL_", "ATTRIBUTE_at_TWCOMMIT_KIND_", "ATTRIBUTE_at_TWREV_SPECIFIC_", "ATTRIBUTE_at_TWUPDATE_KIND_", "ATTRIBUTE_at_CANNOT_BE_UNDEFINED_", "ATTRIBUTE_at_FINAL_", "ATTRIBUTE_at_NATIF_", "ATTRIBUTE_at_REQUIRE_", "ATTRIBUTE_at_TRANSIENT_"};
+		itemCreationTest(it_mit, "Enum", "my_enum", CadseGCST.ENUM, expected_creationCST, expected_modifCST);
+	}
+
 	/**
 	 * Attribute creation test.
 	 * 
@@ -133,7 +129,7 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	 */
 	private void itemCreationTest(GTTreePath path, String attributeTypeName, String attributeName, ItemType itConstant, String[] expected_creationCST, String[] expected_modifCST)
 	throws WidgetNotFoundException {
-
+		
 		// Attribute creation and creation page checking
 		GTTreePath completePath = checkCreationPage(path, attributeTypeName, attributeName, itConstant, expected_creationCST);
 		
@@ -162,10 +158,12 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	    GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText(attributeName);
 	    if (itConstant == CadseGCST.LINK_TYPE)
 	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.LINK_TYPE_lt_DESTINATION).browser(cadse_name, CadseDefinitionManager.DATA_MODEL, item_type_name);
-	    if (itConstant == CadseGCST.CADSE_DEFINITION)
+	    else if (itConstant == CadseGCST.CADSE_DEFINITION)
 	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.myCadse");
-	    if (itConstant == CadseGCST.ENUM_TYPE)
+	    else if (itConstant == CadseGCST.ENUM_TYPE)
 	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ENUM_TYPE_at_VALUES_).add("one", "two", "three");
+	    else if (itConstant == CadseGCST.ENUM)
+	    	GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ENUM_lt_ENUM_TYPE).browser("my_enum_type");
 	    shell.close();
 		
 	    // Compute complete path
@@ -174,6 +172,9 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	    	completePath = path.concat(attributeName);
 	    else
 	    	completePath = new GTTreePath(attributeName);
+	    	    
+		// FIXME next line will have to be removed as soon as the bug will be corrected	with Enum Type Refresh
+		workspaceView.menu("refresh").click();
 	    
 	    // Assert item has been created
 	    workspaceView.findTree().selectNode(completePath);
@@ -196,14 +197,26 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	 */
 	private void checkModificationPage(GTTreePath path, String tab, String section, String[] expected)
 	{
-		// Selects node into the tree
-		workspaceView.findTree().selectNode(path);
 		
-		// Displays property view
-		if (tab != null)
-			propertiesView.showTab(tab);
-		else
-			propertiesView.show();
+		try {
+			// Selects node into the tree
+			workspaceView.findTree().selectNode(path);
+			
+			// Displays property view
+			if (tab != null)
+				propertiesView.showTab(tab);
+			else
+				propertiesView.show();
+		} catch (Exception e) {
+			// Selects node into the tree
+			workspaceView.findTree().selectNode(path);
+			
+			// Displays property view
+			if (tab != null)
+				propertiesView.showTab(tab);
+			else
+				propertiesView.show();
+		}
 		
 		// Section decoding
 		GTCadseWorkbenchPart wp;
@@ -257,7 +270,7 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 		StringBuilder sb = new StringBuilder();		
 		boolean begin = true;
 		
-		sb.append("String[] expected_attributesCST = {");
+		sb.append("{");
 		for (IAttributeType<?> attr : attrlist) {
 			if (begin)
 				begin = false;
