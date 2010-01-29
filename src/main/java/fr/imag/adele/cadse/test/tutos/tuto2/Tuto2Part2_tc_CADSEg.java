@@ -31,7 +31,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		workspaceView.findTree().selectNode(webAppModel).expand();
 		workspaceView.capture("image042");
-		propertiesView.showTab("Cadse definition");
+		propertiesView.showTab("CADSE definition");
 
 		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("model.webapp.template");
 		propertiesView.capture("image044");
@@ -39,7 +39,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		// extends class check box
 		workspaceView.findTree().selectNode(content_servlet);
 		workspaceView.capture("image048");
-		propertiesView.showTab("Java Project Content");
+		propertiesView.showTab("JavaProjectContentModel");
 		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
 		propertiesView.capture("image050");
 	}	
@@ -88,7 +88,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		
 		// Adds org.eclipse.core.runtime
 		workspaceView.findTree().selectNode(webAppModel);
-		propertiesView.showTab("Cadse definition");
+		propertiesView.showTab("CADSE definition");
 		// TODO C'est l'un ou l'autre!
 		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
 		
