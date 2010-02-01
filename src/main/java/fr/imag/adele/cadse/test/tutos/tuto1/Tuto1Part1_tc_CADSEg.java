@@ -88,35 +88,11 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(it_webApp); /* Assert item has been displayed */
 		workspaceView.capture("image040");
 
-		// Item Type Library
-		workspaceView.contextMenu(data_model, GTCadseRTConstants.CONTEXTMENU_NEW, "Item type").click();
-		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("Library");
-		shell.close();
-		workspaceView.findTree().selectNode(it_library); /* Assert item has been displayed */
-		
-		// Item Type WebComponent
-		workspaceView.contextMenu(data_model, GTCadseRTConstants.CONTEXTMENU_NEW, "Item type").click();
-		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("WebComponent");
-		shell.close();
-		workspaceView.findTree().selectNode(it_webComponent); /* Assert item has been displayed */
-
-		// Item Type JSP
-		workspaceView.contextMenu(data_model, GTCadseRTConstants.CONTEXTMENU_NEW, "Item type").click();
-		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("JSP");
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE).browser("WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent");
-		shell.close();
-		workspaceView.findTree().selectNode(it_jsp); /* Assert item has been displayed */
-
-		// Item Type Servlet
-		workspaceView.findTree().selectNode(data_model).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Item type").click();
-		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("Servlet");
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE).browser("WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent");
-		shell.close();
-		workspaceView.findTree().selectNode(it_servlet); /* Assert item has been displayed */
+		// Other Item Type
+		createItemType(data_model, "Library", null, null, null, null);
+		createItemType(data_model, "WebComponent", null, null, null, null);
+		createItemType(data_model, "JSP", it_webComponent, null, null, null);
+		createItemType(data_model, "Servlet", it_webComponent, null, null, null);
 
 		// Attribute relativeURL
 		workspaceView.contextMenu(it_webComponent, GTCadseRTConstants.CONTEXTMENU_NEW, "String").click();
