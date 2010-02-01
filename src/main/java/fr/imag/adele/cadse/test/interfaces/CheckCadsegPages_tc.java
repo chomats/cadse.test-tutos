@@ -56,7 +56,7 @@ public class CheckCadsegPages_tc extends GTCadseTestCase {
 	public void test_Item_Type() throws Exception {
 		String[] expected_creationCST = {"ITEM_at_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
 		String[] expected_modifCST = {"ITEM_at_NAME_", "ITEM_at_DISPLAY_NAME_", "ITEM_at_QUALIFIED_NAME_", "ITEM_TYPE_lt_SUPER_TYPE", "ITEM_TYPE_at_ICON_", "ITEM_TYPE_at_PACKAGE_NAME_", "ITEM_TYPE_at_ITEM_FACTORY_", "ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_", "ITEM_TYPE_at_IS_INSTANCE_HIDDEN_", "ITEM_TYPE_at_IS_META_ITEM_TYPE_", "ITEM_TYPE_at_IS_ROOT_ELEMENT_", "ITEM_TYPE_at_HAS_CONTENT_"};
-		itemCreationTest(data_model, "Item type", item_type_name ,CadseGCST.ITEM_TYPE, expected_creationCST, expected_modifCST);
+		itemCreationTest(data_model, GTCadseRTConstants.CONTEXTMENU_NEW_ITEM_TYPE, item_type_name ,CadseGCST.ITEM_TYPE, expected_creationCST, expected_modifCST);
 	}
 	
 	@Test

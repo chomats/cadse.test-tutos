@@ -80,8 +80,8 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.show();
 		
 		// Item Type WebApp
-		workspaceView.contextMenu(data_model, GTCadseRTConstants.CONTEXTMENU_NEW, "Item type").click();
-		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);		
+		workspaceView.contextMenu(data_model, GTCadseRTConstants.CONTEXTMENU_NEW, GTCadseRTConstants.CONTEXTMENU_NEW_ITEM_TYPE).click();
+		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("WebApp");
 		shell.capture("image038");
 		shell.close();
@@ -155,16 +155,16 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().collapse();
 		workspaceView.findTree().selectNode(it_jsp);
 		workspaceView.capture("image068");
-		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
+		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		propertiesView.capture("image070");
 
 		workspaceView.findTree().selectNode(it_servlet);
-		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
+		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		
 		workspaceView.findTree().selectNode(it_webComponent);
-		propertiesView.showTab(ITEM_TYPE_TAB_NAME);
+		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_).check(true);
 	}
