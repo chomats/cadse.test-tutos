@@ -21,6 +21,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreeNode;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 
@@ -94,7 +95,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		createItemType(data_model, "JSP", it_webComponent, null, null, null);
 		createItemType(data_model, "Servlet", it_webComponent, null, null, null);
 
-		// Attribute relativeURL
+		// Relative URL attribute
 		workspaceView.contextMenu(it_webComponent, GTCadseRTConstants.CONTEXTMENU_NEW, "String").click();
 		shell = new GTCadseShell(CadseGCST.STRING);
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("relativeURL");
@@ -103,19 +104,10 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(attr_relativeUrl);  /* Assert item has been displayed */
 		workspaceView.capture("image048");
 
-		// Attribute className
-		workspaceView.contextMenu(it_servlet, GTCadseRTConstants.CONTEXTMENU_NEW, "String").click();
-		shell = new GTCadseShell(CadseGCST.STRING);
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("className");
-		shell.close();
-		workspaceView.findTree().selectNode(attr_className);  /* Assert item has been displayed */
-
-		// Attribute packageName
-		workspaceView.contextMenu(it_servlet, GTCadseRTConstants.CONTEXTMENU_NEW, "String").click();
-		shell = new GTCadseShell(CadseGCST.STRING);
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("packageName");
-		shell.close();
-		workspaceView.findTree().selectNode(attr_packageName);  /* Assert item has been displayed */
+		// Other attributes
+		createString(it_servlet, "className", null, null, null, null);
+		createString(it_servlet, "packageName", null, null, null, null);
+		
 
 		// hasComp link
 		workspaceView.contextMenu(it_webApp, GTCadseRTConstants.CONTEXTMENU_NEW, "LinkType").click();
@@ -142,14 +134,11 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image064");
 
 		// uses link
-		workspaceView.findTree().selectNode(it_webComponent).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("LinkType").click();
-		shell = new GTCadseShell(CadseGCST.LINK_TYPE);
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("uses");
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.LINK_TYPE_lt_DESTINATION).browser("WebAppModel", CadseDefinitionManager.DATA_MODEL, "Library");
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.LINK_TYPE_at_AGGREGATION_).check(false);
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_).check(false);
-		shell.close();
-		workspaceView.findTree().selectNode(link_uses); /* Assert item has been displayed */
+		GTTreePath dest = new GTTreePath("WebAppModel", CadseDefinitionManager.DATA_MODEL, "Library");
+		createLinkType(it_webComponent, "uses", dest, null, null,
+				CadseGCST.LINK_TYPE_at_AGGREGATION_, false,
+				CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_, false);
+		
 
 		// Root element attribute + is abstract
 		workspaceView.findTree().collapse();
