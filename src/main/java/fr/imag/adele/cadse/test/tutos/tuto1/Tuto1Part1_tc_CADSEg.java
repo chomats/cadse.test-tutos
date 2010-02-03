@@ -107,7 +107,6 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Other attributes
 		createString(it_servlet, "className", null, null, null, null);
 		createString(it_servlet, "packageName", null, null, null, null);
-		
 
 		// hasComp link
 		workspaceView.contextMenu(it_webApp, GTCadseRTConstants.CONTEXTMENU_NEW, "LinkType").click();
@@ -138,7 +137,6 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		createLinkType(it_webComponent, "uses", dest, null, null,
 				CadseGCST.LINK_TYPE_at_AGGREGATION_, false,
 				CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_, false);
-		
 
 		// Root element attribute + is abstract
 		workspaceView.findTree().collapse();
