@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 
-import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
@@ -46,7 +45,7 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		shell.close();
 		workspaceView.findTree().selectNode(content_servlet);
 
-		workspaceView.contextMenuNew(mapping_jsp, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
+		workspaceView.contextMenuNew(mapping_jsp, CadseGCST.FILE_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.FILE_CONTENT_MODEL);
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_).typeText("${#short-name}.jsp");
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText("/");
