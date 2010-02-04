@@ -27,26 +27,26 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().selectNode(mapping_webApp);
 		workspaceView.capture("image132");
 
-		workspaceView.findTree().selectNode(mapping_webApp).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu(GTCadseRTConstants.CONTEXTMENU_JAVA_PROJECT_CONTENT_MODEL).click();
+		workspaceView.contextMenuNew(mapping_webApp, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true); 
 		shell.capture("image134");
 		shell.close();
 		workspaceView.findTree().selectNode(content_webApp);
 		
-		workspaceView.contextMenu(mapping_library, GTCadseRTConstants.CONTEXTMENU_NEW, GTCadseRTConstants.CONTEXTMENU_JAVA_PROJECT_CONTENT_MODEL).click();
+		workspaceView.contextMenuNew(mapping_library, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true);
 		shell.close();
 		workspaceView.findTree().selectNode(content_library);
-		
-		workspaceView.findTree().selectNode(mapping_servlet).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu(GTCadseRTConstants.CONTEXTMENU_JAVA_PROJECT_CONTENT_MODEL).click();
+	
+		workspaceView.contextMenuNew(mapping_servlet, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true);
 		shell.close();
 		workspaceView.findTree().selectNode(content_servlet);
 
-		workspaceView.findTree().selectNode(mapping_jsp).contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu(GTCadseRTConstants.CONTEXTMENU_FILE_CONTENT_MODEL).click();
+		workspaceView.contextMenuNew(mapping_jsp, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.FILE_CONTENT_MODEL);
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_).typeText("${#short-name}.jsp");
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText("/");
