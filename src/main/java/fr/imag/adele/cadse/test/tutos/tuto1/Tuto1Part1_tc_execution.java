@@ -28,7 +28,7 @@ public class Tuto1Part1_tc_execution extends TutoTestCase {
 		workspaceView.contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("WebApp").click();
 		
 		shell = new GTCadseShell("Create WebApp");
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("HelloApp");
+		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("HelloApp");
 		shell.capture("image082");
 		shell.close();	
 	}
