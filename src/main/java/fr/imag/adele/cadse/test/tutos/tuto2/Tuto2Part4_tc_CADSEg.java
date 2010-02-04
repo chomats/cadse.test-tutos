@@ -46,8 +46,8 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 
 
 		// JavaRefExporter
-		workspaceView.contextMenu(mapping_servlet, GTCadseRTConstants.CONTEXTMENU_NEW, "Java Content Exporter").click();
-		shell = new GTCadseShell(/*CopyComposerCST.JAVA_REF_EXPORTER*/ ""); // TODO to be updated with next cadse release
+		workspaceView.contextMenuNew(mapping_servlet,CopyComposerCST.JAVA_REF_EXPORTER).click();
+		shell = new GTCadseShell(/*CopyComposerCST.JAVA_REF_EXPORTER*/ ""); // FIXME to be updated with next cadse release
 		shell.capture("image102");
 		shell.close();
 

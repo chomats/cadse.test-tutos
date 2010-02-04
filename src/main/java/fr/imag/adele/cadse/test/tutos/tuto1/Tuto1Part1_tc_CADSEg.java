@@ -58,7 +58,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.show();
 
 		// CADSE WebAppModel 
-		workspaceView.contextMenu(null, GTCadseRTConstants.CONTEXTMENU_NEW, GTCadseRTConstants.CONTEXTMENU_NEW_CADSE_DEFINITION).click();
+		workspaceView.contextMenuNew(CadseGCST.CADSE_DEFINITION).click();
 		shell = new GTCadseShell(CadseGCST.CADSE_DEFINITION);
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("WebAppModel");
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.webapp");
@@ -81,7 +81,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.show();
 		
 		// Item Type WebApp
-		workspaceView.contextMenu(data_model, GTCadseRTConstants.CONTEXTMENU_NEW, GTCadseRTConstants.CONTEXTMENU_NEW_ITEM_TYPE).click();
+		workspaceView.contextMenuNew(data_model, CadseGCST.ITEM_TYPE).click();
 		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("WebApp");
 		shell.capture("image038");
@@ -96,7 +96,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		createItemType(data_model, "Servlet", it_webComponent, null, null, null);
 
 		// Relative URL attribute
-		workspaceView.contextMenu(it_webComponent, GTCadseRTConstants.CONTEXTMENU_NEW, "String").click();
+		workspaceView.contextMenuNew(it_webComponent, CadseGCST.STRING).click();
 		shell = new GTCadseShell(CadseGCST.STRING);
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("relativeURL");
 		shell.capture("image046");
@@ -109,7 +109,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		createString(it_servlet, "packageName", null, null, null, null);
 
 		// hasComp link
-		workspaceView.contextMenu(it_webApp, GTCadseRTConstants.CONTEXTMENU_NEW, "LinkType").click();
+		workspaceView.contextMenuNew(it_webApp, CadseGCST.LINK_TYPE).click();
 		shell = new GTCadseShell(CadseGCST.LINK_TYPE);
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("hasComp");
 		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.LINK_TYPE_lt_DESTINATION).browser("WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent");

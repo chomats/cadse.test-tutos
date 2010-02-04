@@ -1,21 +1,8 @@
 package fr.imag.adele.cadse.test.tutos.common;
 
-import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IncrementalProjectBuilder;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.jdt.core.IJavaModelMarker;
-import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
-import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
-import fr.imag.adele.cadse.core.Item;
-import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTreeNode;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
-import fr.imag.adele.graphictests.gttree.GTTreeNode;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTView;
 
@@ -97,74 +84,4 @@ public abstract class TutoTestCase extends GTCadseTestCase {
 	
 	
 	protected GTView webAppListView = new GTView("WebAppList");
-	
-	
-	/**
-	 * Check if webAppModel compiles.
-	 * 
-	 * @throws TimeoutException if WebAppModel does't compiles.
-	 */
-	public void checkCompilationErrors(GTView view, GTTreePath element)
-	throws TimeoutException {
-
-		long timeout=SWTBotPreferences.TIMEOUT;
-		long limit = System.currentTimeMillis() + timeout;
-
-		while (true) {
-			try {
-				checkCompilationErrorsInternal(view, element);
-				System.out.println("Compilation check OK");
-				return;
-			} catch (Throwable e) {
-				// do nothing
-			}
-
-			if (System.currentTimeMillis() > limit) 
-				throw new TimeoutException("Timeout after: " + timeout + " ms. Compilation errors in WebApp.");
-			
-			bot.sleep(SWTBotPreferences.DEFAULT_POLL_DELAY);
-		}
-	}
-	
-	/**
-	 * Check if webAppModel compiles. 
-	 * 
-	 * @throws Exception   if WebAppModel does't compiles.
-	 */
-	private void checkCompilationErrorsInternal(GTView view, GTTreePath element) 
-	throws Exception {
-		GTTreeNode node = view.findTree().selectNode(element);
-		assertNotNull("cannot find tree node", node);
-		Item cadseWEB_AppModel = new GTCadseTreeNode(node).getItem();
-		assertNotNull("cannot find item", cadseWEB_AppModel);
-		IJavaProject jp = cadseWEB_AppModel.getMainMappingContent(IJavaProject.class);
-		assertNotNull("cannot find JavaProject", jp);
-		checkError(jp, new NullProgressMonitor()); // throw an exception if compilation errors
-	}
-	
-	/**
-	 * Check if the java project given into parameter has no compilation errors.
-	 * 
-	 * @param jp        a java project
-	 * @param monitor   
-	 * @throws CoreException
-	 */
-	public void checkError(IJavaProject jp, IProgressMonitor monitor) throws CoreException {
-		jp.getProject().build(IncrementalProjectBuilder.FULL_BUILD, monitor);
-		if (!jp.hasBuildState())
-			return ;
-		
-		IMarker[] markers = jp.getProject().findMarkers(IJavaModelMarker.JAVA_MODEL_PROBLEM_MARKER, true, IResource.DEPTH_INFINITE);
-		if (markers == null) return ;
-		StringBuilder errors = new StringBuilder();
-		for (IMarker iMarker : markers) {
-			Integer severity = (Integer) iMarker.getAttribute(IMarker.SEVERITY);
-			if (severity != null && severity == IMarker.SEVERITY_ERROR) {
-				errors.append(iMarker.getAttribute(IMarker.MESSAGE)).append("\n");
-			}
-		}
-		if (errors.length() != 0) {
-			fail("compilation error on "+jp.getElementName()+"\n"+errors);
-		}
-	}
 }
