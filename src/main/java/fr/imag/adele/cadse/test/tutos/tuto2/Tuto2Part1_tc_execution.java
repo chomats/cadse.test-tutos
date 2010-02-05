@@ -36,13 +36,13 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		/* HelloApp */
 		workspaceView.contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("WebApp").click();
 		shell = new GTCadseShell("Create WebApp");
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("HelloApp");
+		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("HelloApp");
 		shell.close();
 
 		/* test.HelloServlet */
-		workspaceView.findTree().selectNode("HelloApp").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
+		workspaceView.selectNode("HelloApp").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("test.HelloServlet");
+		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("test.HelloServlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello");
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		shell.findTextWithLabel("className").typeText("helloServlet");
@@ -52,30 +52,30 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		/* JSP */
 		workspaceView.contextMenu(new GTTreePath("HelloApp"), GTCadseRTConstants.CONTEXTMENU_NEW, "JSP").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("HelloJSP");
+		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("HelloJSP");
 		shell.close();
 
 		/* MyLibrary */
 		workspaceView.contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Library").click();
 		shell = new GTCadseShell("Create Library");
-		GTCadseFactory.findCadseWorkbenchPart(shell).findField(CadseGCST.ITEM_at_NAME_).typeText("MyLibrary");
+		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("MyLibrary");
 		shell.close();
 	
 		/* Screenshot */
-		workspaceView.findTree().selectNode("HelloApp","HelloJSP");
+		workspaceView.selectNode("HelloApp","HelloJSP");
 		workspaceView.capture("image032");
 		workspaceView.show();
 		
 		/* Window opening */
 		GTMenu.clickShowOtherView();
 		GTShell shell = new GTShell(GTMenuConstants.SHOW_VIEW_MENU_ITEM);
-		shell.findTree().selectNode("WebAppModel", "WebAppList");
+		shell.selectNode("WebAppModel", "WebAppList");
 		shell.capture("image036");
 		shell.close();
 
 		/* Assert view is shown and sets focus into */  
 		webAppListView.show();
-		webAppListView.findTree().selectNode("HelloApp","HelloJSP");
+		webAppListView.selectNode("HelloApp","HelloJSP");
 		webAppListView.capture("image038");
 	}
 }

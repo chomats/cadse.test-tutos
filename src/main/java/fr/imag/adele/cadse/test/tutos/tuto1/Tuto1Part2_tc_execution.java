@@ -23,7 +23,7 @@ public class Tuto1Part2_tc_execution extends TutoTestCase {
 		shell.close();
 		
 		/* hello2Servlet */
-		workspaceView.findTree().selectNode("Hello2App").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
+		workspaceView.selectNode("Hello2App").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello2Servlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello2");

@@ -22,8 +22,8 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_content() throws Exception {
 		
-		workspaceView.findTree().collapse();
-		workspaceView.findTree().selectNode(mapping_webApp);
+		workspaceView.collapse();
+		workspaceView.selectNode(mapping_webApp);
 		workspaceView.capture("image132");
 
 		workspaceView.contextMenuNew(mapping_webApp, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
@@ -31,19 +31,19 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true); 
 		shell.capture("image134");
 		shell.close();
-		workspaceView.findTree().selectNode(content_webApp);
+		workspaceView.selectNode(content_webApp);
 		
 		workspaceView.contextMenuNew(mapping_library, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
 		GTCadseFactory.findField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true);
 		shell.close();
-		workspaceView.findTree().selectNode(content_library);
+		workspaceView.selectNode(content_library);
 	
 		workspaceView.contextMenuNew(mapping_servlet, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
 		GTCadseFactory.findField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true);
 		shell.close();
-		workspaceView.findTree().selectNode(content_servlet);
+		workspaceView.selectNode(content_servlet);
 
 		workspaceView.contextMenuNew(mapping_jsp, CadseGCST.FILE_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.FILE_CONTENT_MODEL);
@@ -51,7 +51,7 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findField(shell, CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText("/");
 		shell.capture("image135");
 		shell.close();
-		workspaceView.findTree().selectNode(content_jsp);
+		workspaceView.selectNode(content_jsp);
 	}
 	
 	@Test

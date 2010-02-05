@@ -23,7 +23,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 	public void test_item_creation_process_customization() throws Exception {
 
 		// Copying content into clipboard
-		packageExplorerView.findTree().selectNode(file_sample2).doubleClick();
+		packageExplorerView.selectNode(file_sample2).doubleClick();
 		GTEditor editor = new GTEditor("sample2.java");
 		editor.show();
 		GTMenu.clickselectAll();
@@ -31,14 +31,14 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		editor.close();
 				
 		// New Class
-		packageExplorerView.findTree().selectNode(webapp_package);
+		packageExplorerView.selectNode(webapp_package);
 		GTMenu.clickItem(GTMenuConstants.FILE_MENU, "New", "Class");
 			
 		shell = new GTCadseShell("New Java Class");
 		shell.findTextWithLabel("Name:").typeText("WebAppServletSynchro");
 		shell.close();
 
-		packageExplorerView.findTree().selectNode(webapp_servletSynchro).doubleClick();
+		packageExplorerView.selectNode(webapp_servletSynchro).doubleClick();
 
 		editor = new GTEditor("WebAppServletSynchro.java");
 		GTMenu.clickselectAll();
@@ -47,10 +47,10 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		
 
 		// Manifest configuration
-		packageExplorerView.findTree().collapse();
-		packageExplorerView.findTree().selectNode(manifest);
+		packageExplorerView.collapse();
+		packageExplorerView.selectNode(manifest);
 		packageExplorerView.capture("image063");
-		packageExplorerView.findTree().selectNode(manifest).doubleClick();
+		packageExplorerView.selectNode(manifest).doubleClick();
 		editor = new GTEditor("Model.Workspace.WebAppModel");
 		editor.showCTab("Dependencies") ;
 
@@ -73,11 +73,11 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 
 		
 		// Init() method
-		packageExplorerView.findTree().selectNode(servletManagerClass);
+		packageExplorerView.selectNode(servletManagerClass);
 		GTMenu.clickItem(GTMenuConstants.SOURCE_MENU, "Override/Implement Methods...");
 		editor = new GTEditor("ServletManager.java");
 		shell = new GTCadseShell("Override/Implement Methods");
-		shell.findTree().selectNode("DefaultItemManager", "init()").check(true);
+		shell.selectNode("DefaultItemManager", "init()").check(true);
 		shell.close();
 
 		editor.find("init()");

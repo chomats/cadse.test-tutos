@@ -15,9 +15,9 @@ public class Tuto2Part4_tc_execution extends TutoTestCase {
 	@Test
 	public void test_run() throws Exception {
 		packageExplorerView.contextMenu(new GTTreePath("HelloApp"), "Refresh").click();
-		packageExplorerView.findTree().selectNode("HelloApp", "dist", "HelloApp.war");
-		packageExplorerView.findTree().selectNode("HelloApp", "WEB-INF", "classes", "test", "HelloServlet.class");
-		packageExplorerView.findTree().selectNode("HelloApp", "WEB-INF", "web.xml");
+		packageExplorerView.selectNode("HelloApp", "dist", "HelloApp.war");
+		packageExplorerView.selectNode("HelloApp", "WEB-INF", "classes", "test", "HelloServlet.class");
+		packageExplorerView.selectNode("HelloApp", "WEB-INF", "web.xml");
 		packageExplorerView.capture("image122");
 		
 		packageExplorerView.contextMenu(new GTTreePath("HelloApp", "WEB-INF", "web.xml"), "Open").click();
@@ -27,7 +27,7 @@ public class Tuto2Part4_tc_execution extends TutoTestCase {
 		
 		GTMenu.clickShowOtherView();
 		shell = new GTCadseShell(GTMenuConstants.SHOW_VIEW_MENU_ITEM);
-		shell.findTree().selectNode("WebApp", "Example Webapp");
+		shell.selectNode("WebApp", "Example Webapp");
 		shell.capture("image126");
 		shell.close();
 		
@@ -37,7 +37,7 @@ public class Tuto2Part4_tc_execution extends TutoTestCase {
 		view.findButton("Browse").click();
 		
 		shell = new GTCadseShell("War File Definition");
-		shell.findTree().selectNode("HelloApp", "dist", "HelloApp.war");
+		shell.selectNode("HelloApp", "dist", "HelloApp.war");
 		shell.capture("image130");
 		shell.close();
 		

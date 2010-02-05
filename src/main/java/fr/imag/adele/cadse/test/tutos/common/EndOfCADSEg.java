@@ -19,7 +19,7 @@ public class EndOfCADSEg extends TutoTestCase {
 	public void endo_of_test_copy_composer() throws Exception {
 
 		// WebAppManager implementation		
-		packageExplorerView.findTree().selectNode(webappManagerClass).doubleClick();
+		packageExplorerView.selectNode(webappManagerClass).doubleClick();
 		GTEditor editor = new GTEditor("WebAppManager.java");
 
 		editor.find("postCompose(");
@@ -65,7 +65,7 @@ public class EndOfCADSEg extends TutoTestCase {
 		
 		
 		// Quick fixes		
-		packageExplorerView.findTree().selectNode(webappManagerClass).doubleClick();
+		packageExplorerView.selectNode(webappManagerClass).doubleClick();
 		editor = new GTEditor("WebAppManager.java");
 
 		editor.find("IProject");

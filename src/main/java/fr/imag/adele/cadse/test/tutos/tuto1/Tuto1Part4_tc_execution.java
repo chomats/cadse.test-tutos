@@ -17,13 +17,13 @@ public class Tuto1Part4_tc_execution extends TutoTestCase {
 	public void test_delete() throws Exception {
 		
 		/* HelloApp */
-		workspaceView.findTree().selectNode("HelloApp").contextMenu("Delete HelloApp").click();
+		workspaceView.selectNode("HelloApp").contextMenu("Delete HelloApp").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.capture("image138");
 		shell.close();
 		
 		/* Hello2App */
-		workspaceView.findTree().selectNode("Hello2App").contextMenu("Delete Hello2App").click();
+		workspaceView.selectNode("Hello2App").contextMenu("Delete Hello2App").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.close();
 				
@@ -34,7 +34,7 @@ public class Tuto1Part4_tc_execution extends TutoTestCase {
 		shell.close();
 		
 		/* Hello3Servlet */
-		workspaceView.findTree().selectNode("Hello3App").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
+		workspaceView.selectNode("Hello3App").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello3Servlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello3");
@@ -45,10 +45,10 @@ public class Tuto1Part4_tc_execution extends TutoTestCase {
 		
 		/* Screenshot */
 		packageExplorerView.show();
-		packageExplorerView.findTree().selectNode("Hello3App", "sources");
-		packageExplorerView.findTree().selectNode("Hello3App.Hello3Servlet", "sources");
-		packageExplorerView.findTree().selectNode("ServletAPI", "sources");
-		packageExplorerView.findTree().selectNode("Hello3App");
+		packageExplorerView.selectNode("Hello3App", "sources");
+		packageExplorerView.selectNode("Hello3App.Hello3Servlet", "sources");
+		packageExplorerView.selectNode("ServletAPI", "sources");
+		packageExplorerView.selectNode("Hello3App");
 		packageExplorerView.capture("image140");
 	}
 }
