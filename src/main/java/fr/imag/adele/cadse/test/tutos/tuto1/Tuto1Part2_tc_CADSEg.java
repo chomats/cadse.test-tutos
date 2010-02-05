@@ -22,8 +22,8 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	 */
 	@Test
 	public void test_mapping_name_constraint() throws Exception {
-		workspaceView.findTree().collapse();
-		workspaceView.findTree().selectNode(it_webApp);
+		workspaceView.collapse();
+		workspaceView.selectNode(it_webApp);
 		workspaceView.capture("image086");
 		propertiesView.showTab(CADSEG_UICST.INSTANCE_NAME_CONTROL_PAGE_TITLE);
 		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_VALID_PATTERN_ID_).typeText(".*App");
@@ -39,40 +39,40 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_icons() throws Exception {
 
-		packageExplorerView.findTree().selectNode(project_package).expand();
+		packageExplorerView.selectNode(project_package).expand();
 		packageExplorerView.capture("image094");
-		packageExplorerView.findTree().selectNode(project_package).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
+		packageExplorerView.selectNode(project_package).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
 		shell = new GTCadseShell("Import");
-		shell.findTree().selectNode(importArchiveFile);
+		shell.selectNode(importArchiveFile);
 		shell.capture("image096");
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		
 		shell.setComboBoxWithLabelText("From archive file:", System.getProperty("test.resourcesPath") + File.separator + "resources.zip");
-		shell.findTree().selectNode(archivePath);
+		shell.selectNode(archivePath);
 		shell.findButton("Select All").click();
 		shell.capture("image098");
 		shell.findCheckBox("Overwrite existing resources without warning").select();
 		shell.close();
 
-		packageExplorerView.findTree().selectNode(project_resources).expand();
+		packageExplorerView.selectNode(project_resources).expand();
 		packageExplorerView.capture("image100");
 
 		workspaceView.show();		
 		 
-		workspaceView.findTree().selectNode(it_webApp);
+		workspaceView.selectNode(it_webApp);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "WarFile.gif");
 
-		workspaceView.findTree().selectNode(it_jsp);
+		workspaceView.selectNode(it_jsp);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "JSP.gif");
 
-		workspaceView.findTree().selectNode(it_library);
+		workspaceView.selectNode(it_library);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "Library.gif");
 
-		workspaceView.findTree().selectNode(it_servlet);
+		workspaceView.selectNode(it_servlet);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "Servlet.gif");
 	}	
@@ -90,7 +90,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().collapse();
 
 		/* creation-page-WebComponent
-		workspaceView.findTree().selectNode(cp_webComponent);
+		workspaceView.selectNode(cp_webComponent);
 		workspaceView.capture("image106");
 
 		propertiesView.showTab("Page");
@@ -102,7 +102,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 
 
 		/* creation-page-Servlet 
-		workspaceView.findTree().selectNode(cp_servlet);
+		workspaceView.selectNode(cp_servlet);
 		workspaceView.capture("image112");
 
 		propertiesView.showTab("Page");

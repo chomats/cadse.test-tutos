@@ -18,7 +18,7 @@ public class Tuto1Part5_tc_execution extends TutoTestCase {
 		workspaceView.show();
 		
 		/* ServletAPI deletion */
-		workspaceView.findTree().selectNode("ServletAPI").contextMenu("Delete ServletAPI").click();
+		workspaceView.selectNode("ServletAPI").contextMenu("Delete ServletAPI").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.close();
 
@@ -29,19 +29,19 @@ public class Tuto1Part5_tc_execution extends TutoTestCase {
 		shell.close();
 		
 		/* hello3Servlet */
-		workspaceView.findTree().selectNode("Hello3App", "hello3Servlet");
+		workspaceView.selectNode("Hello3App", "hello3Servlet");
 		propertiesView.showTab("WebComponent Options");
 		propertiesView.findButton("Add...").click();
 		
 		shell = new GTCadseShell("Select a value.");
-		shell.findTree().selectNode("ServletAPI");
+		shell.selectNode("ServletAPI");
 		shell.close();
 		
 		/* Screenshot */
 		packageExplorerView.show();
-		packageExplorerView.findTree().selectNode("Hello3App").expand();
-		packageExplorerView.findTree().selectNode("ServletAPI").expand();
-		packageExplorerView.findTree().selectNode("Hello3App.Hello3Servlet", "Item Dependencies", "ServletAPI").expand();		
+		packageExplorerView.selectNode("Hello3App").expand();
+		packageExplorerView.selectNode("ServletAPI").expand();
+		packageExplorerView.selectNode("Hello3App.Hello3Servlet", "Item Dependencies", "ServletAPI").expand();		
 		packageExplorerView.capture("image148");
 	}
 }

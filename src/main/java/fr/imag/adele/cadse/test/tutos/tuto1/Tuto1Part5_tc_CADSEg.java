@@ -19,9 +19,9 @@ public class Tuto1Part5_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_content_dependency() throws Exception {
 
-		workspaceView.findTree().collapse();
+		workspaceView.collapse();
 
-		workspaceView.findTree().selectNode(link_uses);
+		workspaceView.selectNode(link_uses);
 		workspaceView.capture("image144");
 
 		propertiesView.showTab("LinkType");

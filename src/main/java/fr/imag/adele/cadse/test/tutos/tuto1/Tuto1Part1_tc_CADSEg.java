@@ -66,7 +66,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		shell.close();
 		
 		// Querying model
-		GTTreeNode cadseWebAppModelNode = workspaceView.findTree().selectNode(webAppModel);
+		GTTreeNode cadseWebAppModelNode = workspaceView.selectNode(webAppModel);
 		cadseWebAppModelNode.expand() ;
 		Item cadseWebApp = new GTCadseTreeNode(cadseWebAppModelNode).getItem();
 		assertNotNull(cadseWebApp);
@@ -76,7 +76,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Screenshots
 		workspaceView.capture("image032");
 		packageExplorerView.show();
-		packageExplorerView.findTree().selectNode(project_package).expand();
+		packageExplorerView.selectNode(project_package).expand();
 		packageExplorerView.capture("image034");
 		workspaceView.show();
 		
@@ -86,7 +86,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebApp");
 		shell.capture("image038");
 		shell.close();
-		workspaceView.findTree().selectNode(it_webApp); /* Assert item has been displayed */
+		workspaceView.selectNode(it_webApp); /* Assert item has been displayed */
 		workspaceView.capture("image040");
 
 		// Other Item Type
@@ -101,7 +101,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("relativeURL");
 		shell.capture("image046");
 		shell.close();
-		workspaceView.findTree().selectNode(attr_relativeUrl);  /* Assert item has been displayed */
+		workspaceView.selectNode(attr_relativeUrl);  /* Assert item has been displayed */
 		workspaceView.capture("image048");
 
 		// Other attributes
@@ -117,7 +117,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findField(shell, CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
 		shell.capture("image052");
 		shell.close();
-		workspaceView.findTree().selectNode(attr_hasComp);  /* Assert item has been displayed */
+		workspaceView.selectNode(attr_hasComp);  /* Assert item has been displayed */
 		workspaceView.capture("image056");
 
 		// Filtering options		
@@ -127,9 +127,9 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		shell.capture("image062");
 		shell.close();
 
-		workspaceView.findTree().collapse();
+		workspaceView.collapse();
 		// Waits until filtering option refreshes view
-		workspaceView.findTree().selectNode(it_webApp.concat("hasComp","WebComponent"));
+		workspaceView.selectNode(it_webApp.concat("hasComp","WebComponent"));
 		workspaceView.capture("image064");
 
 		// uses link
@@ -139,18 +139,18 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 				CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_, false);
 
 		// Root element attribute + is abstract
-		workspaceView.findTree().collapse();
-		workspaceView.findTree().selectNode(it_jsp);
+		workspaceView.collapse();
+		workspaceView.selectNode(it_jsp);
 		workspaceView.capture("image068");
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		propertiesView.capture("image070");
 
-		workspaceView.findTree().selectNode(it_servlet);
+		workspaceView.selectNode(it_servlet);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		
-		workspaceView.findTree().selectNode(it_webComponent);
+		workspaceView.selectNode(it_webComponent);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_).check(true);
@@ -169,7 +169,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		GTMenu.clickOpenRunDialog();
 		
 		shell = new GTCadseShell(GTEclipseConstants.RUN_SHELL);
-		shell.findTree().selectNode("Eclipse Application", "run-cadse-WebAppModel");
+		shell.selectNode("Eclipse Application", "run-cadse-WebAppModel");
 		shell.waitUntilButtonEnabled("Run", true);
 		
 		Matcher matcher = allOf(widgetOfType(Combo.class), inGroup("Program to Run"));

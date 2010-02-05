@@ -28,8 +28,8 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 	public void test_build_model_definition() throws Exception {
 
 		// Composition link
-		workspaceView.findTree().collapse();
-		workspaceView.findTree().selectNode(attr_hasComp);
+		workspaceView.collapse();
+		workspaceView.selectNode(attr_hasComp);
 		workspaceView.capture("image094");
 
 		propertiesView.showTab("Link");
@@ -51,8 +51,8 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		shell.capture("image102");
 		shell.close();
 
-		workspaceView.findTree().collapse();
-		workspaceView.findTree().selectNode(refExporter);
+		workspaceView.collapse();
+		workspaceView.selectNode(refExporter);
 		workspaceView.capture("image104");
 	}
 
@@ -65,8 +65,8 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 	public void test_copy_composer() throws Exception {
 
 		// Creates copy composer
-		workspaceView.findTree().collapse();
-		workspaceView.findTree().selectNode(composite);
+		workspaceView.collapse();
+		workspaceView.selectNode(composite);
 		workspaceView.capture("image106");
 		workspaceView.contextMenu(composite, GTCadseRTConstants.CONTEXTMENU_NEW, "Copy Folder Content Composer").click();
 		shell = new GTCadseShell(CopyComposerCST.COPY_INTO_FOLDER_COMPOSER);  
@@ -80,7 +80,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		
 		
 		// copy code into clipboard
-		packageExplorerView.findTree().selectNode(file_postCompose).doubleClick();
+		packageExplorerView.selectNode(file_postCompose).doubleClick();
 		GTEditor editor = new GTEditor("sample-postCompose.java");
 		editor.show();
 		GTMenu.clickselectAll();
@@ -88,7 +88,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		editor.close();
 		
 		// copy composer implementation
-		packageExplorerView.findTree().selectNode(webappManagerClass).doubleClick();
+		packageExplorerView.selectNode(webappManagerClass).doubleClick();
 		editor = new GTEditor("WebAppManager.java");
 		editor.find("postCompose(");
 		editor.find("}");	
@@ -97,7 +97,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		
 		
 		// Quick fixes		
-		packageExplorerView.findTree().selectNode(webappManagerClass).doubleClick();
+		packageExplorerView.selectNode(webappManagerClass).doubleClick();
 		editor = new GTEditor("WebAppManager.java");
 
 		editor.find("IProject");

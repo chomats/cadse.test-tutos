@@ -21,12 +21,12 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 		shell.close();
 		
 		/* hello2Servlet */
-		workspaceView.findTree().selectNode("Hello2App", "hello2Servlet");
+		workspaceView.selectNode("Hello2App", "hello2Servlet");
 		propertiesView.showTab("WebComponent Options");
 		propertiesView.findButton("Add...").click();
 		
 		shell = new GTCadseShell("Select a value.");
-		shell.findTree().selectNode("ServletAPI");
+		shell.selectNode("ServletAPI");
 		shell.capture("image128");
 		shell.close();
 	}

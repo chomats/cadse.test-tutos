@@ -25,12 +25,12 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
 	public void test_run() throws Exception {
 
 		/* Delete test.HelloServlet Servlet */ 
-		workspaceView.findTree().selectNode("HelloApp", "test.HelloServlet").contextMenu("Delete test.HelloServlet").click();
+		workspaceView.selectNode("HelloApp", "test.HelloServlet").contextMenu("Delete test.HelloServlet").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.close();
 		
 		/* New Servlet */
-		workspaceView.findTree().selectNode("HelloApp").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
+		workspaceView.selectNode("HelloApp").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("test.HelloServlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello");
@@ -45,12 +45,12 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
 	public void test_build_path() throws Exception {
 	
 		packageExplorerView.show();
-		packageExplorerView.findTree().selectNode("ServletAPI", "sources");
-		packageExplorerView.findTree().selectNode("ServletAPI");
+		packageExplorerView.selectNode("ServletAPI", "sources");
+		packageExplorerView.selectNode("ServletAPI");
 		packageExplorerView.capture("image076");
 		
 		/* Gets the IJavaProject */
-		GTTreeNode node = workspaceView.findTree().selectNode("ServletAPI");
+		GTTreeNode node = workspaceView.selectNode("ServletAPI");
 		Item servlet_item = new GTCadseTreeNode(node).getItem();
 		IJavaProject jp = servlet_item.getMainMappingContent(IJavaProject.class);
 
@@ -66,7 +66,7 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
         jp.setRawClasspath(newClasspath, null);
         
         GTTreePath api = new GTTreePath("ServletAPI", "Referenced Libraries", "servlet-api.jar" + " - " + System.getProperty("test.resourcesPath"));
-        packageExplorerView.findTree().selectNode(api);
+        packageExplorerView.selectNode(api);
         packageExplorerView.capture("image080");
         
         packageExplorerView.contextMenu(api, "Build Path", "Configure Build Path...").click();

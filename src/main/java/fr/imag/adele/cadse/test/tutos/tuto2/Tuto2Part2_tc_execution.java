@@ -18,12 +18,12 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 		workspaceView.show();
 		
 		/* Delete test.HelloServlet Servlet */
-		workspaceView.findTree().selectNode("HelloApp", "test.HelloServlet").contextMenu("Delete test.HelloServlet").click();
+		workspaceView.selectNode("HelloApp", "test.HelloServlet").contextMenu("Delete test.HelloServlet").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.close();
 
 		/* New Servlet */
-		workspaceView.findTree().selectNode("HelloApp").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
+		workspaceView.selectNode("HelloApp").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("test.HelloServlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello");
@@ -34,7 +34,7 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 		
 		/* edition */
 		packageExplorerView.show();
-		packageExplorerView.findTree().selectNode("HelloApp.test.HelloServlet", "sources", "test", "helloServlet.java", "helloServlet").doubleClick();
+		packageExplorerView.selectNode("HelloApp.test.HelloServlet", "sources", "test", "helloServlet.java", "helloServlet").doubleClick();
 		packageExplorerView.capture("image060");
 		GTEditor editor = new GTEditor("helloServlet.java");
 		editor.show();

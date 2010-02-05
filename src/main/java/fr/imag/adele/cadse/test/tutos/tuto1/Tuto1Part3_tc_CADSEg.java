@@ -17,16 +17,16 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_modification_pages() throws Exception {
 
-		workspaceView.findTree().collapse();
+		workspaceView.collapse();
 		// FIXME Modification pages
 		/*
-		workspaceView.findTree().selectNode(mp_servlet);
+		workspaceView.selectNode(mp_servlet);
 		propertiesView.showTab("Page");
 		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_TITLE_).typeText("Servlet Options");
 		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_DESCRIPTION_).typeText("You can change the library dependencies");
 		propertiesView.capture("image124");
 		
-		workspaceView.findTree().selectNode(mp_webComponent);
+		workspaceView.selectNode(mp_webComponent);
 		propertiesView.showTab("Page");
 		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_TITLE_).typeText("WebComponent Options");
 		GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_DESCRIPTION_).typeText("You can change the WebComponent options");

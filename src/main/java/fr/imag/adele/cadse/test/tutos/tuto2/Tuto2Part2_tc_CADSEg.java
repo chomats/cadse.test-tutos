@@ -27,20 +27,20 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_content_customization() throws Exception {
 
-		workspaceView.findTree().collapse();
+		workspaceView.collapse();
 
-		workspaceView.findTree().selectNode(webAppModel).expand();
+		workspaceView.selectNode(webAppModel).expand();
 		workspaceView.capture("image042");
 		propertiesView.showTab("CADSE definition");
 
-		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("model.webapp.template");
+		GTCadseFactory.findField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("model.webapp.template");
 		propertiesView.capture("image044");
 
 		// extends class check box
-		workspaceView.findTree().selectNode(content_servlet);
+		workspaceView.selectNode(content_servlet);
 		workspaceView.capture("image048");
 		propertiesView.showTab("JavaProjectContentModel");
-		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
+		GTCadseFactory.findField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
 		propertiesView.capture("image050");
 	}	
 
@@ -52,19 +52,19 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_manager_structure() throws Exception {
 
-		packageExplorerView.findTree().selectNode(project_package).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
+		packageExplorerView.selectNode(project_package).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
 		shell = new GTCadseShell("Import");
-		shell.findTree().selectNode(importArchiveFile);
+		shell.selectNode(importArchiveFile);
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		shell.setComboBoxWithLabelText("From archive file:", System.getProperty("test.resourcesPath") + File.separator + "samples.zip");
-		shell.findTree().selectNode(archivePath);
+		shell.selectNode(archivePath);
 		shell.findButton("Select All").click();
 		shell.findCheckBox("Overwrite existing resources without warning").select();
 		shell.close();
 
 		// Copying content into clipboard
-		packageExplorerView.findTree().selectNode(file_sample1).doubleClick();
+		packageExplorerView.selectNode(file_sample1).doubleClick();
 		GTEditor editor = new GTEditor("sample1.java");
 		editor.show();
 		GTMenu.clickselectAll();
@@ -72,14 +72,14 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		editor.close();
 		
 		// Takes screenshot
-		packageExplorerView.findTree().collapse();
+		packageExplorerView.collapse();
 		packageExplorerView.maximize(); // Toggle maximize
-		packageExplorerView.findTree().selectNode(servletContentItem).expand();
+		packageExplorerView.selectNode(servletContentItem).expand();
 		packageExplorerView.capture("image058");
 		packageExplorerView.maximize(); // Toggle maximize
 
 		// Edits the file
-		packageExplorerView.findTree().selectNode(servletContentItem).doubleClick();
+		packageExplorerView.selectNode(servletContentItem).doubleClick();
 		editor = new GTEditor("ServletManager.java");
 		editor.show();
 		editor.navigateTo(editor.cursorPosition().line+1, 0);
@@ -87,13 +87,13 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		editor.save();
 		
 		// Adds org.eclipse.core.runtime
-		workspaceView.findTree().selectNode(webAppModel);
+		workspaceView.selectNode(webAppModel);
 		propertiesView.showTab("CADSE definition");
 		// TODO C'est l'un ou l'autre!
-		GTCadseFactory.findCadseWorkbenchPart(propertiesView).findField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
+		GTCadseFactory.findField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
 		
 		// Copying imports into clipboard
-		packageExplorerView.findTree().selectNode(file_import1).doubleClick();
+		packageExplorerView.selectNode(file_import1).doubleClick();
 		editor = new GTEditor("imports1.java");
 		editor.show();
 		GTMenu.clickselectAll();
@@ -101,7 +101,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		editor.close();
 
 		// Edits the file
-		packageExplorerView.findTree().selectNode(servletContentItem).doubleClick();
+		packageExplorerView.selectNode(servletContentItem).doubleClick();
 		editor = new GTEditor("ServletManager.java");
 		editor.show();
 		editor.navigateTo(2, 0);
