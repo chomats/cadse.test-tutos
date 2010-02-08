@@ -6,11 +6,9 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
-import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTreeNode;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.gttree.GTTreeNode;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;

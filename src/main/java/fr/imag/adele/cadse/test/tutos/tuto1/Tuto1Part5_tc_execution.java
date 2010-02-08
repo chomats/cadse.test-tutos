@@ -8,6 +8,7 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
 public class Tuto1Part5_tc_execution extends TutoTestCase {
@@ -18,12 +19,12 @@ public class Tuto1Part5_tc_execution extends TutoTestCase {
 		workspaceView.show();
 		
 		/* ServletAPI deletion */
-		workspaceView.selectNode("ServletAPI").contextMenu("Delete ServletAPI").click();
+		workspaceView.contextMenu(new GTTreePath("ServletAPI"), "Delete ServletAPI").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.close();
 
 		/* ServletAPI creation */
-		workspaceView.contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Library").click();
+		workspaceView.contextMenu(new GTTreePath(GTCadseRTConstants.CONTEXTMENU_NEW, "Library")).click();
 		shell = new GTCadseShell("Create Library");
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("ServletAPI");
 		shell.close();
@@ -39,9 +40,9 @@ public class Tuto1Part5_tc_execution extends TutoTestCase {
 		
 		/* Screenshot */
 		packageExplorerView.show();
-		packageExplorerView.selectNode("Hello3App").expand();
-		packageExplorerView.selectNode("ServletAPI").expand();
-		packageExplorerView.selectNode("Hello3App.Hello3Servlet", "Item Dependencies", "ServletAPI").expand();		
+		packageExplorerView.findTree().expandNode(new GTTreePath("Hello3App"));
+		packageExplorerView.findTree().expandNode(new GTTreePath("ServletAPI"));
+		packageExplorerView.findTree().expandNode(new GTTreePath("Hello3App.Hello3Servlet", "Item Dependencies", "ServletAPI"));		
 		packageExplorerView.capture("image148");
 	}
 }

@@ -80,7 +80,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		
 		
 		// copy code into clipboard
-		packageExplorerView.selectNode(file_postCompose).doubleClick();
+		packageExplorerView.findTree().doubleClick(file_postCompose);
 		GTEditor editor = new GTEditor("sample-postCompose.java");
 		editor.show();
 		GTMenu.clickselectAll();
@@ -88,7 +88,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		editor.close();
 		
 		// copy composer implementation
-		packageExplorerView.selectNode(webappManagerClass).doubleClick();
+		packageExplorerView.findTree().doubleClick(webappManagerClass);
 		editor = new GTEditor("WebAppManager.java");
 		editor.find("postCompose(");
 		editor.find("}");	
@@ -97,7 +97,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		
 		
 		// Quick fixes		
-		packageExplorerView.selectNode(webappManagerClass).doubleClick();
+		packageExplorerView.findTree().doubleClick(webappManagerClass);
 		editor = new GTEditor("WebAppManager.java");
 
 		editor.find("IProject");

@@ -39,9 +39,9 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_icons() throws Exception {
 
-		packageExplorerView.selectNode(project_package).expand();
+		packageExplorerView.findTree().expandNode(project_package);
 		packageExplorerView.capture("image094");
-		packageExplorerView.selectNode(project_package).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
+		packageExplorerView.contextMenu(project_package, GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
 		shell = new GTCadseShell("Import");
 		shell.selectNode(importArchiveFile);
@@ -55,7 +55,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		shell.findCheckBox("Overwrite existing resources without warning").select();
 		shell.close();
 
-		packageExplorerView.selectNode(project_resources).expand();
+		packageExplorerView.findTree().expandNode(project_resources);
 		packageExplorerView.capture("image100");
 
 		workspaceView.show();		

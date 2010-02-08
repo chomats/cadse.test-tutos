@@ -10,12 +10,11 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
-import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTreeNode;
+import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTree;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
-import fr.imag.adele.graphictests.gttree.GTTreeNode;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
@@ -25,12 +24,12 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
 	public void test_run() throws Exception {
 
 		/* Delete test.HelloServlet Servlet */ 
-		workspaceView.selectNode("HelloApp", "test.HelloServlet").contextMenu("Delete test.HelloServlet").click();
+		workspaceView.contextMenu(new GTTreePath("HelloApp", "test.HelloServlet"), "Delete test.HelloServlet").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.close();
 		
 		/* New Servlet */
-		workspaceView.selectNode("HelloApp").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
+		workspaceView.contextMenu(new GTTreePath("HelloApp"), GTCadseRTConstants.CONTEXTMENU_NEW, "Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("test.HelloServlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello");
@@ -50,8 +49,9 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
 		packageExplorerView.capture("image076");
 		
 		/* Gets the IJavaProject */
-		GTTreeNode node = workspaceView.selectNode("ServletAPI");
-		Item servlet_item = new GTCadseTreeNode(node).getItem();
+		
+		GTCadseTree cadseTree = new GTCadseTree(workspaceView.findTree());
+		Item servlet_item = cadseTree.getItem(new GTTreePath("ServletAPI"));
 		IJavaProject jp = servlet_item.getMainMappingContent(IJavaProject.class);
 
 		/* Creates a new entry */

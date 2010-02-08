@@ -10,6 +10,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
@@ -29,7 +30,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		workspaceView.collapse();
 
-		workspaceView.selectNode(webAppModel).expand();
+		workspaceView.findTree().expandNode(new GTTreePath(webAppModel));
 		workspaceView.capture("image042");
 		propertiesView.showTab("CADSE definition");
 
@@ -52,7 +53,8 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_manager_structure() throws Exception {
 
-		packageExplorerView.selectNode(project_package).expand().contextMenu(GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
+		packageExplorerView.findTree().expandNode(project_package);
+		packageExplorerView.contextMenu(null, GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
 		shell = new GTCadseShell("Import");
 		shell.selectNode(importArchiveFile);
@@ -64,7 +66,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		shell.close();
 
 		// Copying content into clipboard
-		packageExplorerView.selectNode(file_sample1).doubleClick();
+		packageExplorerView.findTree().doubleClick(file_sample1);
 		GTEditor editor = new GTEditor("sample1.java");
 		editor.show();
 		GTMenu.clickselectAll();
@@ -74,12 +76,12 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		// Takes screenshot
 		packageExplorerView.collapse();
 		packageExplorerView.maximize(); // Toggle maximize
-		packageExplorerView.selectNode(servletContentItem).expand();
+		packageExplorerView.findTree().expandNode(servletContentItem);
 		packageExplorerView.capture("image058");
 		packageExplorerView.maximize(); // Toggle maximize
 
 		// Edits the file
-		packageExplorerView.selectNode(servletContentItem).doubleClick();
+		packageExplorerView.findTree().doubleClick(servletContentItem);
 		editor = new GTEditor("ServletManager.java");
 		editor.show();
 		editor.navigateTo(editor.cursorPosition().line+1, 0);
@@ -93,7 +95,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
 		
 		// Copying imports into clipboard
-		packageExplorerView.selectNode(file_import1).doubleClick();
+		packageExplorerView.findTree().doubleClick(file_import1);
 		editor = new GTEditor("imports1.java");
 		editor.show();
 		GTMenu.clickselectAll();
@@ -101,7 +103,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		editor.close();
 
 		// Edits the file
-		packageExplorerView.selectNode(servletContentItem).doubleClick();
+		packageExplorerView.findTree().doubleClick(servletContentItem);
 		editor = new GTEditor("ServletManager.java");
 		editor.show();
 		editor.navigateTo(2, 0);

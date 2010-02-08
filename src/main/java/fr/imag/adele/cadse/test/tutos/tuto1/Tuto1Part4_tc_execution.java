@@ -7,6 +7,7 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
@@ -17,24 +18,24 @@ public class Tuto1Part4_tc_execution extends TutoTestCase {
 	public void test_delete() throws Exception {
 		
 		/* HelloApp */
-		workspaceView.selectNode("HelloApp").contextMenu("Delete HelloApp").click();
+		workspaceView.contextMenu(new GTTreePath("HelloApp"), "Delete HelloApp").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.capture("image138");
 		shell.close();
 		
 		/* Hello2App */
-		workspaceView.selectNode("Hello2App").contextMenu("Delete Hello2App").click();
+		workspaceView.contextMenu(new GTTreePath("Hello2App"), "Delete Hello2App").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.close();
 				
 		/* Hello3App */
-		workspaceView.contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("WebApp").click();
+		workspaceView.contextMenu(new GTTreePath(GTCadseRTConstants.CONTEXTMENU_NEW, "WebApp")).click();
 		shell = new GTCadseShell("Create WebApp");
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello3App");
 		shell.close();
 		
 		/* Hello3Servlet */
-		workspaceView.selectNode("Hello3App").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
+		workspaceView.contextMenu(new GTTreePath("Hello3App"), GTCadseRTConstants.CONTEXTMENU_NEW, "Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello3Servlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello3");
