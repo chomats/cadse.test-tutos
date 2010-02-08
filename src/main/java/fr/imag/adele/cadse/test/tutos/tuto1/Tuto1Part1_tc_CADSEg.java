@@ -14,13 +14,12 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
 
 
-import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTreeNode;
+import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTree;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
-import fr.imag.adele.graphictests.gttree.GTTreeNode;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
@@ -66,9 +65,9 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		shell.close();
 		
 		// Querying model
-		GTTreeNode cadseWebAppModelNode = workspaceView.selectNode(webAppModel);
-		cadseWebAppModelNode.expand() ;
-		Item cadseWebApp = new GTCadseTreeNode(cadseWebAppModelNode).getItem();
+		workspaceView.findTree().expandNode(webAppModel);
+		GTCadseTree cadseTree = new GTCadseTree(workspaceView.findTree());
+		Item cadseWebApp = cadseTree.getItem(webAppModel);
 		assertNotNull(cadseWebApp);
 		assertEquals("WebAppModel", cadseWebApp.getName());
 		assertEquals("model.webapp", cadseWebApp.getAttribute(CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_));
@@ -76,7 +75,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Screenshots
 		workspaceView.capture("image032");
 		packageExplorerView.show();
-		packageExplorerView.selectNode(project_package).expand();
+		packageExplorerView.findTree().expandNode(project_package);
 		packageExplorerView.capture("image034");
 		workspaceView.show();
 		

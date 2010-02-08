@@ -6,6 +6,7 @@ import org.junit.Test;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gtmenu.GTMenuConstants;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
@@ -23,7 +24,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 	public void test_item_creation_process_customization() throws Exception {
 
 		// Copying content into clipboard
-		packageExplorerView.selectNode(file_sample2).doubleClick();
+		packageExplorerView.findTree().doubleClick(file_sample2);
 		GTEditor editor = new GTEditor("sample2.java");
 		editor.show();
 		GTMenu.clickselectAll();
@@ -38,7 +39,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		shell.findTextWithLabel("Name:").typeText("WebAppServletSynchro");
 		shell.close();
 
-		packageExplorerView.selectNode(webapp_servletSynchro).doubleClick();
+		packageExplorerView.findTree().doubleClick(webapp_servletSynchro);
 
 		editor = new GTEditor("WebAppServletSynchro.java");
 		GTMenu.clickselectAll();
@@ -50,7 +51,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		packageExplorerView.collapse();
 		packageExplorerView.selectNode(manifest);
 		packageExplorerView.capture("image063");
-		packageExplorerView.selectNode(manifest).doubleClick();
+		packageExplorerView.findTree().doubleClick(manifest);
 		editor = new GTEditor("Model.Workspace.WebAppModel");
 		editor.showCTab("Dependencies") ;
 
@@ -77,7 +78,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		GTMenu.clickItem(GTMenuConstants.SOURCE_MENU, "Override/Implement Methods...");
 		editor = new GTEditor("ServletManager.java");
 		shell = new GTCadseShell("Override/Implement Methods");
-		shell.selectNode("DefaultItemManager", "init()").check(true);
+		shell.findTree().checkNode(new GTTreePath("DefaultItemManager", "init()"), true);
 		shell.close();
 
 		editor.find("init()");

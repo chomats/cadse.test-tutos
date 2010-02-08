@@ -7,6 +7,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
@@ -18,12 +19,12 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 		workspaceView.show();
 		
 		/* Delete test.HelloServlet Servlet */
-		workspaceView.selectNode("HelloApp", "test.HelloServlet").contextMenu("Delete test.HelloServlet").click();
+		workspaceView.contextMenu(new GTTreePath("HelloApp", "test.HelloServlet"), "Delete test.HelloServlet").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.close();
 
 		/* New Servlet */
-		workspaceView.selectNode("HelloApp").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
+		workspaceView.contextMenu(new GTTreePath("HelloApp"), GTCadseRTConstants.CONTEXTMENU_NEW, "Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("test.HelloServlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello");
@@ -34,7 +35,8 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 		
 		/* edition */
 		packageExplorerView.show();
-		packageExplorerView.selectNode("HelloApp.test.HelloServlet", "sources", "test", "helloServlet.java", "helloServlet").doubleClick();
+		GTTreePath path = new GTTreePath("HelloApp.test.HelloServlet", "sources", "test", "helloServlet.java", "helloServlet");
+		packageExplorerView.findTree().doubleClick(path);
 		packageExplorerView.capture("image060");
 		GTEditor editor = new GTEditor("helloServlet.java");
 		editor.show();

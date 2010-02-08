@@ -6,6 +6,7 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 
@@ -23,7 +24,7 @@ public class Tuto1Part2_tc_execution extends TutoTestCase {
 		shell.close();
 		
 		/* hello2Servlet */
-		workspaceView.selectNode("Hello2App").contextMenu(GTCadseRTConstants.CONTEXTMENU_NEW).menu("Servlet").click();
+		workspaceView.contextMenu(new GTTreePath("Hello2App"), GTCadseRTConstants.CONTEXTMENU_NEW, "Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
 		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello2Servlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello2");
