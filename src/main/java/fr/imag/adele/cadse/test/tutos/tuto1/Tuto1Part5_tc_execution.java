@@ -26,7 +26,7 @@ public class Tuto1Part5_tc_execution extends TutoTestCase {
 		/* ServletAPI creation */
 		workspaceView.contextMenu(new GTTreePath(GTCadseRTConstants.CONTEXTMENU_NEW, "Library")).click();
 		shell = new GTCadseShell("Create Library");
-		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("ServletAPI");
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("ServletAPI");
 		shell.close();
 		
 		/* hello3Servlet */
@@ -40,9 +40,9 @@ public class Tuto1Part5_tc_execution extends TutoTestCase {
 		
 		/* Screenshot */
 		packageExplorerView.show();
-		packageExplorerView.findTree().expandNode(new GTTreePath("Hello3App"));
-		packageExplorerView.findTree().expandNode(new GTTreePath("ServletAPI"));
-		packageExplorerView.findTree().expandNode(new GTTreePath("Hello3App.Hello3Servlet", "Item Dependencies", "ServletAPI"));		
+		packageExplorerView.selectNode(new GTTreePath("Hello3App"), true);
+		packageExplorerView.selectNode(new GTTreePath("ServletAPI"), true);
+		packageExplorerView.selectNode(new GTTreePath("Hello3App.Hello3Servlet", "Item Dependencies", "ServletAPI"), true);		
 		packageExplorerView.capture("image148");
 	}
 }

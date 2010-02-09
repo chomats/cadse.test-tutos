@@ -59,13 +59,13 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// CADSE WebAppModel 
 		workspaceView.contextMenuNew(CadseGCST.CADSE_DEFINITION).click();
 		shell = new GTCadseShell(CadseGCST.CADSE_DEFINITION);
-		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebAppModel");
-		GTCadseFactory.findField(shell, CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.webapp");
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebAppModel");
+		GTCadseFactory.findCadseField(shell, CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.webapp");
 		shell.capture("image030");
 		shell.close();
 		
 		// Querying model
-		workspaceView.findTree().expandNode(webAppModel);
+		workspaceView.selectNode(webAppModel, true);
 		GTCadseTree cadseTree = workspaceView.findTree();
 		Item cadseWebApp = cadseTree.getItem(webAppModel);
 		assertNotNull(cadseWebApp);
@@ -75,14 +75,14 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Screenshots
 		workspaceView.capture("image032");
 		packageExplorerView.show();
-		packageExplorerView.findTree().expandNode(project_package);
+		packageExplorerView.selectNode(project_package, true);
 		packageExplorerView.capture("image034");
 		workspaceView.show();
 		
 		// Item Type WebApp
 		workspaceView.contextMenuNew(data_model, CadseGCST.ITEM_TYPE).click();
 		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);
-		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebApp");
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebApp");
 		shell.capture("image038");
 		shell.close();
 		workspaceView.selectNode(it_webApp); /* Assert item has been displayed */
@@ -97,7 +97,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Relative URL attribute
 		workspaceView.contextMenuNew(it_webComponent, CadseGCST.STRING).click();
 		shell = new GTCadseShell(CadseGCST.STRING);
-		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("relativeURL");
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("relativeURL");
 		shell.capture("image046");
 		shell.close();
 		workspaceView.selectNode(attr_relativeUrl);  /* Assert item has been displayed */
@@ -110,10 +110,10 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// hasComp link
 		workspaceView.contextMenuNew(it_webApp, CadseGCST.LINK_TYPE).click();
 		shell = new GTCadseShell(CadseGCST.LINK_TYPE);
-		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("hasComp");
-		GTCadseFactory.findField(shell, CadseGCST.LINK_TYPE_lt_DESTINATION).browser("WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent");
-		GTCadseFactory.findField(shell, CadseGCST.LINK_TYPE_at_PART_).check(true);
-		GTCadseFactory.findField(shell, CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("hasComp");
+		GTCadseFactory.findCadseField(shell, CadseGCST.LINK_TYPE_lt_DESTINATION).browser("WebAppModel", CadseDefinitionManager.DATA_MODEL, "WebComponent");
+		GTCadseFactory.findCadseField(shell, CadseGCST.LINK_TYPE_at_PART_).check(true);
+		GTCadseFactory.findCadseField(shell, CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
 		shell.capture("image052");
 		shell.close();
 		workspaceView.selectNode(attr_hasComp);  /* Assert item has been displayed */
@@ -126,7 +126,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		shell.capture("image062");
 		shell.close();
 
-		workspaceView.collapse();
+		workspaceView.findTree().collapse();
 		// Waits until filtering option refreshes view
 		workspaceView.selectNode(it_webApp.concat("hasComp","WebComponent"));
 		workspaceView.capture("image064");
@@ -138,21 +138,21 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 				CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_, false);
 
 		// Root element attribute + is abstract
-		workspaceView.collapse();
+		workspaceView.findTree().collapse();
 		workspaceView.selectNode(it_jsp);
 		workspaceView.capture("image068");
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		propertiesView.capture("image070");
 
 		workspaceView.selectNode(it_servlet);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		
 		workspaceView.selectNode(it_webComponent);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
-		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_).check(true);
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_).check(true);
 	}
 
 	/**

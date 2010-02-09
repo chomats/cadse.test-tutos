@@ -20,13 +20,13 @@ public class Tuto1Part2_tc_execution extends TutoTestCase {
 		/* Hello2App */
 		workspaceView.contextMenu(null, GTCadseRTConstants.CONTEXTMENU_NEW, "WebApp").click();
 		shell = new GTCadseShell("Create WebApp");
-		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello2App");
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello2App");
 		shell.close();
 		
 		/* hello2Servlet */
 		workspaceView.contextMenu(new GTTreePath("Hello2App"), GTCadseRTConstants.CONTEXTMENU_NEW, "Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
-		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello2Servlet");
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello2Servlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello2");
 		shell.capture("image117");
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();

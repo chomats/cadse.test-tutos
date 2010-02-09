@@ -22,12 +22,12 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	 */
 	@Test
 	public void test_mapping_name_constraint() throws Exception {
-		workspaceView.collapse();
+		workspaceView.findTree().collapse();
 		workspaceView.selectNode(it_webApp);
 		workspaceView.capture("image086");
 		propertiesView.showTab(CADSEG_UICST.INSTANCE_NAME_CONTROL_PAGE_TITLE);
-		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_VALID_PATTERN_ID_).typeText(".*App");
-		GTCadseFactory.findField(propertiesView, CadseGCST.MANAGER_at_MESSAGE_ERROR_ID_).typeText("The Web application name must end with App.");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.MANAGER_at_VALID_PATTERN_ID_).typeText(".*App");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.MANAGER_at_MESSAGE_ERROR_ID_).typeText("The Web application name must end with App.");
 		propertiesView.capture("image092");		
 	}
 
@@ -39,7 +39,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_icons() throws Exception {
 
-		packageExplorerView.findTree().expandNode(project_package);
+		packageExplorerView.selectNode(project_package, true);
 		packageExplorerView.capture("image094");
 		packageExplorerView.contextMenu(project_package, GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
@@ -55,26 +55,26 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		shell.findCheckBox("Overwrite existing resources without warning").select();
 		shell.close();
 
-		packageExplorerView.findTree().expandNode(project_resources);
+		packageExplorerView.selectNode(project_resources, true);
 		packageExplorerView.capture("image100");
 
 		workspaceView.show();		
 		 
 		workspaceView.selectNode(it_webApp);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "WarFile.gif");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "WarFile.gif");
 
 		workspaceView.selectNode(it_jsp);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "JSP.gif");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "JSP.gif");
 
 		workspaceView.selectNode(it_library);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "Library.gif");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "Library.gif");
 
 		workspaceView.selectNode(it_servlet);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "Servlet.gif");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "Servlet.gif");
 	}	
 
 	/**
