@@ -66,7 +66,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		
 		// Querying model
 		workspaceView.findTree().expandNode(webAppModel);
-		GTCadseTree cadseTree = new GTCadseTree(workspaceView.findTree());
+		GTCadseTree cadseTree = workspaceView.findTree();
 		Item cadseWebApp = cadseTree.getItem(webAppModel);
 		assertNotNull(cadseWebApp);
 		assertEquals("WebAppModel", cadseWebApp.getName());

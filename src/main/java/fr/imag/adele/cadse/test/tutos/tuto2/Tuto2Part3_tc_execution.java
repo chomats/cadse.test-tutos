@@ -50,7 +50,7 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
 		
 		/* Gets the IJavaProject */
 		
-		GTCadseTree cadseTree = new GTCadseTree(workspaceView.findTree());
+		GTCadseTree cadseTree = workspaceView.findTree();
 		Item servlet_item = cadseTree.getItem(new GTTreePath("ServletAPI"));
 		IJavaProject jp = servlet_item.getMainMappingContent(IJavaProject.class);
 
