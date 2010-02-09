@@ -48,7 +48,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		
 
 		// Manifest configuration
-		packageExplorerView.collapse();
+		packageExplorerView.findTree().collapse();
 		packageExplorerView.selectNode(manifest);
 		packageExplorerView.capture("image063");
 		packageExplorerView.findTree().doubleClick(manifest);

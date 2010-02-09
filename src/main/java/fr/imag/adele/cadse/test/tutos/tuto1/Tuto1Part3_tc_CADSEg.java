@@ -17,7 +17,7 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_modification_pages() throws Exception {
 
-		workspaceView.collapse();
+		workspaceView.findTree().collapse();
 		// FIXME Modification pages
 		/*
 		workspaceView.selectNode(mp_servlet);

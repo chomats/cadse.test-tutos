@@ -29,7 +29,7 @@ public class Tuto1Part1_tc_execution extends TutoTestCase {
 		workspaceView.contextMenu(new GTTreePath(GTCadseRTConstants.CONTEXTMENU_NEW, "WebApp")).click();
 		
 		shell = new GTCadseShell("Create WebApp");
-		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("HelloApp");
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("HelloApp");
 		shell.capture("image082");
 		shell.close();	
 	}

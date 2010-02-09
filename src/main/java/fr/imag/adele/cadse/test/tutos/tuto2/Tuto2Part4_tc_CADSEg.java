@@ -28,12 +28,12 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 	public void test_build_model_definition() throws Exception {
 
 		// Composition link
-		workspaceView.collapse();
+		workspaceView.findTree().collapse();
 		workspaceView.selectNode(attr_hasComp);
 		workspaceView.capture("image094");
 
 		propertiesView.showTab("Link");
-		GTCadseFactory.findField(propertiesView, CadseGCST.LINK_TYPE_at_COMPOSITION_).check(true);
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_COMPOSITION_).check(true);
 		propertiesView.capture("image096");
 
 
@@ -51,7 +51,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		shell.capture("image102");
 		shell.close();
 
-		workspaceView.collapse();
+		workspaceView.findTree().collapse();
 		workspaceView.selectNode(refExporter);
 		workspaceView.capture("image104");
 	}
@@ -65,16 +65,16 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 	public void test_copy_composer() throws Exception {
 
 		// Creates copy composer
-		workspaceView.collapse();
+		workspaceView.findTree().collapse();
 		workspaceView.selectNode(composite);
 		workspaceView.capture("image106");
 		workspaceView.contextMenu(composite, GTCadseRTConstants.CONTEXTMENU_NEW, "Copy Folder Content Composer").click();
 		shell = new GTCadseShell(CopyComposerCST.COPY_INTO_FOLDER_COMPOSER);  
 		
-		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("GenWarComposer");
-		GTCadseFactory.findField(shell, CopyComposerCST.COPY_INTO_FOLDER_COMPOSER_at_TARGET_FOLDER_).typeText("WEB-INF/classes");
-		GTCadseFactory.findField(shell, CadseGCST.COMPOSER_at_TYPES_).add("ref-classes");
-		GTCadseFactory.findField(shell, CadseGCST.RUNTIME_ITEM_at_EXTENDS_CLASS_).check(true);
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("GenWarComposer");
+		GTCadseFactory.findCadseField(shell, CopyComposerCST.COPY_INTO_FOLDER_COMPOSER_at_TARGET_FOLDER_).typeText("WEB-INF/classes");
+		GTCadseFactory.findCadseField(shell, CadseGCST.COMPOSER_at_TYPES_).add("ref-classes");
+		GTCadseFactory.findCadseField(shell, CadseGCST.RUNTIME_ITEM_at_EXTENDS_CLASS_).check(true);
 		shell.capture("image112");
 		shell.close();
 		

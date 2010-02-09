@@ -19,14 +19,14 @@ public class Tuto1Part5_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_content_dependency() throws Exception {
 
-		workspaceView.collapse();
+		workspaceView.findTree().collapse();
 
 		workspaceView.selectNode(link_uses);
 		workspaceView.capture("image144");
 
 		propertiesView.showTab("LinkType");
-		GTCadseFactory.findField(propertiesView, CadseGCST.LINK_TYPE_at_REQUIRE_).scroll();
-		GTCadseFactory.findField(propertiesView, CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_REQUIRE_).scroll();
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
 		propertiesView.capture("image146");
 	}
 	

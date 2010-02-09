@@ -28,20 +28,20 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_content_customization() throws Exception {
 
-		workspaceView.collapse();
+		workspaceView.findTree().collapse();
 
-		workspaceView.findTree().expandNode(new GTTreePath(webAppModel));
+		workspaceView.selectNode(new GTTreePath(webAppModel), true);
 		workspaceView.capture("image042");
 		propertiesView.showTab("CADSE definition");
 
-		GTCadseFactory.findField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("model.webapp.template");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("model.webapp.template");
 		propertiesView.capture("image044");
 
 		// extends class check box
 		workspaceView.selectNode(content_servlet);
 		workspaceView.capture("image048");
 		propertiesView.showTab("JavaProjectContentModel");
-		GTCadseFactory.findField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
 		propertiesView.capture("image050");
 	}	
 
@@ -53,7 +53,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_manager_structure() throws Exception {
 
-		packageExplorerView.findTree().expandNode(project_package);
+		packageExplorerView.selectNode(project_package, true);
 		packageExplorerView.contextMenu(null, GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
 		shell = new GTCadseShell("Import");
@@ -74,9 +74,9 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		editor.close();
 		
 		// Takes screenshot
-		packageExplorerView.collapse();
+		packageExplorerView.findTree().collapse();
 		packageExplorerView.maximize(); // Toggle maximize
-		packageExplorerView.findTree().expandNode(servletContentItem);
+		packageExplorerView.selectNode(servletContentItem, true);
 		packageExplorerView.capture("image058");
 		packageExplorerView.maximize(); // Toggle maximize
 
@@ -92,7 +92,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.selectNode(webAppModel);
 		propertiesView.showTab("CADSE definition");
 		// TODO C'est l'un ou l'autre!
-		GTCadseFactory.findField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
 		
 		// Copying imports into clipboard
 		packageExplorerView.findTree().doubleClick(file_import1);

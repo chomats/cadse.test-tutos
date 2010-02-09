@@ -31,13 +31,13 @@ public class Tuto1Part4_tc_execution extends TutoTestCase {
 		/* Hello3App */
 		workspaceView.contextMenu(new GTTreePath(GTCadseRTConstants.CONTEXTMENU_NEW, "WebApp")).click();
 		shell = new GTCadseShell("Create WebApp");
-		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello3App");
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello3App");
 		shell.close();
 		
 		/* Hello3Servlet */
 		workspaceView.contextMenu(new GTTreePath("Hello3App"), GTCadseRTConstants.CONTEXTMENU_NEW, "Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
-		GTCadseFactory.findField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello3Servlet");
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello3Servlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello3");
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		shell.findTextWithLabel("className").typeText("hello3Servlet");
