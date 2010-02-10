@@ -9,12 +9,8 @@ import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCombo;
 import org.hamcrest.Matcher;
 import org.junit.Test;
-
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
-
-
-import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTree;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
@@ -66,8 +62,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		
 		// Querying model
 		workspaceView.selectNode(webAppModel, true);
-		GTCadseTree cadseTree = workspaceView.findTree();
-		Item cadseWebApp = cadseTree.getItem(webAppModel);
+		Item cadseWebApp = workspaceView.findTree().getItem(webAppModel);
 		assertNotNull(cadseWebApp);
 		assertEquals("WebAppModel", cadseWebApp.getName());
 		assertEquals("model.webapp", cadseWebApp.getAttribute(CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_));
@@ -127,8 +122,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		shell.close();
 
 		workspaceView.findTree().collapse();
-		// Waits until filtering option refreshes view
-		workspaceView.selectNode(it_webApp.concat("hasComp","WebComponent"));
+		workspaceView.selectNode(it_webApp.concat("hasComp","WebComponent")); /* Waits until filtering option refreshes view */
 		workspaceView.capture("image064");
 
 		// uses link
