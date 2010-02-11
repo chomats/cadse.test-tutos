@@ -27,9 +27,9 @@ import junit.framework.Test;
 		Tuto2Part4_tc_CADSEg.class
 })
 
-public class Tuto1and2_ts_CADSEg {
+public class All_ts_CADSEg {
 	public static Test suite() {
-		return (Test) new JUnit4TestAdapter(Tuto1and2_ts_CADSEg.class);
+		return (Test) new JUnit4TestAdapter(All_ts_CADSEg.class);
 	}
 	
 }

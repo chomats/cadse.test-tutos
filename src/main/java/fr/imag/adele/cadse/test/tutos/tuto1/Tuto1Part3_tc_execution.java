@@ -26,7 +26,7 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 		propertiesView.showTab("Servlet");
 		propertiesView.findButton("Add...").click();
 		
-		shell = new GTCadseShell(/*"Select a value."*/""); 
+		shell = new GTCadseShell("Select a value."); 
 		shell.selectNode("ServletAPI");
 		shell.capture("image128");
 		shell.close();
