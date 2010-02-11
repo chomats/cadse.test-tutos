@@ -34,13 +34,13 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		
 	
 		/* HelloApp */
-		workspaceView.contextMenu(new GTTreePath(GTCadseRTConstants.CONTEXTMENU_NEW, "WebApp")).click();
+		workspaceView.contextMenuNew("WebApp").click();
 		shell = new GTCadseShell("Create WebApp");
 		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("HelloApp");
 		shell.close();
 
 		/* test.HelloServlet */
-		workspaceView.contextMenu(new GTTreePath("HelloApp"), GTCadseRTConstants.CONTEXTMENU_NEW, "Servlet").click();
+		workspaceView.contextMenuNew(new GTTreePath("HelloApp"), "Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
 		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("test.HelloServlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello");
@@ -50,13 +50,13 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		shell.close();	
 		
 		/* JSP */
-		workspaceView.contextMenu(new GTTreePath("HelloApp"), GTCadseRTConstants.CONTEXTMENU_NEW, "JSP").click();
+		workspaceView.contextMenuNew(new GTTreePath("HelloApp"), "JSP").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
 		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("HelloJSP");
 		shell.close();
 
 		/* MyLibrary */
-		workspaceView.contextMenu(new GTTreePath(GTCadseRTConstants.CONTEXTMENU_NEW, "Library")).click();
+		workspaceView.contextMenuNew("Library").click();
 		shell = new GTCadseShell("Create Library");
 		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("MyLibrary");
 		shell.close();
