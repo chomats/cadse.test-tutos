@@ -68,7 +68,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.findTree().collapse();
 		workspaceView.selectNode(composite);
 		workspaceView.capture("image106");
-		workspaceView.contextMenu(composite, GTCadseRTConstants.CONTEXTMENU_NEW, "Copy Folder Content Composer").click();
+		workspaceView.contextMenuNew(composite, "Copy Folder Content Composer").click();
 		shell = new GTCadseShell(CopyComposerCST.COPY_INTO_FOLDER_COMPOSER);  
 		
 		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("GenWarComposer");

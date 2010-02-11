@@ -24,7 +24,7 @@ public class Tuto1Part5_tc_execution extends TutoTestCase {
 		shell.close();
 
 		/* ServletAPI creation */
-		workspaceView.contextMenu(new GTTreePath(GTCadseRTConstants.CONTEXTMENU_NEW, "Library")).click();
+		workspaceView.contextMenuNew("Library").click();
 		shell = new GTCadseShell("Create Library");
 		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("ServletAPI");
 		shell.close();

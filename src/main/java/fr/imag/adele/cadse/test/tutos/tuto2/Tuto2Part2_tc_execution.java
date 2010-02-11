@@ -24,7 +24,7 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 		shell.close();
 
 		/* New Servlet */
-		workspaceView.contextMenu(new GTTreePath("HelloApp"), GTCadseRTConstants.CONTEXTMENU_NEW, "Servlet").click();
+		workspaceView.contextMenuNew(new GTTreePath("HelloApp"), "Servlet").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
 		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("test.HelloServlet");
 		shell.findTextWithLabel("relativeURL").typeText("hello");
