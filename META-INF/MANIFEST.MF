@@ -5,7 +5,8 @@ Bundle-SymbolicName: fr.imag.adele.cadse.test.tutos
 Bundle-Version: 1.0.0
 Bundle-Activator: fr.imag.adele.cadse.test.tutos.tuto1.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ fr.imag.adele.cadse.test.basictests;bundle-version="2.3.0"
 Eclipse-LazyStart: true
 Import-Package: fr.imag.adele.cadse.cadseg,
  fr.imag.adele.cadse.cadseg.managers,
