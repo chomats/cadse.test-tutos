@@ -127,7 +127,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 
 		// uses link
 		GTTreePath dest = new GTTreePath("WebAppModel", CadseDefinitionManager.DATA_MODEL, "Library");
-		createLinkType(it_webComponent, "uses", dest, null, null,
+		createLinkType("uses", it_webComponent, dest, null, null,
 				CadseGCST.LINK_TYPE_at_AGGREGATION_, false,
 				CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_, false);
 
