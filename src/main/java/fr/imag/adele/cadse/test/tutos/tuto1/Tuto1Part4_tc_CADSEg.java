@@ -47,8 +47,6 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 
 		workspaceView.contextMenuNew(mapping_jsp, CadseGCST.FILE_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.FILE_CONTENT_MODEL);
-		// FIXME to be updated with new mapping API
-		// GTCadseFactory.findCadseField(shell, CadseGCST.FILE_CONTENT_MODEL_at_FILE_NAME_).typeText("${#short-name}.jsp");
 		GTCadseFactory.findCadseField(shell, CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_).typeText("/${#short-name}.jsp");
 		shell.capture("image135");
 		shell.close();

@@ -25,7 +25,7 @@ public class Tuto1Part2_tc_execution extends TutoTestCase {
 		/* hello2Servlet */
 		workspaceView.contextMenuNew(new GTTreePath("Hello2App"), "Servlet").click();
 		
-		// FIXME to be updated with user defined pages
+		// FIXME [PAGES] to be updated with user defined pages
 		//shell = new GTCadseShell("WebComponent URL Definition");
 		shell = new GTCadseShell("Servlet");
 		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello2Servlet");

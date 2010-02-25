@@ -85,7 +85,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_creation_pages() throws Exception {
 
-		// FIXME creation pages
+		// FIXME [PAGES] creation pages
 		/* Creation pages not yet implemented
 		workspaceView.findTree().collapse();
 
