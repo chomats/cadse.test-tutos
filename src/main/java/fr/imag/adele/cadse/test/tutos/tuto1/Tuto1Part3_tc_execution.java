@@ -22,7 +22,7 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 		/* hello2Servlet */
 		workspaceView.selectNode("Hello2App", "Hello2Servlet");
 		
-		// FIXME PAGES!!!! propertiesView.showTab("WebComponent Options");
+		// FIXME [PAGES] propertiesView.showTab("WebComponent Options");
 		propertiesView.showTab("Servlet");
 		propertiesView.findButton("Add...").click();
 		

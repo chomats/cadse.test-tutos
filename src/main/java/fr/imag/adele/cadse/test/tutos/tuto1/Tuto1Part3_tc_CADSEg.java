@@ -18,7 +18,7 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 	public void test_modification_pages() throws Exception {
 
 		workspaceView.findTree().collapse();
-		// FIXME Modification pages
+		// FIXME [PAGES] modification pages
 		/*
 		workspaceView.selectNode(mp_servlet);
 		propertiesView.showTab("Page");
