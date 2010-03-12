@@ -1,24 +1,27 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import org.junit.Test;
 
+import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gtmenu.GTMenuConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
-import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
-
 
 /**
  * Performs the official simple tutorial
  */
 public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
-	
+
+	GTCadseShell shell;
+
 	/**
-	 * 
-	 * @throws Exception the exception
+	 * @throws Exception
+	 *             the exception
 	 */
 	@Test
 	public void test_item_creation_process_customization() throws Exception {
@@ -30,11 +33,11 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		GTMenu.clickselectAll();
 		GTMenu.clickCopy();
 		editor.close();
-				
+
 		// New Class
 		packageExplorerView.selectNode(webapp_package);
 		GTMenu.clickItem(GTMenuConstants.FILE_MENU, "New", "Class");
-			
+
 		shell = new GTCadseShell("New Java Class");
 		shell.findTextWithLabel("Name:").typeText("WebAppServletSynchro");
 		shell.close();
@@ -45,7 +48,6 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		GTMenu.clickselectAll();
 		GTMenu.clickPaste();
 		editor.save();
-		
 
 		// Manifest configuration
 		packageExplorerView.findTree().collapse();
@@ -53,7 +55,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		packageExplorerView.capture("image063");
 		packageExplorerView.findTree().doubleClick(manifest);
 		editor = new GTEditor("Model.Workspace.WebAppModel");
-		editor.showCTab("Dependencies") ;
+		editor.showCTab("Dependencies");
 
 		editor.findSection("Imported Packages").findButton("Add...").click();
 		shell = new GTCadseShell("Package Selection");
@@ -66,13 +68,11 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		shell.close();
 
 		editor.save();
-		editor.capture("image064");	
-		
+		editor.capture("image064");
 
 		// Adds imports
 		// in fact, we have type them, so we don't need to add them
 
-		
 		// Init() method
 		packageExplorerView.selectNode(servletManagerClass);
 		GTMenu.clickItem(GTMenuConstants.SOURCE_MENU, "Override/Implement Methods...");
@@ -83,13 +83,13 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 
 		editor.find("init()");
 		editor.find("super.init();");
-		
+
 		editor.typeText("new WebAppServletSynchro();");
 		editor.save(); // makes quickfix appears
 		editor.quickfix("Import 'WebAppServletSynchro' (model.webapp)");
 		editor.save();
 	}
-	
+
 	@Test
 	public void test_zp23_check_compilation() throws Exception {
 		checkCompilationErrors(workspaceView, webAppModel);

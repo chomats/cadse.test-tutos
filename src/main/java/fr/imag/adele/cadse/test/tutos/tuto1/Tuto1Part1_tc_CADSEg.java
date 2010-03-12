@@ -1,5 +1,10 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createString;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.inGroup;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widgetOfType;
@@ -25,6 +30,8 @@ import fr.imag.adele.graphictests.test.GTEclipseConstants;
  * Performs the official simple tutorial
  */
 public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
+
+	GTCadseShell shell;
 
 	/**
 	 * Selects CADSEg in the launcher, and closes useless views.

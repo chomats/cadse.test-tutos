@@ -1,38 +1,40 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
+import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.test.GTEclipseConstants;
-import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
-import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gtmenu.GTMenuConstants;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
+import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
 public class Tuto2Part1_tc_execution extends TutoTestCase {
 
+	GTCadseShell shell;
+
 	@Test
 	public void test_selection() throws Exception {
-		
+
 		// cadses selection
 		shell = new GTCadseShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE);
 		shell.selectCadses("Cadse Model.Workspace.WebAppModel");
 		shell.capture("image030");
 		shell.close();
 	}
-	
-	
+
 	@Test
 	public void test_some_items() throws Exception {
-		
+
 		/* closing welcome view */
 		welcomeView.close();
-		
-	
+
 		/* HelloApp */
 		workspaceView.contextMenuNew("WebApp").click();
 		shell = new GTCadseShell("Create WebApp");
@@ -47,8 +49,8 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		shell.findTextWithLabel("className").typeText("helloServlet");
 		shell.findTextWithLabel("packageName").typeText("test");
-		shell.close();	
-		
+		shell.close();
+
 		/* JSP */
 		workspaceView.contextMenuNew(new GTTreePath("HelloApp"), "JSP").click();
 		shell = new GTCadseShell("WebComponent URL Definition");
@@ -60,12 +62,12 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		shell = new GTCadseShell("Create Library");
 		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("MyLibrary");
 		shell.close();
-	
+
 		/* Screenshot */
-		workspaceView.selectNode("HelloApp","HelloJSP");
+		workspaceView.selectNode("HelloApp", "HelloJSP");
 		workspaceView.capture("image032");
 		workspaceView.show();
-		
+
 		/* Window opening */
 		GTMenu.clickShowOtherView();
 		GTShell shell = new GTShell(GTMenuConstants.SHOW_VIEW_MENU_ITEM);
@@ -73,9 +75,9 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		shell.capture("image036");
 		shell.close();
 
-		/* Assert view is shown and sets focus into */  
+		/* Assert view is shown and sets focus into */
 		webAppListView.show();
-		webAppListView.selectNode("HelloApp","HelloJSP");
+		webAppListView.selectNode("HelloApp", "HelloJSP");
 		webAppListView.capture("image038");
 	}
 }
