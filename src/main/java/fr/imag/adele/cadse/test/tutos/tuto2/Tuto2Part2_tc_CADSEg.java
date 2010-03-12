@@ -1,29 +1,32 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+
 import java.io.File;
 
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
+import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
-import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
-
+import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
 /**
  * Performs the official simple tutorial
  */
 public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
-		
+
+	GTCadseShell shell;
+
 	/**
-	 * 
-	 * 
-	 * @throws Exception the exception
+	 * @throws Exception
+	 *             the exception
 	 */
 	@Test
 	public void test_item_content_customization() throws Exception {
@@ -34,7 +37,8 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image042");
 		propertiesView.showTab("CADSE definition");
 
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("model.webapp.template");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser(
+				"model.webapp.template");
 		propertiesView.capture("image044");
 
 		// extends class check box
@@ -43,12 +47,11 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		propertiesView.showTab("JavaProjectContentModel");
 		GTCadseFactory.findCadseField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
 		propertiesView.capture("image050");
-	}	
+	}
 
 	/**
-	 * 
-	 * 
-	 * @throws Exception the exception
+	 * @throws Exception
+	 *             the exception
 	 */
 	@Test
 	public void test_item_manager_structure() throws Exception {
@@ -59,7 +62,8 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		shell = new GTCadseShell("Import");
 		shell.selectNode(importArchiveFile);
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
-		shell.setComboBoxWithLabelText("From archive file:", System.getProperty("test.resourcesPath") + File.separator + "samples.zip");
+		shell.setComboBoxWithLabelText("From archive file:", System.getProperty("test.resourcesPath") + File.separator
+				+ "samples.zip");
 		shell.selectNode(archivePath);
 		shell.findButton("Select All").click();
 		shell.findCheckBox("Overwrite existing resources without warning").select();
@@ -72,7 +76,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		GTMenu.clickselectAll();
 		GTMenu.clickCopy();
 		editor.close();
-		
+
 		// Takes screenshot
 		packageExplorerView.findTree().collapse();
 		packageExplorerView.maximize(); // Toggle maximize
@@ -84,16 +88,17 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		packageExplorerView.findTree().doubleClick(servletContentItem);
 		editor = new GTEditor("ServletManager.java");
 		editor.show();
-		editor.navigateTo(editor.cursorPosition().line+1, 0);
+		editor.navigateTo(editor.cursorPosition().line + 1, 0);
 		GTMenu.clickPaste();
 		editor.save();
-		
+
 		// Adds org.eclipse.core.runtime
 		workspaceView.selectNode(webAppModel);
 		propertiesView.showTab("CADSE definition");
 		// TODO C'est l'un ou l'autre!
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).add("fr.imag.adele.cadse.core.impl"); 
-		
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser(
+				"fr.imag.adele.cadse.core.impl");
+
 		// Copying imports into clipboard
 		packageExplorerView.findTree().doubleClick(file_import1);
 		editor = new GTEditor("imports1.java");
@@ -110,7 +115,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		GTMenu.clickPaste();
 		editor.save();
 	}
-	
+
 	@Test
 	public void test_zp22_check_compilation() throws Exception {
 		checkCompilationErrors(workspaceView, webAppModel);

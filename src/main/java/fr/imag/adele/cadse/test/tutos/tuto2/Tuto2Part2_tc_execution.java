@@ -1,23 +1,27 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
+
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
+import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
-import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
+import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
 public class Tuto2Part2_tc_execution extends TutoTestCase {
+
+	GTCadseShell shell;
 
 	@Test
 	public void test_run() throws Exception {
 
 		workspaceView.show();
-		
+
 		/* Delete test.HelloServlet Servlet */
 		workspaceView.contextMenu(new GTTreePath("HelloApp", "test.HelloServlet"), "Delete test.HelloServlet").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
@@ -32,10 +36,11 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 		shell.findTextWithLabel("className").typeText("helloServlet");
 		shell.findTextWithLabel("packageName").typeText("test");
 		shell.close();
-		
+
 		/* edition */
 		packageExplorerView.show();
-		GTTreePath path = new GTTreePath("HelloApp.test.HelloServlet", "sources", "test", "helloServlet.java", "helloServlet");
+		GTTreePath path = new GTTreePath("HelloApp.test.HelloServlet", "sources", "test", "helloServlet.java",
+				"helloServlet");
 		packageExplorerView.findTree().doubleClick(path);
 		packageExplorerView.capture("image060");
 		GTEditor editor = new GTEditor("helloServlet.java");
