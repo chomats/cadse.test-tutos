@@ -22,6 +22,7 @@ import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
@@ -94,8 +95,8 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Other Item Type
 		createItemType(data_model, "Library");
 		createItemType(data_model, "WebComponent");
-		createItemType(data_model, "JSP", it_webComponent);
-		createItemType(data_model, "Servlet", it_webComponent);
+		createItemType(data_model, "JSP", new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, it_webComponent));
+		createItemType(data_model, "Servlet", new KeyValue(CadseGCST.ITEM_TYPE_lt_SUPER_TYPE, it_webComponent));
 
 		// Relative URL attribute
 		workspaceView.contextMenuNew(it_webComponent, CadseGCST.STRING).click();
@@ -139,8 +140,8 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 
 		// uses link
 		GTTreePath dest = new GTTreePath("WebAppModel", CadseDefinitionManager.DATA_MODEL, "Library");
-		createLinkType("uses", it_webComponent, dest, null, null, CadseGCST.LINK_TYPE_at_AGGREGATION_, false,
-				CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_, false);
+		createLinkType("uses", it_webComponent, dest, null, null, new KeyValue(CadseGCST.LINK_TYPE_at_AGGREGATION_,
+				false), new KeyValue(CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_, false));
 
 		// Root element attribute + is abstract
 		workspaceView.findTree().collapse();
