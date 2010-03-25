@@ -92,10 +92,10 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image040");
 
 		// Other Item Type
-		createItemType(data_model, "Library", null, null, null, null);
-		createItemType(data_model, "WebComponent", null, null, null, null);
-		createItemType(data_model, "JSP", it_webComponent, null, null, null);
-		createItemType(data_model, "Servlet", it_webComponent, null, null, null);
+		createItemType(data_model, "Library");
+		createItemType(data_model, "WebComponent");
+		createItemType(data_model, "JSP", it_webComponent);
+		createItemType(data_model, "Servlet", it_webComponent);
 
 		// Relative URL attribute
 		workspaceView.contextMenuNew(it_webComponent, CadseGCST.STRING).click();
@@ -107,8 +107,8 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image048");
 
 		// Other attributes
-		createString(it_servlet, "className", null, null, null, null, null);
-		createString(it_servlet, "packageName", null, null, null, null, null);
+		createString(it_servlet, "className");
+		createString(it_servlet, "packageName");
 
 		// hasComp link
 		workspaceView.contextMenuNew(it_webApp, CadseGCST.LINK_TYPE).click();
