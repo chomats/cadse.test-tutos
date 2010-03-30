@@ -22,7 +22,7 @@ import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.KeyValue;
+import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
