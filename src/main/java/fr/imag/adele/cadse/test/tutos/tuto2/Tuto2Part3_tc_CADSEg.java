@@ -10,7 +10,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gtmenu.GTMenuConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
+import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 
 /**
  * Performs the official simple tutorial
@@ -28,7 +28,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 
 		// Copying content into clipboard
 		packageExplorerView.findTree().doubleClick(file_sample2);
-		GTEditor editor = new GTEditor("sample2.java");
+		GTTextEditor editor = new GTTextEditor("sample2.java");
 		editor.show();
 		GTMenu.clickselectAll();
 		GTMenu.clickCopy();
@@ -44,7 +44,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 
 		packageExplorerView.findTree().doubleClick(webapp_servletSynchro);
 
-		editor = new GTEditor("WebAppServletSynchro.java");
+		editor = new GTTextEditor("WebAppServletSynchro.java");
 		GTMenu.clickselectAll();
 		GTMenu.clickPaste();
 		editor.save();
@@ -54,7 +54,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		packageExplorerView.selectNode(manifest);
 		packageExplorerView.capture("image063");
 		packageExplorerView.findTree().doubleClick(manifest);
-		editor = new GTEditor("Model.Workspace.WebAppModel");
+		editor = new GTTextEditor("Model.Workspace.WebAppModel");
 		editor.showCTab("Dependencies");
 
 		editor.findSection("Imported Packages").findButton("Add...").click();
@@ -76,7 +76,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		// Init() method
 		packageExplorerView.selectNode(servletManagerClass);
 		GTMenu.clickItem(GTMenuConstants.SOURCE_MENU, "Override/Implement Methods...");
-		editor = new GTEditor("ServletManager.java");
+		editor = new GTTextEditor("ServletManager.java");
 		shell = new GTCadseShell("Override/Implement Methods");
 		shell.findTree().checkNode(new GTTreePath("DefaultItemManager", "init()"), true);
 		shell.close();

@@ -141,7 +141,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// uses link
 		GTTreePath dest = new GTTreePath("WebAppModel", CadseDefinitionManager.DATA_MODEL, "Library");
 		createLinkType("uses", it_webComponent, dest, null, null, new KeyValue(CadseGCST.LINK_TYPE_at_AGGREGATION_,
-				false), new KeyValue(CadseGCST.ATTRIBUTE_at_MUST_BE_INITIALIZED_, false));
+				false));
 
 		// Root element attribute + is abstract
 		workspaceView.findTree().collapse();

@@ -14,7 +14,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
+import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
 /**
@@ -71,7 +71,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		// Copying content into clipboard
 		packageExplorerView.findTree().doubleClick(file_sample1);
-		GTEditor editor = new GTEditor("sample1.java");
+		GTTextEditor editor = new GTTextEditor("sample1.java");
 		editor.show();
 		GTMenu.clickselectAll();
 		GTMenu.clickCopy();
@@ -86,7 +86,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		// Edits the file
 		packageExplorerView.findTree().doubleClick(servletContentItem);
-		editor = new GTEditor("ServletManager.java");
+		editor = new GTTextEditor("ServletManager.java");
 		editor.show();
 		editor.navigateTo(editor.cursorPosition().line + 1, 0);
 		GTMenu.clickPaste();
@@ -101,7 +101,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		// Copying imports into clipboard
 		packageExplorerView.findTree().doubleClick(file_import1);
-		editor = new GTEditor("imports1.java");
+		editor = new GTTextEditor("imports1.java");
 		editor.show();
 		GTMenu.clickselectAll();
 		GTMenu.clickCopy();
@@ -109,7 +109,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		// Edits the file
 		packageExplorerView.findTree().doubleClick(servletContentItem);
-		editor = new GTEditor("ServletManager.java");
+		editor = new GTTextEditor("ServletManager.java");
 		editor.show();
 		editor.navigateTo(2, 0);
 		GTMenu.clickPaste();

@@ -10,7 +10,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
+import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
 public class Tuto2Part2_tc_execution extends TutoTestCase {
@@ -43,7 +43,7 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 				"helloServlet");
 		packageExplorerView.findTree().doubleClick(path);
 		packageExplorerView.capture("image060");
-		GTEditor editor = new GTEditor("helloServlet.java");
+		GTTextEditor editor = new GTTextEditor("helloServlet.java");
 		editor.show();
 		editor.capture("image062");
 		editor.close();

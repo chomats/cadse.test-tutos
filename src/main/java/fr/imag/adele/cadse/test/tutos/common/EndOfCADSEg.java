@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
-import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
+import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
 public class EndOfCADSEg extends TutoTestCase {
@@ -20,7 +20,7 @@ public class EndOfCADSEg extends TutoTestCase {
 
 		// WebAppManager implementation
 		packageExplorerView.findTree().doubleClick(webappManagerClass);
-		GTEditor editor = new GTEditor("WebAppManager.java");
+		GTTextEditor editor = new GTTextEditor("WebAppManager.java");
 
 		editor.find("postCompose(");
 		editor.find("}");
@@ -67,7 +67,7 @@ public class EndOfCADSEg extends TutoTestCase {
 
 		// Quick fixes
 		packageExplorerView.findTree().doubleClick(webappManagerClass);
-		editor = new GTEditor("WebAppManager.java");
+		editor = new GTTextEditor("WebAppManager.java");
 
 		editor.find("IProject");
 		editor.quickfix("Import 'IProject' (org.eclipse.core.resources)");

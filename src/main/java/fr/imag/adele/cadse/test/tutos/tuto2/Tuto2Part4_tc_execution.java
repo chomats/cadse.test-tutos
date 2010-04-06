@@ -7,7 +7,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gtmenu.GTMenuConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
+import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 import fr.imag.adele.graphictests.gtworkbench_part.GTView;
 
 public class Tuto2Part4_tc_execution extends TutoTestCase {
@@ -23,7 +23,7 @@ public class Tuto2Part4_tc_execution extends TutoTestCase {
 		packageExplorerView.capture("image122");
 
 		packageExplorerView.contextMenu(new GTTreePath("HelloApp", "WEB-INF", "web.xml"), "Open").click();
-		GTEditor editor = new GTEditor("web.xml");
+		GTTextEditor editor = new GTTextEditor("web.xml");
 		editor.showCTab("Source");
 		editor.capture("image124");
 
