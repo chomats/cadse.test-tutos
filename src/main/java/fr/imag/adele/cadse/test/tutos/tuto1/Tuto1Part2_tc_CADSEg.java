@@ -70,19 +70,24 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 
 		workspaceView.selectNode(it_webApp);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "WarFile.gif");
+		final String project = "Model.Workspace.WebAppModel";
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources",
+				"WarFile.gif");
 
 		workspaceView.selectNode(it_jsp);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "JSP.gif");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources",
+				"JSP.gif");
 
 		workspaceView.selectNode(it_library);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "Library.gif");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources",
+				"Library.gif");
 
 		workspaceView.selectNode(it_servlet);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser("resources", "Servlet.gif");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources",
+				"Servlet.gif");
 	}
 
 	/**

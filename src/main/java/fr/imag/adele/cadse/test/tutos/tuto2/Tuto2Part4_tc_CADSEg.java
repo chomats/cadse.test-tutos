@@ -12,7 +12,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
-import fr.imag.adele.graphictests.gtworkbench_part.GTEditor;
+import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 
 /**
  * Performs the official simple tutorial
@@ -79,7 +79,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 
 		// copy code into clipboard
 		packageExplorerView.findTree().doubleClick(file_postCompose);
-		GTEditor editor = new GTEditor("sample-postCompose.java");
+		GTTextEditor editor = new GTTextEditor("sample-postCompose.java");
 		editor.show();
 		GTMenu.clickselectAll();
 		GTMenu.clickCopy();
@@ -87,7 +87,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 
 		// copy composer implementation
 		packageExplorerView.findTree().doubleClick(webappManagerClass);
-		editor = new GTEditor("WebAppManager.java");
+		editor = new GTTextEditor("WebAppManager.java");
 		editor.find("postCompose(");
 		editor.find("}");
 		GTMenu.clickPaste();
@@ -95,7 +95,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 
 		// Quick fixes
 		packageExplorerView.findTree().doubleClick(webappManagerClass);
-		editor = new GTEditor("WebAppManager.java");
+		editor = new GTTextEditor("WebAppManager.java");
 
 		editor.find("IProject");
 		editor.quickfix("Import 'IProject' (org.eclipse.core.resources)");
