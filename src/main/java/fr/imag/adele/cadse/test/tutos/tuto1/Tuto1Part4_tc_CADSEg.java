@@ -30,7 +30,7 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image144");
 
 		propertiesView.showTab("LinkType");
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_REQUIRE_).scroll();
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_at_QUALIFIED_NAME_).scroll();
 		GTCadseFactory.findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
 		propertiesView.capture("image146");
 	}
