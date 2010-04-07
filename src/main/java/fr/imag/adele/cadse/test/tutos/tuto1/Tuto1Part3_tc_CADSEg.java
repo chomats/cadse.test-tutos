@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createFileContentModel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJavaProjectContentModel;
@@ -9,9 +10,9 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
+import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 
 /**
  * Performs the official simple tutorial
@@ -33,7 +34,7 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 
 		workspaceView.contextMenuNew(mapping_webApp, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
-		GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true);
+		findCadseField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true);
 		shell.capture("image134");
 		shell.close();
 		workspaceView.selectNode(content_webApp);
@@ -42,6 +43,12 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 		createJavaProjectContentModel(workspaceView, mapping_servlet, KeyValue.jpcmSrcFolderKv);
 		KeyValue kv = new KeyValue(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/${#short-name}.jsp");
 		createFileContentModel(workspaceView, mapping_jsp, kv);
+
+		workspaceView.contextMenuNew(mapping_jsp, "FileContentModel").click();
+		GTShell shell = new GTShell("FileContentModel");
+		kv.setValue(shell);
+		shell.capture("image135");
+		shell.close();
 	}
 
 	@Test

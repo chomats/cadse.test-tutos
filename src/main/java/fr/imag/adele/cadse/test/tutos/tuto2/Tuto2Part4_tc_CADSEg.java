@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 import model.workspace.copycomposer.CopyComposerCST;
@@ -8,7 +9,6 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
@@ -34,7 +34,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image094");
 
 		propertiesView.showTab("Link");
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_COMPOSITION_).check(true);
+		findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_COMPOSITION_).check(true);
 		propertiesView.capture("image096");
 
 		// Executed CADSEs
@@ -69,11 +69,10 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.contextMenuNew(composite, "Copy Folder Content Composer").click();
 		shell = new GTCadseShell(CopyComposerCST.COPY_INTO_FOLDER_COMPOSER);
 
-		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("GenWarComposer");
-		GTCadseFactory.findCadseField(shell, CopyComposerCST.COPY_INTO_FOLDER_COMPOSER_at_TARGET_FOLDER_).typeText(
-				"WEB-INF/classes");
-		GTCadseFactory.findCadseField(shell, CadseGCST.COMPOSER_at_TYPES_).addBrowser("ref-classes");
-		GTCadseFactory.findCadseField(shell, CadseGCST.RUNTIME_ITEM_at_EXTENDS_CLASS_).check(true);
+		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("GenWarComposer");
+		findCadseField(shell, CopyComposerCST.COPY_INTO_FOLDER_COMPOSER_at_TARGET_FOLDER_).typeText("WEB-INF/classes");
+		findCadseField(shell, CadseGCST.COMPOSER_at_TYPES_).addBrowser("ref-classes");
+		findCadseField(shell, CadseGCST.RUNTIME_ITEM_at_EXTENDS_CLASS_).check(true);
 		shell.capture("image112");
 		shell.close();
 
