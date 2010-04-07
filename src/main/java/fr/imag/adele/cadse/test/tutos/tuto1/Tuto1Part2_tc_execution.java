@@ -37,5 +37,26 @@ public class Tuto1Part2_tc_execution extends TutoTestCase {
 		shell.findTextWithLabel("packageName").typeText("test");
 		shell.capture("image118");
 		shell.close();
+
+		// Ancienne part 3...
+
+		/* ServletAPI library */
+		workspaceView.contextMenuNew("Library").click();
+		shell = new GTCadseShell("Library");
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("ServletAPI");
+		shell.close();
+
+		/* hello2Servlet */
+		workspaceView.selectNode("Hello2App", "Hello2Servlet");
+
+		// FIXME [PAGES] propertiesView.showTab("WebComponent Options");
+		propertiesView.showTab("Servlet");
+		propertiesView.findButton("Add...").click();
+
+		shell = new GTCadseShell("Select a value.");
+		shell.selectNode("ServletAPI");
+		shell.capture("image128");
+		shell.close();
+
 	}
 }
