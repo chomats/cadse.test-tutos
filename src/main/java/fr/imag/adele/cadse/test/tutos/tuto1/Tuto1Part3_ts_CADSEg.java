@@ -11,12 +11,12 @@ import junit.framework.Test;
 
 @RunWith(Suite.class)
 @SuiteClasses(value={
-		Tuto1Part5_tc_execution.class
+		Tuto1Part3_tc_CADSEg.class
 })
 
-public class Tuto1Part5_ts_execution {
+public class Tuto1Part3_ts_CADSEg {
 	public static Test suite() {
-		return (Test) new JUnit4TestAdapter(Tuto1Part5_ts_execution.class);
+		return (Test) new JUnit4TestAdapter(Tuto1Part3_ts_CADSEg.class);
 	}
 	
 }

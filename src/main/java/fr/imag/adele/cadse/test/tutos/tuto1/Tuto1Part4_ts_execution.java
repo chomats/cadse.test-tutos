@@ -18,4 +18,5 @@ public class Tuto1Part4_ts_execution {
 	public static Test suite() {
 		return (Test) new JUnit4TestAdapter(Tuto1Part4_ts_execution.class);
 	}
+	
 }
