@@ -13,6 +13,7 @@ import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
+import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
 public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
@@ -97,24 +98,36 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	 *             the exception
 	 */
 	@Test
-	public void test_creation_pages() throws Exception {
+	public void test_pages_configuration() throws Exception {
 
-		// FIXME [PAGES] creation pages
-		/*
-		 * Creation pages not yet implemented workspaceView.findTree().collapse(); /* creation-page-WebComponent
-		 * workspaceView.selectNode(cp_webComponent); workspaceView.capture("image106"); propertiesView.showTab("Page");
-		 * GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_TITLE_).typeText("WebComponent URL Definition");
-		 * GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_DESCRIPTION_).typeText("Relative URL definition");
-		 * propertiesView.capture("image108"); GTCadseFactory.findField(propertiesView,
-		 * CadseGCST.PAGE_lt_ATTRIBUTES).scroll(); propertiesView.capture("image110"); /* creation-page-Servlet
-		 * workspaceView.selectNode(cp_servlet); workspaceView.capture("image112"); propertiesView.showTab("Page");
-		 * GTCadseFactory.findField(propertiesView, CadseGCST.PAGE_at_TITLE_).typeText("Servlet Definition");
-		 * GTCadseFactory.findField(propertiesView,
-		 * CadseGCST.PAGE_at_DESCRIPTION_).typeText("Servlet Java class definition");
-		 * propertiesView.capture("image114"); GTCadseFactory.findField(propertiesView,
-		 * CadseGCST.PAGE_lt_ATTRIBUTES).check(true, "className"); GTCadseFactory.findField(propertiesView,
-		 * CadseGCST.PAGE_lt_ATTRIBUTES).check(true, "packageName");
-		 */
+		workspaceView.findTree().collapse();
+		workspaceView.selectNode(attr_className);
+		workspaceView.capture("image106");
+		propertiesView.showTab("String");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.ITEM_at_NAME).scroll();
+		KeyValue.sicpKv.setValue(propertiesView);
+		KeyValue.simpKv.setValue(propertiesView);
+		propertiesView.capture("image108");
+
+		workspaceView.selectNode(attr_packageName);
+		propertiesView.showTab("String");
+		KeyValue.sicpKv.setValue(propertiesView);
+		KeyValue.simpKv.setValue(propertiesView);
+
+		workspaceView.selectNode(link_hasComp);
+		propertiesView.showTab("LinkType");
+		KeyValue.notSicpKv.setValue(propertiesView);
+		KeyValue.simpKv.setValue(propertiesView);
+
+		workspaceView.selectNode(attr_relativeUrl);
+		propertiesView.showTab("String");
+		KeyValue.sicpKv.setValue(propertiesView);
+		KeyValue.simpKv.setValue(propertiesView);
+
+		workspaceView.selectNode(link_uses);
+		propertiesView.showTab("LinkType");
+		KeyValue.notSicpKv.setValue(propertiesView);
+		KeyValue.simpKv.setValue(propertiesView);
 	}
 
 	@Test

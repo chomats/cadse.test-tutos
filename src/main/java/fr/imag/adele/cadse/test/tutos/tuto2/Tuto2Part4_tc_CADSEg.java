@@ -30,7 +30,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 
 		// Composition link
 		workspaceView.findTree().collapse();
-		workspaceView.selectNode(attr_hasComp);
+		workspaceView.selectNode(link_hasComp);
 		workspaceView.capture("image094");
 
 		propertiesView.showTab("Link");

@@ -121,7 +121,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		GTCadseFactory.findCadseField(shell, CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
 		shell.capture("image052");
 		shell.close();
-		workspaceView.selectNode(attr_hasComp); /* Assert item has been displayed */
+		workspaceView.selectNode(link_hasComp); /* Assert item has been displayed */
 		workspaceView.capture("image056");
 
 		// Filtering options

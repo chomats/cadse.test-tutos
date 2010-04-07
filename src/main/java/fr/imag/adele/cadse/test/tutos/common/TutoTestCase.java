@@ -1,11 +1,11 @@
 package fr.imag.adele.cadse.test.tutos.common;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
+import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTView;
-import fr.imag.adele.graphictests.test.GTTestCase;
 
-public abstract class TutoTestCase extends GTTestCase {
+public abstract class TutoTestCase extends GTCadseTestCase {
 
 	protected GTTreePath webAppModel = new GTTreePath("WebAppModel");
 
@@ -33,7 +33,7 @@ public abstract class TutoTestCase extends GTTestCase {
 
 	protected GTTreePath refExporter = mapping_servlet.concat("JavaContentExporter");
 
-	protected GTTreePath attr_hasComp = it_webApp.concat("hasComp");
+	protected GTTreePath link_hasComp = it_webApp.concat("hasComp");
 	protected GTTreePath attr_packageName = it_servlet.concat("packageName");
 	protected GTTreePath attr_className = it_servlet.concat("className");
 	protected GTTreePath attr_relativeUrl = it_webComponent.concat("relativeURL");
