@@ -22,42 +22,21 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 	 *             the exception
 	 */
 	@Test
-	public void test_item_content() throws Exception {
+	public void test_item_content_dependency() throws Exception {
 
 		workspaceView.findTree().collapse();
-		workspaceView.selectNode(mapping_webApp);
-		workspaceView.capture("image132");
 
-		workspaceView.contextMenuNew(mapping_webApp, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
-		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
-		GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true);
-		shell.capture("image134");
-		shell.close();
-		workspaceView.selectNode(content_webApp);
+		workspaceView.selectNode(link_uses);
+		workspaceView.capture("image144");
 
-		workspaceView.contextMenuNew(mapping_library, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
-		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
-		GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true);
-		shell.close();
-		workspaceView.selectNode(content_library);
-
-		workspaceView.contextMenuNew(mapping_servlet, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
-		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
-		GTCadseFactory.findCadseField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true);
-		shell.close();
-		workspaceView.selectNode(content_servlet);
-
-		workspaceView.contextMenuNew(mapping_jsp, CadseGCST.FILE_CONTENT_MODEL).click();
-		shell = new GTCadseShell(CadseGCST.FILE_CONTENT_MODEL);
-		GTCadseFactory.findCadseField(shell, CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_)
-				.typeText("/${#short-name}.jsp");
-		shell.capture("image135");
-		shell.close();
-		workspaceView.selectNode(content_jsp);
+		propertiesView.showTab("LinkType");
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_REQUIRE_).scroll();
+		GTCadseFactory.findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
+		propertiesView.capture("image146");
 	}
 
 	@Test
-	public void test_zp14_check_compilation() throws Exception {
+	public void test_zp15_check_compilation() throws Exception {
 		checkCompilationErrors(workspaceView, webAppModel);
 	}
 }

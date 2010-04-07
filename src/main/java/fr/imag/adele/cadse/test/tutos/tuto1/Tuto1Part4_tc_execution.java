@@ -10,48 +10,42 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
 public class Tuto1Part4_tc_execution extends TutoTestCase {
 
 	GTCadseShell shell;
 
 	@Test
-	public void test_delete() throws Exception {
+	public void test_feature() throws Exception {
 
-		/* HelloApp */
-		workspaceView.contextMenu(new GTTreePath("HelloApp"), "Delete HelloApp").click();
-		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
-		shell.capture("image138");
-		shell.close();
+		workspaceView.show();
 
-		/* Hello2App */
-		workspaceView.contextMenu(new GTTreePath("Hello2App"), "Delete Hello2App").click();
+		/* ServletAPI deletion */
+		workspaceView.contextMenu(new GTTreePath("ServletAPI"), "Delete ServletAPI").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.close();
 
-		/* Hello3App */
-		workspaceView.contextMenuNew("WebApp").click();
-		shell = new GTCadseShell("Create WebApp");
-		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello3App");
+		/* ServletAPI creation */
+		workspaceView.contextMenuNew("Library").click();
+		shell = new GTCadseShell("Create Library");
+		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("ServletAPI");
 		shell.close();
 
-		/* Hello3Servlet */
-		workspaceView.contextMenuNew(new GTTreePath("Hello3App"), "Servlet").click();
-		shell = new GTCadseShell("WebComponent URL Definition");
-		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello3Servlet");
-		shell.findTextWithLabel("relativeURL").typeText("hello3");
-		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
-		shell.findTextWithLabel("className").typeText("hello3Servlet");
-		shell.findTextWithLabel("packageName").typeText("test");
+		/* hello3Servlet */
+		workspaceView.selectNode("Hello3App", "hello3Servlet");
+		propertiesView.showTab("WebComponent Options");
+		propertiesView.findButton("Add...").click();
+
+		shell = new GTCadseShell("Select a value.");
+		shell.selectNode("ServletAPI");
 		shell.close();
 
 		/* Screenshot */
 		packageExplorerView.show();
-		packageExplorerView.selectNode("Hello3App", "sources");
-		packageExplorerView.selectNode("Hello3App.Hello3Servlet", "sources");
-		packageExplorerView.selectNode("ServletAPI", "sources");
-		packageExplorerView.selectNode("Hello3App");
-		packageExplorerView.capture("image140");
+		packageExplorerView.selectNode(new GTTreePath("Hello3App"), true);
+		packageExplorerView.selectNode(new GTTreePath("ServletAPI"), true);
+		packageExplorerView.selectNode(new GTTreePath("Hello3App.Hello3Servlet", "Item Dependencies", "ServletAPI"),
+				true);
+		packageExplorerView.capture("image148");
 	}
 }
