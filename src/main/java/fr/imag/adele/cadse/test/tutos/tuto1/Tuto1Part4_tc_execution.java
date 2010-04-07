@@ -1,14 +1,13 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.deleteBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import org.junit.Test;
 
-import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
-import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 
 public class Tuto1Part4_tc_execution extends TutoTestCase {
@@ -21,22 +20,17 @@ public class Tuto1Part4_tc_execution extends TutoTestCase {
 		workspaceView.show();
 
 		/* ServletAPI deletion */
-		workspaceView.contextMenu(new GTTreePath("ServletAPI"), "Delete ServletAPI").click();
-		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
-		shell.close();
+		deleteBasicItem(workspaceView, new GTTreePath("ServletAPI"));
 
 		/* ServletAPI creation */
-		workspaceView.contextMenuNew("Library").click();
-		shell = new GTCadseShell("Create Library");
-		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("ServletAPI");
-		shell.close();
+		createBasicItem(workspaceView, null, "Library", "ServletAPI", new GTTreePath("ServletAPI"));
 
 		/* hello3Servlet */
-		workspaceView.selectNode("Hello3App", "hello3Servlet");
-		propertiesView.showTab("WebComponent Options");
+		workspaceView.selectNode("Hello3App", "Hello3Servlet");
+		propertiesView.showTab("Servlet");
 		propertiesView.findButton("Add...").click();
 
-		shell = new GTCadseShell("Select a value.");
+		shell = new GTCadseShell("Select a destination.");
 		shell.selectNode("ServletAPI");
 		shell.close();
 

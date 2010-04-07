@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -9,7 +10,6 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
@@ -37,15 +37,14 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image042");
 		propertiesView.showTab("CADSE definition");
 
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser(
-				"model.webapp.template");
+		findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser("model.webapp.template");
 		propertiesView.capture("image044");
 
 		// extends class check box
 		workspaceView.selectNode(content_servlet);
 		workspaceView.capture("image048");
 		propertiesView.showTab("JavaProjectContentModel");
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
+		findCadseField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
 		propertiesView.capture("image050");
 	}
 
@@ -96,7 +95,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.selectNode(webAppModel);
 		propertiesView.showTab("CADSE definition");
 		// TODO C'est l'un ou l'autre!
-		GTCadseFactory.findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser(
+		findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser(
 				"fr.imag.adele.cadse.core.impl");
 
 		// Copying imports into clipboard
