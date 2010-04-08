@@ -2,7 +2,6 @@ package fr.imag.adele.cadse.test.tutos.tuto1;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
-import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createFileContentModel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJavaProjectContentModel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -42,7 +41,6 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 		createJavaProjectContentModel(workspaceView, mapping_library, KeyValue.jpcmSrcFolderKv);
 		createJavaProjectContentModel(workspaceView, mapping_servlet, KeyValue.jpcmSrcFolderKv);
 		KeyValue kv = new KeyValue(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/${#short-name}.jsp");
-		createFileContentModel(workspaceView, mapping_jsp, kv);
 
 		workspaceView.contextMenuNew(mapping_jsp, "FileContentModel").click();
 		GTShell shell = new GTShell("FileContentModel");
