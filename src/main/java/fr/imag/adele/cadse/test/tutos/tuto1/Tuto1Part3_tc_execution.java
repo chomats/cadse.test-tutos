@@ -36,7 +36,7 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 		workspaceView.contextMenuNew(new GTTreePath("Hello3App"), "Servlet").click();
 		shell = new GTCadseShell("Servlet");
 		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello3Servlet");
-		findCadseField(shell, "className").typeText("hello3Servlet");
+		findCadseField(shell, "className").typeText("Hello3Servlet");
 		findCadseField(shell, "packageName").typeText("test");
 		findCadseField(shell, "relativeURL").typeText("hello3");
 		shell.close();
