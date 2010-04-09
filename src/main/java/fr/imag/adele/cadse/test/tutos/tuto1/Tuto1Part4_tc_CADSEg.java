@@ -33,6 +33,9 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		findCadseField(propertiesView, CadseGCST.ITEM_at_QUALIFIED_NAME_).scroll();
 		findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
 		propertiesView.capture("image146");
+
+		// Waits until files have been generated.
+		bot.sleep(6000);
 	}
 
 	@Test
