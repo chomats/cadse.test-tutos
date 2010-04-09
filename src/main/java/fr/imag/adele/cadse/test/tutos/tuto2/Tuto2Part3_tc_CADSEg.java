@@ -27,24 +27,18 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 	public void test_item_creation_process_customization() throws Exception {
 
 		// Copying content into clipboard
-		packageExplorerView.findTree().doubleClick(file_sample2);
-		GTTextEditor editor = new GTTextEditor("sample2.java");
-		editor.show();
-		GTMenu.clickselectAll();
-		GTMenu.clickCopy();
-		editor.close();
+		copyFileIntoClipboard(file_sample2);
 
 		// New Class
 		packageExplorerView.selectNode(webapp_package);
 		GTMenu.clickItem(GTMenuConstants.FILE_MENU, "New", "Class");
-
 		shell = new GTCadseShell("New Java Class");
 		shell.findTextWithLabel("Name:").typeText("WebAppServletSynchro");
 		shell.close();
-
 		packageExplorerView.findTree().doubleClick(webapp_servletSynchro);
 
-		editor = new GTTextEditor("WebAppServletSynchro.java");
+		// Paste
+		GTTextEditor editor = new GTTextEditor("WebAppServletSynchro.java");
 		GTMenu.clickselectAll();
 		GTMenu.clickPaste();
 		editor.save();
@@ -64,7 +58,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 
 		editor.findSection("Imported Packages").findButton("Add...").click();
 		shell = new GTCadseShell("Package Selection");
-		shell.findText().typeText("fr.imag.adele.cadse.core.delta");
+		shell.findText().typeText("fr.imag.adele.cadse.core.transaction.delta");
 		shell.close();
 
 		editor.save();
@@ -73,20 +67,40 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		// Adds imports
 		// in fact, we have type them, so we don't need to add them
 
+		// Before Init(), need to implement InitAction
+		packageExplorerView.findTree().doubleClick(servletManagerClass);
+		editor = new GTTextEditor("ServletManager.java");
+		editor.find("{");
+		editor.typeText("implements InitAction {");
+		editor.save();
+		editor.capture("image065");
+
+		// Quickfix
+		copyFileIntoClipboard(file_import2);
+		editor.navigateTo(2, 0);
+		GTMenu.clickPaste();
+		editor.save();
+
+		// Copying content into clipboard
+		copyFileIntoClipboard(file_initMethodBody);
+
 		// Init() method
 		packageExplorerView.selectNode(servletManagerClass);
 		GTMenu.clickItem(GTMenuConstants.SOURCE_MENU, "Override/Implement Methods...");
-		editor = new GTTextEditor("ServletManager.java");
 		shell = new GTCadseShell("Override/Implement Methods");
-		shell.findTree().checkNode(new GTTreePath("DefaultItemManager", "init()"), true);
+		shell.findTree().checkNode(new GTTreePath("InitAction", "init()"), true);
 		shell.close();
 
+		editor = new GTTextEditor("ServletManager.java");
 		editor.find("init()");
-		editor.find("super.init();");
+		editor.find("// TODO Auto-generated method stub");
+		GTMenu.clickPaste();
+		editor.save();
 
-		editor.typeText("new WebAppServletSynchro();");
-		editor.save(); // makes quickfix appears
-		editor.quickfix("Import 'WebAppServletSynchro' (model.webapp)");
+		// Quickfix
+		copyFileIntoClipboard(file_initMethodImport);
+		editor.navigateTo(2, 0);
+		GTMenu.clickPaste();
 		editor.save();
 	}
 

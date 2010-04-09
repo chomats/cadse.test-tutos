@@ -2,7 +2,9 @@ package fr.imag.adele.cadse.test.tutos.common;
 
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
+import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
+import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 import fr.imag.adele.graphictests.gtworkbench_part.GTView;
 
 public abstract class TutoTestCase extends GTCadseTestCase {
@@ -67,7 +69,10 @@ public abstract class TutoTestCase extends GTCadseTestCase {
 	protected GTTreePath file_sample3 = project_resources.concat("sample3.java");
 	protected GTTreePath file_sample4 = project_resources.concat("sample4.java");
 	protected GTTreePath file_import1 = project_resources.concat("imports1.java");
+	protected GTTreePath file_import2 = project_resources.concat("imports2.java");
 	protected GTTreePath file_postCompose = project_resources.concat("sample-postCompose.java");
+	protected GTTreePath file_initMethodBody = project_resources.concat("initMethodBody.java");
+	protected GTTreePath file_initMethodImport = project_resources.concat("initMethodImport.java");
 
 	protected GTTreePath project_sources = project_package.concat("src-gen");
 	protected GTTreePath servletManagerClass = project_sources.concat("model.webapp.managers", "ServletManager.java",
@@ -82,4 +87,13 @@ public abstract class TutoTestCase extends GTCadseTestCase {
 	protected GTTreePath archivePath = new GTTreePath("/", "resources");
 
 	protected GTView webAppListView = new GTView("WebAppList");
+
+	protected void copyFileIntoClipboard(GTTreePath path) {
+		packageExplorerView.findTree().doubleClick(path);
+		GTTextEditor editor = new GTTextEditor(path.getDestinationName());
+		editor.show();
+		GTMenu.clickselectAll();
+		GTMenu.clickCopy();
+		editor.close();
+	}
 }

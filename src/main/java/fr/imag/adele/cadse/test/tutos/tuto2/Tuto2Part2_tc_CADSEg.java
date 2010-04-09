@@ -13,7 +13,6 @@ import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
-import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
@@ -33,11 +32,12 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		workspaceView.findTree().collapse();
 
-		workspaceView.selectNode(new GTTreePath(webAppModel), true);
+		workspaceView.selectNode(webAppModel, true);
 		workspaceView.capture("image042");
 		propertiesView.showTab("CADSE definition");
 
 		findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser("model.webapp.template");
+		findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).scroll();
 		propertiesView.capture("image044");
 
 		// extends class check box
@@ -69,12 +69,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		shell.close();
 
 		// Copying content into clipboard
-		packageExplorerView.findTree().doubleClick(file_sample1);
-		GTTextEditor editor = new GTTextEditor("sample1.java");
-		editor.show();
-		GTMenu.clickselectAll();
-		GTMenu.clickCopy();
-		editor.close();
+		copyFileIntoClipboard(file_sample1);
 
 		// Takes screenshot
 		packageExplorerView.findTree().collapse();
@@ -85,7 +80,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		// Edits the file
 		packageExplorerView.findTree().doubleClick(servletContentItem);
-		editor = new GTTextEditor("ServletManager.java");
+		GTTextEditor editor = new GTTextEditor("ServletManager.java");
 		editor.show();
 		editor.navigateTo(editor.cursorPosition().line + 1, 0);
 		GTMenu.clickPaste();
@@ -94,17 +89,11 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		// Adds org.eclipse.core.runtime
 		workspaceView.selectNode(webAppModel);
 		propertiesView.showTab("CADSE definition");
-		// TODO C'est l'un ou l'autre!
 		findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser(
 				"fr.imag.adele.cadse.core.impl");
 
 		// Copying imports into clipboard
-		packageExplorerView.findTree().doubleClick(file_import1);
-		editor = new GTTextEditor("imports1.java");
-		editor.show();
-		GTMenu.clickselectAll();
-		GTMenu.clickCopy();
-		editor.close();
+		copyFileIntoClipboard(file_import1);
 
 		// Edits the file
 		packageExplorerView.findTree().doubleClick(servletContentItem);
