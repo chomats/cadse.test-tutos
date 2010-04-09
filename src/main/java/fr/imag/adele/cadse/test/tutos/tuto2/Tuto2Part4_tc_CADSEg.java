@@ -8,7 +8,11 @@ import model.workspace.copycomposer.CopyComposerCST;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
+import fr.imag.adele.cadse.core.CadseRuntime;
+import fr.imag.adele.cadse.si.workspace.uiplatform.swt.dialog.CadseDialog;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
+import fr.imag.adele.fede.workspace.as.initmodel.ErrorWhenLoadedModel;
+import fr.imag.adele.fede.workspace.si.view.View;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
@@ -38,7 +42,20 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		propertiesView.capture("image096");
 
 		// Executed CADSEs
-		workspaceView.contextMenu(webAppModel, "Executed CADSEs").click();
+		bot.getDisplay().asyncExec(new Runnable() {
+			public void run() {
+				CadseRuntime[] sCadsesNameToLoad = CadseDialog.openDialog(false);
+				if (sCadsesNameToLoad != null && sCadsesNameToLoad.length != 0) {
+					try {
+						View.getInstance().getInitModel().executeCadses(sCadsesNameToLoad);
+					}
+					catch (ErrorWhenLoadedModel e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		// workspaceView.contextMenu(/* webAppModel */null, "Executed CADSEs").click();
 		shell = new GTCadseShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE);
 		shell.selectCadses("CopyComposer");
 		shell.capture("image097");
