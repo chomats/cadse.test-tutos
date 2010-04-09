@@ -8,10 +8,10 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses(value = { Tuto2Part1_tc_CADSEg.class })
-public class Tuto2Part1_ts_CADSEg {
+@SuiteClasses(value = { Tuto2Part1_tc_CADSEg.class, Tuto2Part2_tc_CADSEg.class, Tuto2Part3_tc_CADSEg.class,
+		Tuto2Part4_tc_CADSEg.class })
+public class Tuto2_ts_CADSEg {
 	public static Test suite() {
-		return new JUnit4TestAdapter(Tuto2Part1_ts_CADSEg.class);
+		return new JUnit4TestAdapter(Tuto2_ts_CADSEg.class);
 	}
-
 }
