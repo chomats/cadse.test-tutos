@@ -7,13 +7,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import fr.imag.adele.cadse.test.tutos.tuto2.Tuto2_ts_CADSEg;
-
 @RunWith(Suite.class)
-@SuiteClasses(value = { Tuto1_ts_CADSEg.class, Tuto2_ts_CADSEg.class })
-public class All_ts_CADSEg {
+@SuiteClasses(value = { Tuto1Part1_tc_CADSEg.class, Tuto1Part2_tc_CADSEg.class, Tuto1Part3_tc_CADSEg.class,
+		Tuto1Part4_tc_CADSEg.class })
+public class Tuto1_ts_CADSEg {
 	public static Test suite() {
-		return new JUnit4TestAdapter(All_ts_CADSEg.class);
+		return new JUnit4TestAdapter(Tuto1_ts_CADSEg.class);
 	}
-
 }
