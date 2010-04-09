@@ -1,6 +1,7 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import org.junit.Test;
@@ -13,7 +14,6 @@ import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gtmenu.GTMenuConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
-import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
 public class Tuto2Part1_tc_execution extends TutoTestCase {
 
@@ -36,32 +36,22 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		welcomeView.close();
 
 		/* HelloApp */
-		workspaceView.contextMenuNew("WebApp").click();
-		shell = new GTCadseShell("Create WebApp");
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("HelloApp");
-		shell.close();
+		createBasicItem(workspaceView, null, "WebApp", "HelloApp", new GTTreePath("HelloApp"));
 
 		/* test.HelloServlet */
 		workspaceView.contextMenuNew(new GTTreePath("HelloApp"), "Servlet").click();
-		shell = new GTCadseShell("WebComponent URL Definition");
+		shell = new GTCadseShell("Servlet");
 		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("test.HelloServlet");
-		shell.findTextWithLabel("relativeURL").typeText("hello");
-		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		shell.findTextWithLabel("className").typeText("helloServlet");
 		shell.findTextWithLabel("packageName").typeText("test");
+		shell.findTextWithLabel("relativeURL").typeText("hello");
 		shell.close();
 
-		/* JSP */
-		workspaceView.contextMenuNew(new GTTreePath("HelloApp"), "JSP").click();
-		shell = new GTCadseShell("WebComponent URL Definition");
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("HelloJSP");
-		shell.close();
+		/* JSP - ignore relativeURL */
+		createBasicItem(workspaceView, new GTTreePath("HelloApp"), "JSP", "HelloJSP", null);
 
 		/* MyLibrary */
-		workspaceView.contextMenuNew("Library").click();
-		shell = new GTCadseShell("Create Library");
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("MyLibrary");
-		shell.close();
+		createBasicItem(workspaceView, null, "Library", "MyLibrary", new GTTreePath("MyLibrary"));
 
 		/* Screenshot */
 		workspaceView.selectNode("HelloApp", "HelloJSP");
