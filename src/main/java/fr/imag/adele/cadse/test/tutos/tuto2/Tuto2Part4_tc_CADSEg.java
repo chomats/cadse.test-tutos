@@ -33,7 +33,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.selectNode(link_hasComp);
 		workspaceView.capture("image094");
 
-		propertiesView.showTab("Link");
+		propertiesView.showTab("LinkType");
 		findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_COMPOSITION_).check(true);
 		propertiesView.capture("image096");
 
@@ -77,16 +77,11 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		shell.close();
 
 		// copy code into clipboard
-		packageExplorerView.findTree().doubleClick(file_postCompose);
-		GTTextEditor editor = new GTTextEditor("sample-postCompose.java");
-		editor.show();
-		GTMenu.clickselectAll();
-		GTMenu.clickCopy();
-		editor.close();
+		copyFileIntoClipboard(file_postCompose);
 
 		// copy composer implementation
 		packageExplorerView.findTree().doubleClick(webappManagerClass);
-		editor = new GTTextEditor("WebAppManager.java");
+		GTTextEditor editor = new GTTextEditor("WebAppManager.java");
 		editor.find("postCompose(");
 		editor.find("}");
 		GTMenu.clickPaste();
