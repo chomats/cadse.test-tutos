@@ -11,7 +11,6 @@ import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
-import fr.imag.adele.graphictests.gtmenu.GTMenuConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
 
@@ -42,7 +41,7 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		workspaceView.contextMenuNew(new GTTreePath("HelloApp"), "Servlet").click();
 		shell = new GTCadseShell("Servlet");
 		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("test.HelloServlet");
-		shell.findTextWithLabel("className").typeText("helloServlet");
+		shell.findTextWithLabel("className").typeText("HelloServlet");
 		shell.findTextWithLabel("packageName").typeText("test");
 		shell.findTextWithLabel("relativeURL").typeText("hello");
 		shell.close();
@@ -60,7 +59,7 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 
 		/* Window opening */
 		GTMenu.clickShowOtherView();
-		GTShell shell = new GTShell(GTMenuConstants.SHOW_VIEW_MENU_ITEM);
+		GTShell shell = new GTShell(GTMenu.SHOW_VIEW_MENU_ITEM);
 		shell.selectNode("WebAppModel", "WebAppList");
 		shell.capture("image036");
 		shell.close();

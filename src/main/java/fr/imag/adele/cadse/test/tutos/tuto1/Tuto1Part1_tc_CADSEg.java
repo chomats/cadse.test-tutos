@@ -26,6 +26,7 @@ import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
+import fr.imag.adele.graphictests.test.GTTestParameters;
 
 /**
  * Performs the official simple tutorial
@@ -67,7 +68,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebAppModel");
 		findCadseField(shell, CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.webapp");
 		shell.capture("image030");
-		shell.close();
+		shell.close(GTTestParameters.TIMEOUT);
 
 		// Querying model
 		workspaceView.selectNode(webAppModel, true);

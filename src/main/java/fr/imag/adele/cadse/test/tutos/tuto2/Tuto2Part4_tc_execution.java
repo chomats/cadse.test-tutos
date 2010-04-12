@@ -5,7 +5,6 @@ import org.junit.Test;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
-import fr.imag.adele.graphictests.gtmenu.GTMenuConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 import fr.imag.adele.graphictests.gtworkbench_part.GTView;
@@ -28,7 +27,7 @@ public class Tuto2Part4_tc_execution extends TutoTestCase {
 		editor.capture("image124");
 
 		GTMenu.clickShowOtherView();
-		shell = new GTCadseShell(GTMenuConstants.SHOW_VIEW_MENU_ITEM);
+		shell = new GTCadseShell(GTMenu.SHOW_VIEW_MENU_ITEM);
 		shell.selectNode("WebApp", "Example Webapp");
 		shell.capture("image126");
 		shell.close();

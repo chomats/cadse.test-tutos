@@ -8,7 +8,6 @@ import org.junit.Test;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
-import fr.imag.adele.graphictests.gtmenu.GTMenuConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 
@@ -31,7 +30,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 
 		// New Class
 		packageExplorerView.selectNode(webapp_package);
-		GTMenu.clickItem(GTMenuConstants.FILE_MENU, "New", "Class");
+		GTMenu.clickItem(GTMenu.FILE_MENU, "New", "Class");
 		shell = new GTCadseShell("New Java Class");
 		shell.findTextWithLabel("Name:").typeText("WebAppServletSynchro");
 		shell.close();
@@ -86,7 +85,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 
 		// Init() method
 		packageExplorerView.selectNode(servletManagerClass);
-		GTMenu.clickItem(GTMenuConstants.SOURCE_MENU, "Override/Implement Methods...");
+		GTMenu.clickItem(GTMenu.SOURCE_MENU, "Override/Implement Methods...");
 		shell = new GTCadseShell("Override/Implement Methods");
 		shell.findTree().checkNode(new GTTreePath("InitAction", "init()"), true);
 		shell.close();
