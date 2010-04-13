@@ -177,13 +177,12 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 
 		shell = new GTCadseShell(GTEclipseConstants.RUN_SHELL);
 		shell.selectNode("Eclipse Application", "run-cadse-WebAppModel");
-		shell.waitUntilButtonEnabled("Run", true);
-
+		shell.waitUntilButtonEnabled("Run", GTTestParameters.TIMEOUT);
 		Matcher matcher = allOf(widgetOfType(Combo.class), inGroup("Program to Run"));
 		SWTBotCombo combo = new SWTBotCombo((Combo) bot.widget(matcher));
 		combo.setText("org.eclipse.platform.ide");
 		shell.findButton("Apply").click();
-		shell.waitUntilButtonEnabled("Run", true);
+		shell.waitUntilButtonEnabled("Run", GTTestParameters.TIMEOUT);
 
 		shell.capture("image076");
 		shell.close();
