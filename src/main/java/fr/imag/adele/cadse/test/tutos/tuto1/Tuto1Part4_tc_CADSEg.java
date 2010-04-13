@@ -9,6 +9,7 @@ import org.junit.Test;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.test.GTTestParameters;
 
 /**
  * Performs the official simple tutorial
@@ -40,6 +41,6 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 
 	@Test
 	public void test_zp15_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, webAppModel);
+		checkCompilationErrors(workspaceView, webAppModel, GTTestParameters.TIMEOUT);
 	}
 }
