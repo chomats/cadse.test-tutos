@@ -20,6 +20,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
+import fr.imag.adele.graphictests.test.GTTestParameters;
 
 public class Tuto2Part3_tc_execution extends TutoTestCase {
 
@@ -85,7 +86,7 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
 		shell.capture("image082");
 		shell.close();
 
-		checkCompilationErrors(workspaceView, new GTTreePath("HelloApp", "test.HelloServlet"));
+		checkCompilationErrors(workspaceView, new GTTreePath("HelloApp", "test.HelloServlet"), GTTestParameters.TIMEOUT);
 		bot.sleep(2000); // Waits until errors disappear.
 		packageExplorerView.show();
 		packageExplorerView.capture("image084");

@@ -15,6 +15,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
+import fr.imag.adele.graphictests.test.GTTestParameters;
 
 public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 
@@ -128,6 +129,6 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 
 	@Test
 	public void test_zp12_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, webAppModel);
+		checkCompilationErrors(workspaceView, webAppModel, GTTestParameters.TIMEOUT);
 	}
 }
