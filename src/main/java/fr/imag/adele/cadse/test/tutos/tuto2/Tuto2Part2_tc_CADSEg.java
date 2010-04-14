@@ -15,7 +15,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 /**
  * Performs the official simple tutorial
@@ -31,6 +31,8 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_content_customization() throws Exception {
 
+		/* Assert tree has been displayed */
+		workspaceView.selectNode(webAppModel, GTPreferences.TIMEOUT);
 		workspaceView.findTree().collapse();
 
 		workspaceView.selectNode(webAppModel, true);
@@ -42,7 +44,11 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		propertiesView.capture("image044");
 
 		// extends class check box
-		workspaceView.selectNode(content_servlet);
+		// FIXME : walk around... should be removed with SWTbot update see bug #285984
+		workspaceView.selectNode(mapping, GTPreferences.TIMEOUT);
+		workspaceView.selectNode(mapping_servlet, GTPreferences.TIMEOUT);
+
+		workspaceView.selectNode(content_servlet, GTPreferences.TIMEOUT);
 		workspaceView.capture("image048");
 		propertiesView.showTab("JavaProjectContentModel");
 		findCadseField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
@@ -107,6 +113,6 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 	@Test
 	public void test_zp22_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, webAppModel, GTTestParameters.TIMEOUT);
+		checkCompilationErrors(workspaceView, webAppModel, GTPreferences.TIMEOUT);
 	}
 }

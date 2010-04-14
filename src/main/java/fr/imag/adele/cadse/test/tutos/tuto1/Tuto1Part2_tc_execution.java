@@ -10,6 +10,7 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class Tuto1Part2_tc_execution extends TutoTestCase {
 
@@ -19,7 +20,18 @@ public class Tuto1Part2_tc_execution extends TutoTestCase {
 	public void test_App() throws Exception {
 
 		/* Hello2App */
-		createBasicItem(workspaceView, null, "WebApp", "Hello2App", new GTTreePath("Hello2App"));
+		try {
+			createBasicItem(workspaceView, null, "WebApp", "Hello2App", new GTTreePath("Hello2App"),
+					GTPreferences.TIMEOUT);
+		}
+		catch (Exception e) {
+			System.out
+					.println("FIXME BLOQUE! regarder si le nom de l'instance est dans la boite de dialogue Tester le refresh sur la workspace view!");
+			while (true) {
+				// FIXME to be removed
+				bot.sleep(1000);
+			}
+		}
 
 		/* hello2Servlet */
 		workspaceView.contextMenuNew(new GTTreePath("Hello2App"), "Servlet").click();

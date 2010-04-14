@@ -12,6 +12,7 @@ import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class Tuto1Part3_tc_execution extends TutoTestCase {
 
@@ -21,7 +22,9 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 	public void test_delete() throws Exception {
 
 		/* Delete HelloApp */
-		workspaceView.contextMenu(new GTTreePath("HelloApp"), "Delete HelloApp").click();
+		GTTreePath node = new GTTreePath("HelloApp"); /* Assert tree has been displayed */
+		workspaceView.selectNode(node, GTPreferences.TIMEOUT);
+		workspaceView.contextMenu(node, "Delete HelloApp").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.capture("image138");
 		shell.close();

@@ -15,7 +15,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 
@@ -29,6 +29,8 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	 */
 	@Test
 	public void test_mapping_name_constraint() throws Exception {
+
+		workspaceView.selectNode(webAppModel, GTPreferences.TIMEOUT); /* Waits until tree is displayed */
 		workspaceView.findTree().collapse();
 		workspaceView.selectNode(it_webApp);
 		workspaceView.capture("image086");
@@ -53,7 +55,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		packageExplorerView.contextMenu(project_package, GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
 		shell = new GTCadseShell("Import");
-		shell.selectNode(importArchiveFile);
+		shell.selectNode(importArchiveFile, GTPreferences.TIMEOUT);
 		shell.capture("image096");
 		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 
@@ -129,6 +131,6 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 
 	@Test
 	public void test_zp12_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, webAppModel, GTTestParameters.TIMEOUT);
+		checkCompilationErrors(workspaceView, webAppModel, GTPreferences.TIMEOUT);
 	}
 }

@@ -13,6 +13,7 @@ import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class Tuto2Part1_tc_execution extends TutoTestCase {
 
@@ -22,7 +23,7 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 	public void test_selection() throws Exception {
 
 		// cadses selection
-		shell = new GTCadseShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE);
+		shell = new GTCadseShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE, GTPreferences.TIMEOUT);
 		shell.selectCadses("Cadse Model.Workspace.WebAppModel");
 		shell.capture("image030");
 		shell.close();
@@ -35,7 +36,17 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		welcomeView.close();
 
 		/* HelloApp */
-		createBasicItem(workspaceView, null, "WebApp", "HelloApp", new GTTreePath("HelloApp"));
+		try {
+			createBasicItem(workspaceView, null, "WebApp", "HelloApp", new GTTreePath("HelloApp"),
+					GTPreferences.TIMEOUT);
+		}
+		catch (Exception e) {
+			// FIXME !!! For debug purpose
+			System.out.println("have a look!");
+			while (true) {
+				bot.sleep(2000);
+			}
+		}
 
 		/* test.HelloServlet */
 		workspaceView.contextMenuNew(new GTTreePath("HelloApp"), "Servlet").click();

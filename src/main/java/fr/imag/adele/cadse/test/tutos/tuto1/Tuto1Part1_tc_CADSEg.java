@@ -26,7 +26,7 @@ import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 /**
  * Performs the official simple tutorial
@@ -44,7 +44,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_selection() throws Exception {
 
-		shell = new GTCadseShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE);
+		shell = new GTCadseShell(GTCadseRTConstants.CADSE_SELECTOR_SHELL_TITLE, GTPreferences.TIMEOUT);
 		shell.selectCadses(GTCadseRTConstants.CADSEG_MODEL);
 		shell.capture("image020");
 		shell.close();
@@ -68,7 +68,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebAppModel");
 		findCadseField(shell, CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.webapp");
 		shell.capture("image030");
-		shell.close(GTTestParameters.TIMEOUT);
+		shell.close(GTPreferences.TIMEOUT);
 
 		// Querying model
 		workspaceView.selectNode(webAppModel, true);
@@ -177,12 +177,12 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 
 		shell = new GTCadseShell(GTEclipseConstants.RUN_SHELL);
 		shell.selectNode("Eclipse Application", "run-cadse-WebAppModel");
-		shell.waitUntilButtonEnabled("Run", GTTestParameters.TIMEOUT);
+		shell.waitUntilButtonEnabled("Run", GTPreferences.TIMEOUT);
 		Matcher matcher = allOf(widgetOfType(Combo.class), inGroup("Program to Run"));
 		SWTBotCombo combo = new SWTBotCombo((Combo) bot.widget(matcher));
 		combo.setText("org.eclipse.platform.ide");
 		shell.findButton("Apply").click();
-		shell.waitUntilButtonEnabled("Run", GTTestParameters.TIMEOUT);
+		shell.waitUntilButtonEnabled("Run", GTPreferences.TIMEOUT);
 
 		shell.capture("image076");
 		shell.close();
@@ -203,6 +203,6 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 
 	@Test
 	public void test_zp11_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, webAppModel, GTTestParameters.TIMEOUT);
+		checkCompilationErrors(workspaceView, webAppModel, GTPreferences.TIMEOUT);
 	}
 }
