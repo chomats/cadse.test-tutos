@@ -11,6 +11,7 @@ import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class Tuto2Part2_tc_execution extends TutoTestCase {
 
@@ -19,10 +20,11 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 	@Test
 	public void test_run() throws Exception {
 
+		/* Assert tree has been displayed */
 		workspaceView.show();
+		workspaceView.selectNode(new GTTreePath("HelloApp"), GTPreferences.TIMEOUT);
 
 		/* Delete test.HelloServlet Servlet */
-		// FIXME tous les item ont disparu de la workspace view...
 		deleteBasicItem(workspaceView, new GTTreePath("HelloApp", "test.HelloServlet"));
 
 		/* New Servlet */
@@ -37,7 +39,7 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 		/* edition */
 		packageExplorerView.show();
 		GTTreePath path = new GTTreePath("HelloApp.test.HelloServlet", "sources", "test", "HelloServlet.java",
-				"helloServlet");
+				"HelloServlet");
 		packageExplorerView.findTree().doubleClick(path);
 		packageExplorerView.capture("image060");
 		GTTextEditor editor = new GTTextEditor("HelloServlet.java");

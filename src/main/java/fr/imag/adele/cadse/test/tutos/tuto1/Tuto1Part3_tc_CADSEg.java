@@ -12,7 +12,7 @@ import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.gtworkbench_part.GTShell;
-import fr.imag.adele.graphictests.test.GTTestParameters;
+import fr.imag.adele.graphictests.test.GTPreferences;
 
 /**
  * Performs the official simple tutorial
@@ -28,6 +28,7 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_content() throws Exception {
 
+		workspaceView.selectNode(mapping_webApp, GTPreferences.TIMEOUT); /* Assert tree has been displayed */
 		workspaceView.findTree().collapse();
 		workspaceView.selectNode(mapping_webApp);
 		workspaceView.capture("image132");
@@ -52,6 +53,6 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 
 	@Test
 	public void test_zp14_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, webAppModel, GTTestParameters.TIMEOUT);
+		checkCompilationErrors(workspaceView, webAppModel, GTPreferences.TIMEOUT);
 	}
 }
