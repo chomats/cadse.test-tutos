@@ -15,6 +15,7 @@ public class Tuto2Part4_tc_execution extends TutoTestCase {
 
 	@Test
 	public void test_run() throws Exception {
+
 		packageExplorerView.contextMenu(new GTTreePath("HelloApp"), "Refresh").click();
 		packageExplorerView.selectNode("HelloApp", "dist", "HelloApp.war");
 		packageExplorerView.selectNode("HelloApp", "WEB-INF", "classes", "test", "HelloServlet.class");

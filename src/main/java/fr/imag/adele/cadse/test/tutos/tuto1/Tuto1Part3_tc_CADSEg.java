@@ -28,23 +28,25 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_content() throws Exception {
 
-		workspaceView.selectNode(mapping_webApp, GTPreferences.TIMEOUT); /* Assert tree has been displayed */
+		/* Assert tree has been displayed */
+		workspaceView.selectNode(mappingWebApp, GTPreferences.TIMEOUT);
 		workspaceView.findTree().collapse();
-		workspaceView.selectNode(mapping_webApp);
+
+		workspaceView.selectNode(mappingWebApp);
 		workspaceView.capture("image132");
 
-		workspaceView.contextMenuNew(mapping_webApp, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
+		workspaceView.contextMenuNew(mappingWebApp, CadseGCST.JAVA_PROJECT_CONTENT_MODEL).click();
 		shell = new GTCadseShell(CadseGCST.JAVA_PROJECT_CONTENT_MODEL);
 		findCadseField(shell, CadseGCST.JAVA_PROJECT_CONTENT_MODEL_at_HAS_SOURCE_FOLDER_).check(true);
 		shell.capture("image134");
 		shell.close();
-		workspaceView.selectNode(content_webApp);
+		workspaceView.selectNode(contentWebApp);
 
-		createJavaProjectContentModel(workspaceView, mapping_library, KeyValue.jpcmSrcFolderKv);
-		createJavaProjectContentModel(workspaceView, mapping_servlet, KeyValue.jpcmSrcFolderKv);
+		createJavaProjectContentModel(workspaceView, mappingLibrary, KeyValue.jpcmSrcFolderKv);
+		createJavaProjectContentModel(workspaceView, mappingServlet, KeyValue.jpcmSrcFolderKv);
 		KeyValue kv = new KeyValue(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/${#short-name}.jsp");
 
-		workspaceView.contextMenuNew(mapping_jsp, "FileContentModel").click();
+		workspaceView.contextMenuNew(mappingJsp, "FileContentModel").click();
 		GTShell shell = new GTShell("FileContentModel");
 		kv.setValue(shell);
 		shell.capture("image135");

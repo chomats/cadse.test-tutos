@@ -30,9 +30,11 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_mapping_name_constraint() throws Exception {
 
-		workspaceView.selectNode(webAppModel, GTPreferences.TIMEOUT); /* Waits until tree is displayed */
+		/* Assert tree has been displayed */
+		workspaceView.selectNode(webAppModel, GTPreferences.TIMEOUT);
 		workspaceView.findTree().collapse();
-		workspaceView.selectNode(it_webApp);
+
+		workspaceView.selectNode(itWebApp);
 		workspaceView.capture("image086");
 		propertiesView.showTab(CADSEG_UICST.INSTANCE_NAME_CONTROL_PAGE_TITLE);
 		findCadseField(propertiesView, CadseGCST.MANAGER_at_VALID_PATTERN_ID_).typeText(".*App");
@@ -50,9 +52,9 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_icons() throws Exception {
 
-		packageExplorerView.selectNode(project_package, true);
+		packageExplorerView.selectNode(projectPackage, true);
 		packageExplorerView.capture("image094");
-		packageExplorerView.contextMenu(project_package, GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
+		packageExplorerView.contextMenu(projectPackage, GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
 		shell = new GTCadseShell("Import");
 		shell.selectNode(importArchiveFile, GTPreferences.TIMEOUT);
@@ -67,25 +69,25 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		shell.findCheckBox("Overwrite existing resources without warning").select();
 		shell.close();
 
-		packageExplorerView.selectNode(project_resources, true);
+		packageExplorerView.selectNode(projectResources, true);
 		packageExplorerView.capture("image100");
 
 		workspaceView.show();
 
-		workspaceView.selectNode(it_webApp);
+		workspaceView.selectNode(itWebApp);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		final String project = "Model.Workspace.WebAppModel";
 		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "WarFile.gif");
 
-		workspaceView.selectNode(it_jsp);
+		workspaceView.selectNode(itJsp);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "JSP.gif");
 
-		workspaceView.selectNode(it_library);
+		workspaceView.selectNode(itLibrary);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "Library.gif");
 
-		workspaceView.selectNode(it_servlet);
+		workspaceView.selectNode(itServlet);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "Servlet.gif");
 	}
@@ -100,7 +102,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	public void test_pages_configuration() throws Exception {
 
 		workspaceView.findTree().collapse();
-		workspaceView.selectNode(attr_className);
+		workspaceView.selectNode(attrClassName);
 		workspaceView.capture("image106");
 		propertiesView.showTab("String");
 		findCadseField(propertiesView, CadseGCST.ITEM_at_NAME).scroll();
@@ -108,22 +110,22 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		KeyValue.simpKv.setValue(propertiesView);
 		propertiesView.capture("image108");
 
-		workspaceView.selectNode(attr_packageName);
+		workspaceView.selectNode(attrPackageName);
 		propertiesView.showTab("String");
 		KeyValue.sicpKv.setValue(propertiesView);
 		KeyValue.simpKv.setValue(propertiesView);
 
-		workspaceView.selectNode(link_hasComp);
+		workspaceView.selectNode(linkHasComp);
 		propertiesView.showTab("LinkType");
 		KeyValue.notSicpKv.setValue(propertiesView);
 		KeyValue.simpKv.setValue(propertiesView);
 
-		workspaceView.selectNode(attr_relativeUrl);
+		workspaceView.selectNode(attrRelativeUrl);
 		propertiesView.showTab("String");
 		KeyValue.sicpKv.setValue(propertiesView);
 		KeyValue.simpKv.setValue(propertiesView);
 
-		workspaceView.selectNode(link_uses);
+		workspaceView.selectNode(linkUses);
 		propertiesView.showTab("LinkType");
 		KeyValue.notSicpKv.setValue(propertiesView);
 		KeyValue.simpKv.setValue(propertiesView);

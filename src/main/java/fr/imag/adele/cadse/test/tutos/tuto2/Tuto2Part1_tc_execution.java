@@ -41,10 +41,10 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 					GTPreferences.TIMEOUT);
 		}
 		catch (Exception e) {
-			// FIXME !!! For debug purpose
-			System.out.println("have a look!");
+			// FIXME has to be updated soon!
+			System.out.println("FIXME : (Tuto2Part1 Execution)");
 			while (true) {
-				bot.sleep(2000);
+				bot.sleep(1000);
 			}
 		}
 

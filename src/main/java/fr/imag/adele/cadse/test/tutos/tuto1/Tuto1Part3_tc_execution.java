@@ -21,9 +21,11 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 	@Test
 	public void test_delete() throws Exception {
 
-		/* Delete HelloApp */
-		GTTreePath node = new GTTreePath("HelloApp"); /* Assert tree has been displayed */
+		/* Assert tree has been displayed */
+		GTTreePath node = new GTTreePath("HelloApp");
 		workspaceView.selectNode(node, GTPreferences.TIMEOUT);
+
+		/* Delete HelloApp */
 		workspaceView.contextMenu(node, "Delete HelloApp").click();
 		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
 		shell.capture("image138");
