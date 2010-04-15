@@ -45,10 +45,18 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		// extends class check box
 		// FIXME : walk around... should be removed with SWTbot update see bug #285984
-		workspaceView.selectNode(mapping, GTPreferences.TIMEOUT);
-		workspaceView.selectNode(mapping_servlet, GTPreferences.TIMEOUT);
-
-		workspaceView.selectNode(content_servlet, GTPreferences.TIMEOUT);
+		workspaceView.selectNode(mapping, true, GTPreferences.TIMEOUT);
+		workspaceView.selectNode(mappingServlet, true, GTPreferences.TIMEOUT);
+		try {
+			workspaceView.selectNode(contentServlet, GTPreferences.TIMEOUT);
+		}
+		catch (Exception e) {
+			// FIXME has to be updated soon!
+			System.out.println("FIXME : (Tuto2Part2 CADSEg) le node content-item n'existe pas. ");
+			while (true) {
+				bot.sleep(5000);
+			}
+		}
 		workspaceView.capture("image048");
 		propertiesView.showTab("JavaProjectContentModel");
 		findCadseField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
@@ -62,7 +70,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_manager_structure() throws Exception {
 
-		packageExplorerView.selectNode(project_package, true);
+		packageExplorerView.selectNode(projectPackage, true);
 		packageExplorerView.contextMenu(null, GTCadseRTConstants.CONTEXTMENU_IMPORT).click();
 
 		shell = new GTCadseShell("Import");
@@ -76,11 +84,15 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		shell.close();
 
 		// Copying content into clipboard
-		copyFileIntoClipboard(file_sample1);
+		copyFileIntoClipboard(fileSample1);
 
 		// Takes screenshot
 		packageExplorerView.findTree().collapse();
 		packageExplorerView.maximize(); // Toggle maximize
+
+		packageExplorerView.selectNode(projectPackage, true);
+		packageExplorerView.selectNode(projectSources, true);
+		packageExplorerView.selectNode(servletManagerClass, true);
 		packageExplorerView.selectNode(servletContentItem, true);
 		packageExplorerView.capture("image058");
 		packageExplorerView.maximize(); // Toggle maximize
@@ -100,7 +112,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 				"fr.imag.adele.cadse.core.impl");
 
 		// Copying imports into clipboard
-		copyFileIntoClipboard(file_import1);
+		copyFileIntoClipboard(fileImport1);
 
 		// Edits the file
 		packageExplorerView.findTree().doubleClick(servletContentItem);

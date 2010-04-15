@@ -10,6 +10,7 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
+import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
 /**
@@ -27,15 +28,15 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 	public void test_item_creation_process_customization() throws Exception {
 
 		// Copying content into clipboard
-		copyFileIntoClipboard(file_sample2);
+		copyFileIntoClipboard(fileSample2);
 
 		// New Class
-		packageExplorerView.selectNode(webapp_package);
+		packageExplorerView.selectNode(webappPackage);
 		GTMenu.clickItem(GTMenu.FILE_MENU, "New", "Class");
 		shell = new GTCadseShell("New Java Class");
 		shell.findTextWithLabel("Name:").typeText("WebAppServletSynchro");
 		shell.close();
-		packageExplorerView.findTree().doubleClick(webapp_servletSynchro);
+		packageExplorerView.findTree().doubleClick(webappServletSynchro);
 
 		// Paste
 		GTTextEditor editor = new GTTextEditor("WebAppServletSynchro.java");
@@ -54,11 +55,13 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		editor.findSection("Imported Packages").findButton("Add...").click();
 		shell = new GTCadseShell("Package Selection");
 		shell.findText().typeText("fr.imag.adele.cadse.core.transaction");
+		shell.waitUntilButtonEnabled(GTEclipseConstants.OK_BUTTON, GTPreferences.TIMEOUT);
 		shell.close();
 
 		editor.findSection("Imported Packages").findButton("Add...").click();
 		shell = new GTCadseShell("Package Selection");
 		shell.findText().typeText("fr.imag.adele.cadse.core.transaction.delta");
+		shell.waitUntilButtonEnabled(GTEclipseConstants.OK_BUTTON, GTPreferences.TIMEOUT);
 		shell.close();
 
 		editor.save();
@@ -76,13 +79,13 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		editor.capture("image065");
 
 		// Quickfix
-		copyFileIntoClipboard(file_import2);
+		copyFileIntoClipboard(fileImport2);
 		editor.navigateTo(2, 0);
 		GTMenu.clickPaste();
 		editor.save();
 
 		// Copying content into clipboard
-		copyFileIntoClipboard(file_initMethodBody);
+		copyFileIntoClipboard(fileInitMethodBody);
 
 		// Init() method
 		packageExplorerView.selectNode(servletManagerClass);
@@ -98,7 +101,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		editor.save();
 
 		// Quickfix
-		copyFileIntoClipboard(file_initMethodImport);
+		copyFileIntoClipboard(fileInitMethodImport);
 		editor.navigateTo(2, 0);
 		GTMenu.clickPaste();
 		editor.save();

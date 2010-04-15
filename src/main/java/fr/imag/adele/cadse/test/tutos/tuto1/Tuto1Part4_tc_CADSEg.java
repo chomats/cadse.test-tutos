@@ -25,10 +25,11 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_item_content_dependency() throws Exception {
 
-		workspaceView.selectNode(link_uses, GTPreferences.TIMEOUT); /* Assert tree has been displayed */
+		/* Assert tree has been displayed */
+		workspaceView.selectNode(linkUses, GTPreferences.TIMEOUT);
 		workspaceView.findTree().collapse();
 
-		workspaceView.selectNode(link_uses);
+		workspaceView.selectNode(linkUses);
 		workspaceView.capture("image144");
 
 		propertiesView.showTab("LinkType");

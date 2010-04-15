@@ -25,10 +25,10 @@ public class Tuto1Part2_tc_execution extends TutoTestCase {
 					GTPreferences.TIMEOUT);
 		}
 		catch (Exception e) {
+			// FIXME has to be updated soon!
 			System.out
-					.println("FIXME BLOQUE! regarder si le nom de l'instance est dans la boite de dialogue Tester le refresh sur la workspace view!");
+					.println("FIXME : (Tuto1Part2 Execution) Pour que la vue se rafraichisse, il faut ajouter un élément... (même le refresh ne marche pas)");
 			while (true) {
-				// FIXME to be removed
 				bot.sleep(1000);
 			}
 		}

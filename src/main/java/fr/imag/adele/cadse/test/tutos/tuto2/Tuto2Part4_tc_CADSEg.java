@@ -33,9 +33,12 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 	@Test
 	public void test_build_model_definition() throws Exception {
 
-		// Composition link
+		/* Assert tree has been displayed */
+		workspaceView.selectNode(linkHasComp, GTPreferences.TIMEOUT);
 		workspaceView.findTree().collapse();
-		workspaceView.selectNode(link_hasComp);
+
+		// Composition link
+		workspaceView.selectNode(linkHasComp);
 		workspaceView.capture("image094");
 
 		propertiesView.showTab("LinkType");
@@ -63,8 +66,8 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		shell.close();
 
 		// JavaRefExporter
-		workspaceView.contextMenuNew(mapping_servlet, CopyComposerCST.JAVA_REF_EXPORTER).click();
-		shell = new GTCadseShell(/* CopyComposerCST.JAVA_REF_EXPORTER */"");
+		workspaceView.contextMenuNew(mappingServlet, CopyComposerCST.JAVA_REF_EXPORTER).click();
+		shell = new GTCadseShell(CopyComposerCST.JAVA_REF_EXPORTER);
 		shell.capture("image102");
 		shell.close();
 
@@ -89,13 +92,14 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 
 		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("GenWarComposer");
 		findCadseField(shell, CopyComposerCST.COPY_INTO_FOLDER_COMPOSER_at_TARGET_FOLDER_).typeText("WEB-INF/classes");
+		// FIXME L'attribut ci-dessous n'apparait plus dans la page de création.
 		findCadseField(shell, CadseGCST.COMPOSER_at_TYPES_).addBrowser("ref-classes");
 		findCadseField(shell, CadseGCST.RUNTIME_ITEM_at_EXTENDS_CLASS_).check(true);
 		shell.capture("image112");
 		shell.close();
 
 		// copy code into clipboard
-		copyFileIntoClipboard(file_postCompose);
+		copyFileIntoClipboard(filePostCompose);
 
 		// copy composer implementation
 		packageExplorerView.findTree().doubleClick(webappManagerClass);

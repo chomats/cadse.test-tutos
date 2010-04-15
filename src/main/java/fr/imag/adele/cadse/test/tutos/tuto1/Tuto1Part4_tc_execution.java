@@ -12,9 +12,11 @@ public class Tuto1Part4_tc_execution extends TutoTestCase {
 	@Test
 	public void test_feature() throws Exception {
 
+		// FIXME has to be updated soon!
+
 		// /* Test init */
 		// workspaceView.show();
-		// // Assert tree has been displayed
+		// /* Assert tree has been displayed */
 		// workspaceView.selectNode(new GTTreePath("ServletAPI"), GTTestParameters.TIMEOUT);
 		//
 		// /* ServletAPI deletion */

@@ -27,21 +27,21 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 	public void test_view() throws Exception {
 
 		/* Assert tree has been displayed */
-		workspaceView.selectNode(view_model, GTPreferences.TIMEOUT);
+		workspaceView.selectNode(viewModel, GTPreferences.TIMEOUT);
 
 		workspaceView.findTree().collapse();
-		workspaceView.selectNode(view_model);
+		workspaceView.selectNode(viewModel);
 		workspaceView.capture("image014");
 
 		/* Creates a new view */
-		workspaceView.contextMenuNew(view_model, CadseGCST.VIEW).click();
+		workspaceView.contextMenuNew(viewModel, CadseGCST.VIEW).click();
 		shell = new GTCadseShell(CadseGCST.VIEW);
 		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebAppList");
 		shell.capture("image016");
 		shell.close();
 
 		/* View configuration */
-		workspaceView.selectNode(vm_webAppList);
+		workspaceView.selectNode(vmWebAppList);
 		workspaceView.capture("image018");
 
 		propertiesView.showTab("View");
@@ -56,7 +56,7 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 
 		/* Can create item and Can create link check boxes */
 		workspaceView.findTree().collapse();
-		workspaceView.selectNode(vi_link_hasComp);
+		workspaceView.selectNode(viLinkHasComp);
 		workspaceView.capture("image024");
 		propertiesView.showTab("View Link");
 
