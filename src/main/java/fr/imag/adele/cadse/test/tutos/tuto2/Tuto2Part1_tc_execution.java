@@ -42,7 +42,7 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		}
 		catch (Exception e) {
 			// FIXME has to be updated soon!
-			System.out.println("FIXME : (Tuto2Part1 Execution)");
+			System.out.println("FIXME : (Tuto2Part1 Execution) fenêtre executed CADSEs ouverte");
 			while (true) {
 				bot.sleep(1000);
 			}
