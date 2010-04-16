@@ -51,6 +51,7 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 		kv.setValue(shell);
 		shell.capture("image135");
 		shell.close();
+		workspaceView.selectNode(contentJsp);
 	}
 
 	@Test
