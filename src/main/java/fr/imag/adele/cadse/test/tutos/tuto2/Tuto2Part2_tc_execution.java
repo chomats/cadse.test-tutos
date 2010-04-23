@@ -22,17 +22,7 @@ public class Tuto2Part2_tc_execution extends TutoTestCase {
 
 		/* Assert tree has been displayed */
 		workspaceView.show();
-		try {
-			workspaceView.selectNode(new GTTreePath("HelloApp"), GTPreferences.TIMEOUT);
-		}
-		catch (Exception e) {
-			// FIXME has to be updated soon!
-			System.out
-					.println("FIXME : (Tuto2Part2 Execution) Il n'y a rien d'affiché dans la workspace view, ou la fenêtre executed cadses est ouverte.");
-			while (true) {
-				bot.sleep(5000);
-			}
-		}
+		workspaceView.selectNode(new GTTreePath("HelloApp"), GTPreferences.TIMEOUT);
 
 		/* Delete test.HelloServlet Servlet */
 		deleteBasicItem(workspaceView, new GTTreePath("HelloApp", "test.HelloServlet"), GTPreferences.TIMEOUT);

@@ -36,17 +36,7 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		welcomeView.close();
 
 		/* HelloApp */
-		try {
-			createBasicItem(workspaceView, null, "WebApp", "HelloApp", new GTTreePath("HelloApp"),
-					GTPreferences.TIMEOUT);
-		}
-		catch (Exception e) {
-			// FIXME has to be updated soon!
-			System.out.println("FIXME : (Tuto2Part1 Execution) fenêtre executed CADSEs ouverte");
-			while (true) {
-				bot.sleep(1000);
-			}
-		}
+		createBasicItem(workspaceView, null, "WebApp", "HelloApp", new GTTreePath("HelloApp"), GTPreferences.TIMEOUT);
 
 		/* test.HelloServlet */
 		workspaceView.contextMenuNew(new GTTreePath("HelloApp"), "Servlet").click();
