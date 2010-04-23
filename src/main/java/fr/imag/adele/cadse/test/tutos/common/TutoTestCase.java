@@ -71,6 +71,7 @@ public abstract class TutoTestCase extends GTCadseTestCase {
 	protected GTTreePath fileImport1 = projectResources.concat("imports1.java");
 	protected GTTreePath fileImport2 = projectResources.concat("imports2.java");
 	protected GTTreePath filePostCompose = projectResources.concat("sample-postCompose.java");
+	protected GTTreePath importsPostCompose = projectResources.concat("importsPostCompose.java");
 	protected GTTreePath fileInitMethod = projectResources.concat("initMethod.java");
 	protected GTTreePath fileInitMethodImport = projectResources.concat("initMethodImport.java");
 

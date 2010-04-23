@@ -75,7 +75,7 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		editor.find("{");
 		editor.typeText("implements InitAction {");
 		editor.save();
-		editor.capture("image065");
+		editor.capture("image070");
 
 		// Quickfix
 		copyFileIntoClipboard(fileImport2);

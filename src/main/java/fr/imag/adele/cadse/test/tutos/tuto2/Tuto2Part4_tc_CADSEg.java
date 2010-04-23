@@ -93,7 +93,6 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 
 		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("GenWarComposer");
 		findCadseField(shell, CopyComposerCST.COPY_INTO_FOLDER_COMPOSER_at_TARGET_FOLDER_).typeText("WEB-INF/classes");
-		// FIXME L'attribut ci-dessous n'apparait plus dans la page de création.
 		findCadseField(shell, CadseGCST.COMPOSER_at_TYPES_).addValue("ref-classes");
 		findCadseField(shell, CadseGCST.RUNTIME_ITEM_at_EXTENDS_CLASS_).check(true);
 		shell.capture("image112");
@@ -110,27 +109,12 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		GTMenu.clickPaste();
 		editor.save();
 
-		// Quick fixes
+		// Quick fixes - adding imports
+		copyFileIntoClipboard(importsPostCompose);
 		packageExplorerView.findTree().doubleClick(webappManagerClass);
 		editor = new GTTextEditor("WebAppManager.java");
-
-		editor.find("IProject");
-		editor.quickfix("Import 'IProject' (org.eclipse.core.resources)");
-		editor.find("ArrayList");
-		editor.quickfix("Import 'ArrayList' (java.util)");
-		editor.find("ServletJO");
-		editor.quickfix("Import 'ServletJO' (model.webapp.template)");
-		editor.find("WebXMLGenerator");
-		editor.quickfix("Import 'WebXMLGenerator' (model.webapp.template)");
-		editor.find("MappingManager");
-		editor.quickfix("Import 'MappingManager' (fede.workspace.tool.eclipse)");
-		editor.find("EclipseTool");
-		editor.quickfix("Import 'EclipseTool' (fede.workspace.tool.eclipse)");
-		editor.find("CoreException");
-		editor.quickfix("Import 'CoreException' (org.eclipse.core.runtime)");
-		editor.find("WarFileUtil");
-		editor.quickfix("Import 'WarFileUtil' (model.webapp.template)");
-
+		editor.navigateTo(2, 0);
+		GTMenu.clickPaste();
 		editor.save();
 	}
 
