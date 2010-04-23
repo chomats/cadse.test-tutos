@@ -9,6 +9,7 @@ import java.io.File;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
+import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
@@ -47,6 +48,10 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		// FIXME : walk around... should be removed with SWTbot update see bug #285984
 		workspaceView.selectNode(mapping, true, GTPreferences.TIMEOUT);
 		workspaceView.selectNode(mappingServlet, true, GTPreferences.TIMEOUT);
+		Item itemMappingServlet = workspaceView.findTree().getItem(mappingServlet);
+		assertNotNull(itemMappingServlet);
+		Item itemContentServlvet = itemMappingServlet.getOutgoingItem(CadseGCST.MANAGER_lt_CONTENT_MODEL, false);
+		assertNotNull(itemContentServlvet);
 		try {
 			workspaceView.selectNode(contentServlet, GTPreferences.TIMEOUT);
 		}

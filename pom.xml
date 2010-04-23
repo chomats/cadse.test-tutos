@@ -52,5 +52,10 @@
 			<groupId>fr.imag.adele.cadse</groupId>
 			<artifactId>Model.Workspace.CopyComposer</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>fr.imag.adele.cadse</groupId>
+			<artifactId>si.persistence</artifactId>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 </project>

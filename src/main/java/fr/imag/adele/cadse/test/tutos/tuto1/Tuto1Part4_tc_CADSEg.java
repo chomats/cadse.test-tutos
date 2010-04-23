@@ -18,6 +18,21 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 
 	GTCadseShell shell;
 
+	@Test
+	public void test_content_item() throws Exception {
+
+		try {
+			workspaceView.selectNode(contentServlet, GTPreferences.TIMEOUT);
+		}
+		catch (Exception e) {
+			// FIXME has to be updated soon!
+			System.out.println("FIXME : (Tuto1Part4 CADSE)");
+			while (true) {
+				bot.sleep(5000);
+			}
+		}
+	}
+
 	/**
 	 * @throws Exception
 	 *             the exception

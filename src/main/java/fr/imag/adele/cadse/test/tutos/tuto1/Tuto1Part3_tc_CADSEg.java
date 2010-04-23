@@ -5,9 +5,12 @@ import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCo
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createJavaProjectContentModel;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
+import java.util.UUID;
+
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
+import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.KeyValue;
@@ -44,6 +47,13 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 
 		createJavaProjectContentModel(workspaceView, mappingLibrary, KeyValue.jpcmSrcFolderKv);
 		createJavaProjectContentModel(workspaceView, mappingServlet, KeyValue.jpcmSrcFolderKv);
+
+		// FIXME for debug purpose
+		Item itemContentServlet = workspaceView.findTree().getItem(mappingServlet.concat("content-item"));
+		assertNotNull(itemContentServlet);
+		UUID id = itemContentServlet.getId();
+		System.out.println("***************************************ID*************************************** = " + id);
+
 		KeyValue kv = new KeyValue(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/${#short-name}.jsp");
 
 		workspaceView.contextMenuNew(mappingJsp, "FileContentModel").click();
