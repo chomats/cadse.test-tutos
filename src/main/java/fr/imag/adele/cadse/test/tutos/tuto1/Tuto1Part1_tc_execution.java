@@ -3,10 +3,16 @@ package fr.imag.adele.cadse.test.tutos.tuto1;
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.osgi.service.datalocation.Location;
 import org.junit.Test;
 
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
+import fr.imag.adele.fede.workspace.si.persistence.Persistence;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.test.GTPreferences;
@@ -33,5 +39,12 @@ public class Tuto1Part1_tc_execution extends TutoTestCase {
 		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("HelloApp");
 		shell.capture("image082");
 		shell.close();
+	}
+
+	@Test
+	public void test_check_persistence_id() throws IOException, ClassNotFoundException {
+		Location instanceLoc = Platform.getInstanceLocation();
+		File location = new File(instanceLoc.getURL().getFile());
+		Persistence.loadID_6(location.getAbsolutePath());
 	}
 }

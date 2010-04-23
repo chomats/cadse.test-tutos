@@ -19,6 +19,11 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 
 	GTCadseShell shell;
 
+	@Test
+	public void test_content_item() throws Exception {
+		workspaceView.selectNode(contentServlet, GTPreferences.TIMEOUT);
+	}
+
 	/**
 	 * @throws Exception
 	 *             the exception

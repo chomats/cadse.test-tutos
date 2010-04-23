@@ -2,6 +2,7 @@ package fr.imag.adele.cadse.test.tutos.tuto2;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
+import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.deleteBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import java.io.File;
@@ -17,9 +18,7 @@ import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadsetree.GTCadseTree;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
-import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gttree.GTTreePath;
-import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
 public class Tuto2Part3_tc_execution extends TutoTestCase {
@@ -30,19 +29,16 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
 	public void test_run() throws Exception {
 
 		/* Delete test.HelloServlet Servlet */
-		workspaceView.contextMenu(new GTTreePath("HelloApp", "test.HelloServlet"), "Delete test.HelloServlet").click();
-		shell = new GTCadseShell(GTCadseRTConstants.DELETE_TITLE);
-		shell.close();
+		deleteBasicItem(workspaceView, new GTTreePath("HelloApp", "test.HelloServlet"), GTPreferences.TIMEOUT);
 
 		/* New Servlet */
 		workspaceView.contextMenuNew(new GTTreePath("HelloApp"), "Servlet").click();
-		shell = new GTCadseShell("WebComponent URL Definition");
+		shell = new GTCadseShell("Servlet");
 		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("test.HelloServlet");
-		shell.findTextWithLabel("relativeURL").typeText("hello");
-		shell.capture("image065");
-		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
 		shell.findTextWithLabel("className").typeText("HelloServlet");
 		shell.findTextWithLabel("packageName").typeText("test");
+		shell.findTextWithLabel("relativeURL").typeText("hello");
+		shell.capture("image065");
 		shell.close();
 	}
 
@@ -55,7 +51,6 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
 		packageExplorerView.capture("image076");
 
 		/* Gets the IJavaProject */
-
 		GTCadseTree cadseTree = workspaceView.findTree();
 		Item servlet_item = cadseTree.getItem(new GTTreePath("ServletAPI"));
 		IJavaProject jp = servlet_item.getMainMappingContent(IJavaProject.class);

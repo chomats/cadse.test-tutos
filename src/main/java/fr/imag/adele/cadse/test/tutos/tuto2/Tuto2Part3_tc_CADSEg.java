@@ -8,7 +8,6 @@ import org.junit.Test;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
-import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTPreferences;
@@ -85,18 +84,11 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		editor.save();
 
 		// Copying content into clipboard
-		copyFileIntoClipboard(fileInitMethodBody);
+		copyFileIntoClipboard(fileInitMethod);
 
 		// Init() method
-		packageExplorerView.selectNode(servletManagerClass);
-		GTMenu.clickItem(GTMenu.SOURCE_MENU, "Override/Implement Methods...");
-		shell = new GTCadseShell("Override/Implement Methods");
-		shell.findTree().checkNode(new GTTreePath("InitAction", "init()"), true);
-		shell.close();
-
 		editor = new GTTextEditor("ServletManager.java");
-		editor.find("init()");
-		editor.find("// TODO Auto-generated method stub");
+		editor.find("implements InitAction {");
 		GTMenu.clickPaste();
 		editor.save();
 
