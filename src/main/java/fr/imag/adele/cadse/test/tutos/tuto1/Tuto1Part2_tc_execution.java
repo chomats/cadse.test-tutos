@@ -32,30 +32,10 @@ public class Tuto1Part2_tc_execution extends TutoTestCase {
 	@Test
 	public void test_App() throws Exception {
 
-		try {
-			workspaceView.selectNode(new GTTreePath("HelloApp"), GTPreferences.TIMEOUT);
-		}
-		catch (Exception e) {
-			// FIXME has to be updated soon!
-			System.out.println("FIXME : (Tuto1Part2 Execution) HelloApp n'apparait pas dans la vue");
-			while (true) {
-				bot.sleep(1000);
-			}
-		}
+		workspaceView.selectNode(new GTTreePath("HelloApp"), GTPreferences.TIMEOUT);
 
 		/* Hello2App */
-		try {
-			createBasicItem(workspaceView, null, "WebApp", "Hello2App", new GTTreePath("Hello2App"),
-					GTPreferences.TIMEOUT);
-		}
-		catch (Exception e) {
-			// FIXME has to be updated soon!
-			System.out
-					.println("FIXME : (Tuto1Part2 Execution) Pour que la vue se rafraichisse, il faut ajouter un élément... (même le refresh ne marche pas)");
-			while (true) {
-				bot.sleep(1000);
-			}
-		}
+		createBasicItem(workspaceView, null, "WebApp", "Hello2App", new GTTreePath("Hello2App"), GTPreferences.TIMEOUT);
 
 		/* hello2Servlet */
 		workspaceView.contextMenuNew(new GTTreePath("Hello2App"), "Servlet").click();
@@ -68,16 +48,7 @@ public class Tuto1Part2_tc_execution extends TutoTestCase {
 		shell.close();
 
 		/* ServletAPI library */
-		try {
-			createBasicItem(workspaceView, null, "Library", "ServletAPI", new GTTreePath("ServletAPI"));
-		}
-		catch (Exception e) {
-			// FIXME has to be updated soon!
-			System.out.println("FIXME : (Tuto1Part2 Execution) ServletApi est déjà créé mais il n'est pas affiché.");
-			while (true) {
-				bot.sleep(5000);
-			}
-		}
+		createBasicItem(workspaceView, null, "Library", "ServletAPI", new GTTreePath("ServletAPI"));
 
 		/* hello2Servlet */
 		workspaceView.selectNode("Hello2App", "Hello2Servlet");

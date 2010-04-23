@@ -52,16 +52,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		assertNotNull(itemMappingServlet);
 		Item itemContentServlvet = itemMappingServlet.getOutgoingItem(CadseGCST.MANAGER_lt_CONTENT_MODEL, false);
 		assertNotNull(itemContentServlvet);
-		try {
-			workspaceView.selectNode(contentServlet, GTPreferences.TIMEOUT);
-		}
-		catch (Exception e) {
-			// FIXME has to be updated soon!
-			System.out.println("FIXME : (Tuto2Part2 CADSEg) le node content-item n'existe pas. ");
-			while (true) {
-				bot.sleep(5000);
-			}
-		}
+		workspaceView.selectNode(contentServlet, GTPreferences.TIMEOUT);
 		workspaceView.capture("image048");
 		propertiesView.showTab("JavaProjectContentModel");
 		findCadseField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);

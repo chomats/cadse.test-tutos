@@ -42,19 +42,8 @@ public class Tuto1Part4_tc_execution extends TutoTestCase {
 		packageExplorerView.show();
 		packageExplorerView.selectNode(new GTTreePath("Hello3App"), true);
 		packageExplorerView.selectNode(new GTTreePath("ServletAPI"), true);
-
-		try {
-			packageExplorerView.selectNode(
-					new GTTreePath("Hello3App.Hello3Servlet", "Item Dependencies", "ServletAPI"), true);
-		}
-		catch (Exception e) {
-			// FIXME has to be updated soon!
-			System.out.println("FIXME : (Tuto1Part4 Execution) description");
-			while (true) {
-				bot.sleep(1000);
-			}
-		}
-
+		packageExplorerView.selectNode(new GTTreePath("Hello3App.Hello3Servlet", "Item Dependencies", "ServletAPI"),
+				true);
 		packageExplorerView.capture("image148");
 	}
 }
