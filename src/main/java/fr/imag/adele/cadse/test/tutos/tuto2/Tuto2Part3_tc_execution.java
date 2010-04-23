@@ -38,7 +38,7 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
 		shell.findTextWithLabel("className").typeText("HelloServlet");
 		shell.findTextWithLabel("packageName").typeText("test");
 		shell.findTextWithLabel("relativeURL").typeText("hello");
-		shell.capture("image065");
+		shell.capture("image072");
 		shell.close();
 	}
 
