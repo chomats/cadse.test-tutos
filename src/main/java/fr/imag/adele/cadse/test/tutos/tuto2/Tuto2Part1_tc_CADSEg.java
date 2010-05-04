@@ -41,7 +41,7 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 		/* Creates a new view */
 		workspaceView.contextMenuNew(viewModel, CadseGCST.VIEW).click();
 		shell = new GTCadseShell(CadseGCST.VIEW);
-		GTCadseFactory.findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebAppList");
+		GTCadseFactory.findCadseFieldName(shell).typeText("WebAppList");
 		shell.capture("image016");
 		shell.close();
 

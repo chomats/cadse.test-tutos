@@ -1,13 +1,13 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.deleteBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import org.junit.Test;
 
-import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
@@ -40,7 +40,7 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 		/* Create Hello3Servlet */
 		workspaceView.contextMenuNew(new GTTreePath("Hello3App"), "Servlet").click();
 		shell = new GTCadseShell("Servlet");
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello3Servlet");
+		findCadseFieldName(shell).typeText("Hello3Servlet");
 		findCadseField(shell, "className").typeText("Hello3Servlet");
 		findCadseField(shell, "packageName").typeText("test");
 		findCadseField(shell, "relativeURL").typeText("hello3");
