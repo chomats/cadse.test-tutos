@@ -80,7 +80,7 @@ public class Tuto2Part3_tc_execution extends TutoTestCase {
 		shell.capture("image082");
 		shell.close();
 
-		checkCompilationErrors(workspaceView, new GTTreePath("HelloApp", "test.HelloServlet"), GTPreferences.TIMEOUT);
+		checkCompilationErrors(workspaceView, new GTTreePath("HelloApp", "test.HelloServlet"));
 		bot.sleep(2000); // Waits until errors disappear.
 		packageExplorerView.show();
 		packageExplorerView.capture("image084");

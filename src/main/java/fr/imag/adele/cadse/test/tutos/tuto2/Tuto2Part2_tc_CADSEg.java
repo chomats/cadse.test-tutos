@@ -121,6 +121,6 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 	@Test
 	public void test_zp22_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, webAppModel, GTPreferences.TIMEOUT);
+		checkCompilationErrors(workspaceView, webAppModel);
 	}
 }
