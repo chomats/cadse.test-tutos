@@ -1,6 +1,7 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 import model.workspace.copycomposer.CopyComposerCST;
@@ -68,7 +69,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		// JavaRefExporter
 		workspaceView.contextMenuNew(mappingServlet, CopyComposerCST.JAVA_REF_EXPORTER).click();
 		shell = new GTCadseShell(CopyComposerCST.JAVA_REF_EXPORTER);
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("JavaContentExporter");
+		findCadseFieldName(shell).typeText("JavaContentExporter");
 		shell.capture("image102");
 		shell.close();
 
@@ -91,7 +92,7 @@ public class Tuto2Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.contextMenuNew(composite, "Copy Folder Content Composer").click();
 		shell = new GTCadseShell(CopyComposerCST.COPY_INTO_FOLDER_COMPOSER);
 
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("GenWarComposer");
+		findCadseFieldName(shell).typeText("GenWarComposer");
 		findCadseField(shell, CopyComposerCST.COPY_INTO_FOLDER_COMPOSER_at_TARGET_FOLDER_).typeText("WEB-INF/classes");
 		findCadseField(shell, CadseGCST.COMPOSER_at_TYPES_).addValue("ref-classes");
 		findCadseField(shell, CadseGCST.RUNTIME_ITEM_at_EXTENDS_CLASS_).check(true);

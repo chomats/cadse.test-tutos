@@ -1,6 +1,7 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
@@ -65,7 +66,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// CADSE WebAppModel
 		workspaceView.contextMenuNew(CadseGCST.CADSE_DEFINITION).click();
 		shell = new GTCadseShell(CadseGCST.CADSE_DEFINITION);
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebAppModel");
+		findCadseFieldName(shell).typeText("WebAppModel");
 		findCadseField(shell, CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.webapp");
 		shell.capture("image030");
 		shell.close(GTPreferences.TIMEOUT);
@@ -87,7 +88,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Item Type WebApp
 		workspaceView.contextMenuNew(dataModel, CadseGCST.ITEM_TYPE).click();
 		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("WebApp");
+		findCadseFieldName(shell).typeText("WebApp");
 		shell.capture("image038");
 		shell.close();
 		workspaceView.selectNode(itWebApp); /* Assert item has been displayed */
@@ -102,7 +103,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Relative URL attribute
 		workspaceView.contextMenuNew(itWebComponent, CadseGCST.STRING).click();
 		shell = new GTCadseShell(CadseGCST.STRING);
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("relativeURL");
+		findCadseFieldName(shell).typeText("relativeURL");
 		shell.capture("image046");
 		shell.close();
 		workspaceView.selectNode(attrRelativeUrl); /* Assert item has been displayed */
@@ -115,7 +116,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// hasComp link
 		workspaceView.contextMenuNew(itWebApp, CadseGCST.LINK_TYPE).click();
 		shell = new GTCadseShell(CadseGCST.LINK_TYPE);
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("hasComp");
+		findCadseFieldName(shell).typeText("hasComp");
 		findCadseField(shell, CadseGCST.LINK_TYPE_lt_DESTINATION).browser("WebAppModel",
 				CadseDefinitionManager.DATA_MODEL, "WebComponent");
 		findCadseField(shell, CadseGCST.LINK_TYPE_at_PART_).check(true);

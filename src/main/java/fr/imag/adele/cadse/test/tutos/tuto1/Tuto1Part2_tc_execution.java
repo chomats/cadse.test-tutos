@@ -1,6 +1,7 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
 import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
+import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -11,7 +12,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.osgi.service.datalocation.Location;
 import org.junit.Test;
 
-import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.fede.workspace.si.persistence.Persistence;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
@@ -40,7 +40,7 @@ public class Tuto1Part2_tc_execution extends TutoTestCase {
 		/* hello2Servlet */
 		workspaceView.contextMenuNew(new GTTreePath("Hello2App"), "Servlet").click();
 		shell = new GTCadseShell("Servlet");
-		findCadseField(shell, CadseGCST.ITEM_at_NAME_).typeText("Hello2Servlet");
+		findCadseFieldName(shell).typeText("Hello2Servlet");
 		findCadseField(shell, "className").typeText("hello2Servlet");
 		findCadseField(shell, "packageName").typeText("test");
 		findCadseField(shell, "relativeURL").typeText("hello2");
