@@ -12,7 +12,6 @@ import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.inGrou
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widgetOfType;
 
 import org.eclipse.swt.widgets.Combo;
-import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCombo;
 import org.hamcrest.Matcher;
 import org.junit.Test;
@@ -176,20 +175,18 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 
 		shell = new GTCadseShell(GTEclipseConstants.RUN_SHELL);
 		shell.selectNode("Eclipse Application", "run-cadse-WebAppModel");
-		shell.waitUntilButtonEnabled("Run", GTPreferences.TIMEOUT);
+		shell.waitUntilButtonEnabled("Run");
 		Matcher matcher = allOf(widgetOfType(Combo.class), inGroup("Program to Run"));
 		SWTBotCombo combo = new SWTBotCombo((Combo) bot.widget(matcher));
 		combo.setText("org.eclipse.platform.ide");
 		shell.findButton("Apply").click();
-		shell.waitUntilButtonEnabled("Run", GTPreferences.TIMEOUT);
+		shell.waitUntilButtonEnabled("Run");
 
 		shell.capture("image076");
 		shell.close();
 
 		// Do you really want to clear the run-time workspace data in...
-		long oldTimeout = SWTBotPreferences.TIMEOUT;
 		try {
-			SWTBotPreferences.TIMEOUT = 500;
 			shell = new GTCadseShell(GTEclipseConstants.LAUNCHER_SHELL);
 			shell.capture("image078");
 			shell.close("Cancel");
@@ -197,11 +194,10 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		catch (Exception e) {
 			// do nothing
 		}
-		SWTBotPreferences.TIMEOUT = oldTimeout;
 	}
 
 	@Test
 	public void test_zp11_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, webAppModel, GTPreferences.TIMEOUT);
+		checkCompilationErrors(workspaceView, webAppModel);
 	}
 }

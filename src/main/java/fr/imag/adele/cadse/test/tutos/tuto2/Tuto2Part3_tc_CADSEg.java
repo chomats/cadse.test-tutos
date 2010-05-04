@@ -10,7 +10,6 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
-import fr.imag.adele.graphictests.test.GTPreferences;
 
 /**
  * Performs the official simple tutorial
@@ -54,13 +53,13 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		editor.findSection("Imported Packages").findButton("Add...").click();
 		shell = new GTCadseShell("Package Selection");
 		shell.findText().typeText("fr.imag.adele.cadse.core.transaction");
-		shell.waitUntilButtonEnabled(GTEclipseConstants.OK_BUTTON, GTPreferences.TIMEOUT);
+		shell.waitUntilButtonEnabled(GTEclipseConstants.OK_BUTTON);
 		shell.close();
 
 		editor.findSection("Imported Packages").findButton("Add...").click();
 		shell = new GTCadseShell("Package Selection");
 		shell.findText().typeText("fr.imag.adele.cadse.core.transaction.delta");
-		shell.waitUntilButtonEnabled(GTEclipseConstants.OK_BUTTON, GTPreferences.TIMEOUT);
+		shell.waitUntilButtonEnabled(GTEclipseConstants.OK_BUTTON);
 		shell.close();
 
 		editor.save();
@@ -101,6 +100,6 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 
 	@Test
 	public void test_zp23_check_compilation() throws Exception {
-		checkCompilationErrors(workspaceView, webAppModel, GTPreferences.TIMEOUT);
+		checkCompilationErrors(workspaceView, webAppModel);
 	}
 }
