@@ -1,6 +1,5 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -37,8 +36,8 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.selectNode(itWebApp);
 		workspaceView.capture("image086");
 		propertiesView.showTab(CADSEG_UICST.INSTANCE_NAME_CONTROL_PAGE_TITLE);
-		findCadseField(propertiesView, CadseGCST.MANAGER_at_VALID_PATTERN_ID_).typeText(".*App");
-		findCadseField(propertiesView, CadseGCST.MANAGER_at_MESSAGE_ERROR_ID_).typeText(
+		propertiesView.findCadseField(CadseGCST.MANAGER_at_VALID_PATTERN_ID_).typeText(".*App");
+		propertiesView.findCadseField(CadseGCST.MANAGER_at_MESSAGE_ERROR_ID_).typeText(
 				"The Web application name must end with App.");
 		propertiesView.capture("image092");
 	}
@@ -77,19 +76,19 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.selectNode(itWebApp);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
 		final String project = "Model.Workspace.WebAppModel";
-		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "WarFile.gif");
+		propertiesView.findCadseField(CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "WarFile.gif");
 
 		workspaceView.selectNode(itJsp);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "JSP.gif");
+		propertiesView.findCadseField(CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "JSP.gif");
 
 		workspaceView.selectNode(itLibrary);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "Library.gif");
+		propertiesView.findCadseField(CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "Library.gif");
 
 		workspaceView.selectNode(itServlet);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "Servlet.gif");
+		propertiesView.findCadseField(CadseGCST.ITEM_TYPE_at_ICON_).browser(project, "resources", "Servlet.gif");
 	}
 
 	/**
@@ -105,7 +104,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.selectNode(attrClassName);
 		workspaceView.capture("image106");
 		propertiesView.showTab("String");
-		findCadseField(propertiesView, CadseGCST.ITEM_at_NAME).scroll();
+		propertiesView.findCadseField(CadseGCST.ITEM_at_NAME).scroll();
 		KeyValue.sicpKv.setValue(propertiesView);
 		KeyValue.simpKv.setValue(propertiesView);
 		propertiesView.capture("image108");

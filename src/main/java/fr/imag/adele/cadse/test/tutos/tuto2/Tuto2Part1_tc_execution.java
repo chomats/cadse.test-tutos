@@ -1,6 +1,5 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -40,7 +39,7 @@ public class Tuto2Part1_tc_execution extends TutoTestCase {
 		/* test.HelloServlet */
 		workspaceView.contextMenuNew(new GTTreePath("HelloApp"), "Servlet").click();
 		shell = new GTCadseShell("Servlet");
-		findCadseFieldName(shell).typeText("test.HelloServlet");
+		shell.findCadseFieldName().typeText("test.HelloServlet");
 		shell.findTextWithLabel("className").typeText("HelloServlet");
 		shell.findTextWithLabel("packageName").typeText("test");
 		shell.findTextWithLabel("relativeURL").typeText("hello");

@@ -8,7 +8,6 @@ import org.junit.Test;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
-import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
@@ -41,7 +40,7 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 		/* Creates a new view */
 		workspaceView.contextMenuNew(viewModel, CadseGCST.VIEW).click();
 		shell = new GTCadseShell(CadseGCST.VIEW);
-		GTCadseFactory.findCadseFieldName(shell).typeText("WebAppList");
+		shell.findCadseFieldName().typeText("WebAppList");
 		shell.capture("image016");
 		shell.close();
 
@@ -50,13 +49,13 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image018");
 
 		propertiesView.showTab("View");
-		GTCadseFactory.findCadseField(propertiesView, "view-item-types").check(true, "WebAppModel",
-				CadseDefinitionManager.DATA_MODEL, "WebApp", "hasComp");
-		GTCadseFactory.findCadseField(propertiesView, "view-item-types").check(true, "WebAppModel",
-				CadseDefinitionManager.DATA_MODEL, "WebComponent", "uses");
-		GTCadseFactory.findCadseField(propertiesView, "view-item-types").check(false, "WebAppModel",
-				CadseDefinitionManager.DATA_MODEL, "WebComponent", "uses");
-		GTCadseFactory.findCadseField(propertiesView, "view-item-types").scroll();
+		propertiesView.findCadseField("view-item-types").check(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL,
+				"WebApp", "hasComp");
+		propertiesView.findCadseField("view-item-types").check(true, "WebAppModel", CadseDefinitionManager.DATA_MODEL,
+				"WebComponent", "uses");
+		propertiesView.findCadseField("view-item-types").check(false, "WebAppModel", CadseDefinitionManager.DATA_MODEL,
+				"WebComponent", "uses");
+		propertiesView.findCadseField("view-item-types").scroll();
 		propertiesView.capture("image020");
 
 		/* Can create item and Can create link check boxes */
@@ -65,8 +64,8 @@ public class Tuto2Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image024");
 		propertiesView.showTab("View Link");
 
-		GTCadseFactory.findCadseField(propertiesView, "can-create-item").check(false);
-		GTCadseFactory.findCadseField(propertiesView, "can-create-link").check(false);
+		propertiesView.findCadseField("can-create-item").check(false);
+		propertiesView.findCadseField("can-create-link").check(false);
 		propertiesView.capture("image026");
 	}
 

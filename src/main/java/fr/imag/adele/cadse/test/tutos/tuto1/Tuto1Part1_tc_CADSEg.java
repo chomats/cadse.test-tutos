@@ -1,7 +1,5 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createItemType;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createLinkType;
@@ -65,8 +63,8 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// CADSE WebAppModel
 		workspaceView.contextMenuNew(CadseGCST.CADSE_DEFINITION).click();
 		shell = new GTCadseShell(CadseGCST.CADSE_DEFINITION);
-		findCadseFieldName(shell).typeText("WebAppModel");
-		findCadseField(shell, CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.webapp");
+		shell.findCadseFieldName().typeText("WebAppModel");
+		shell.findCadseField(CadseGCST.CADSE_DEFINITION_at_PACKAGENAME_).typeText("model.webapp");
 		shell.capture("image030");
 		shell.close(GTPreferences.TIMEOUT);
 
@@ -87,7 +85,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Item Type WebApp
 		workspaceView.contextMenuNew(dataModel, CadseGCST.ITEM_TYPE).click();
 		shell = new GTCadseShell(CadseGCST.ITEM_TYPE);
-		findCadseFieldName(shell).typeText("WebApp");
+		shell.findCadseFieldName().typeText("WebApp");
 		shell.capture("image038");
 		shell.close();
 		workspaceView.selectNode(itWebApp); /* Assert item has been displayed */
@@ -102,7 +100,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// Relative URL attribute
 		workspaceView.contextMenuNew(itWebComponent, CadseGCST.STRING).click();
 		shell = new GTCadseShell(CadseGCST.STRING);
-		findCadseFieldName(shell).typeText("relativeURL");
+		shell.findCadseFieldName().typeText("relativeURL");
 		shell.capture("image046");
 		shell.close();
 		workspaceView.selectNode(attrRelativeUrl); /* Assert item has been displayed */
@@ -115,11 +113,11 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		// hasComp link
 		workspaceView.contextMenuNew(itWebApp, CadseGCST.LINK_TYPE).click();
 		shell = new GTCadseShell(CadseGCST.LINK_TYPE);
-		findCadseFieldName(shell).typeText("hasComp");
-		findCadseField(shell, CadseGCST.LINK_TYPE_lt_DESTINATION).browser("WebAppModel",
+		shell.findCadseFieldName().typeText("hasComp");
+		shell.findCadseField(CadseGCST.LINK_TYPE_lt_DESTINATION).browser("WebAppModel",
 				CadseDefinitionManager.DATA_MODEL, "WebComponent");
-		findCadseField(shell, CadseGCST.LINK_TYPE_at_PART_).check(true);
-		findCadseField(shell, CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
+		shell.findCadseField(CadseGCST.LINK_TYPE_at_PART_).check(true);
+		shell.findCadseField(CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
 		shell.capture("image052");
 		shell.close();
 		workspaceView.selectNode(linkHasComp); /* Assert item has been displayed */
@@ -147,17 +145,17 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		workspaceView.selectNode(itJsp);
 		workspaceView.capture("image068");
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
+		propertiesView.findCadseField(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 		propertiesView.capture("image070");
 
 		workspaceView.selectNode(itServlet);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
+		propertiesView.findCadseField(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
 
 		workspaceView.selectNode(itWebComponent);
 		propertiesView.showTab(GTCadseRTConstants.ITEM_TYPE_TAB_NAME);
-		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
-		findCadseField(propertiesView, CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_).check(true);
+		propertiesView.findCadseField(CadseGCST.ITEM_TYPE_at_IS_ROOT_ELEMENT_).check(false);
+		propertiesView.findCadseField(CadseGCST.ITEM_TYPE_at_IS_INSTANCE_ABSTRACT_).check(true);
 	}
 
 	/**
