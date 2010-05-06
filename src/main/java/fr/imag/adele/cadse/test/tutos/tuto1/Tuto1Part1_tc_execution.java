@@ -1,6 +1,5 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
 import java.io.File;
@@ -35,7 +34,7 @@ public class Tuto1Part1_tc_execution extends TutoTestCase {
 
 		workspaceView.contextMenuNew("WebApp").click();
 		shell = new GTCadseShell("WebApp");
-		findCadseFieldName(shell).typeText("HelloApp");
+		shell.findCadseFieldName().typeText("HelloApp");
 		shell.capture("image082");
 		shell.close();
 	}

@@ -1,6 +1,5 @@
 package fr.imag.adele.cadse.test.tutos.tuto2;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -40,8 +39,8 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image042");
 		propertiesView.showTab("CADSE definition");
 
-		findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser("model.webapp.template");
-		findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).scroll();
+		propertiesView.findCadseField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser("model.webapp.template");
+		propertiesView.findCadseField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).scroll();
 		propertiesView.capture("image044");
 
 		// extends class check box
@@ -55,7 +54,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.selectNode(contentServlet, GTPreferences.TIMEOUT);
 		workspaceView.capture("image048");
 		propertiesView.showTab("JavaProjectContentModel");
-		findCadseField(propertiesView, CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
+		propertiesView.findCadseField(CadseGCST.CONTENT_ITEM_TYPE_at_EXTENDS_CLASS_).check(true);
 		propertiesView.capture("image050");
 	}
 
@@ -104,7 +103,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 		// Adds org.eclipse.core.runtime
 		workspaceView.selectNode(webAppModel);
 		propertiesView.showTab("CADSE definition");
-		findCadseField(propertiesView, CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser(
+		propertiesView.findCadseField(CadseGCST.CADSE_DEFINITION_at_IMPORTS_).addBrowser(
 				"fr.imag.adele.cadse.core.impl");
 
 		// Copying imports into clipboard

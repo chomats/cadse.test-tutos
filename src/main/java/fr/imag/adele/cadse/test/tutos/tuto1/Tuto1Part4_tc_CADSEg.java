@@ -1,6 +1,5 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.checkCompilationErrors;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
 
@@ -38,8 +37,8 @@ public class Tuto1Part4_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image144");
 
 		propertiesView.showTab("LinkType");
-		findCadseField(propertiesView, CadseGCST.ITEM_at_QUALIFIED_NAME_).scroll();
-		findCadseField(propertiesView, CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
+		propertiesView.findCadseField(CadseGCST.ITEM_at_QUALIFIED_NAME_).scroll();
+		propertiesView.findCadseField(CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
 		propertiesView.capture("image146");
 
 		// Waits until files have been generated.

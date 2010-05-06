@@ -1,7 +1,5 @@
 package fr.imag.adele.cadse.test.tutos.tuto1;
 
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseField;
-import static fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseFactory.findCadseFieldName;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.createBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.deleteBasicItem;
 import static fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods.workspaceView;
@@ -40,10 +38,10 @@ public class Tuto1Part3_tc_execution extends TutoTestCase {
 		/* Create Hello3Servlet */
 		workspaceView.contextMenuNew(new GTTreePath("Hello3App"), "Servlet").click();
 		shell = new GTCadseShell("Servlet");
-		findCadseFieldName(shell).typeText("Hello3Servlet");
-		findCadseField(shell, "className").typeText("Hello3Servlet");
-		findCadseField(shell, "packageName").typeText("test");
-		findCadseField(shell, "relativeURL").typeText("hello3");
+		shell.findCadseFieldName().typeText("Hello3Servlet");
+		shell.findCadseField("className").typeText("Hello3Servlet");
+		shell.findCadseField("packageName").typeText("test");
+		shell.findCadseField("relativeURL").typeText("hello3");
 		shell.close();
 
 		/* Screenshot */
