@@ -11,8 +11,8 @@ import fr.imag.adele.cadse.cadseg.pages.CADSEG_UICST;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
-import fr.imag.adele.graphictests.cadse.test.KeyValue;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
@@ -105,29 +105,29 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image106");
 		propertiesView.showTab("String");
 		propertiesView.findCadseField(CadseGCST.ITEM_at_NAME).scroll();
-		KeyValue.sicpKv.setValue(propertiesView);
-		KeyValue.simpKv.setValue(propertiesView);
+		propertiesView.setValue(KeyValue.sicpKv);
+		propertiesView.setValue(KeyValue.simpKv);
 		propertiesView.capture("image108");
 
 		workspaceView.selectNode(attrPackageName);
 		propertiesView.showTab("String");
-		KeyValue.sicpKv.setValue(propertiesView);
-		KeyValue.simpKv.setValue(propertiesView);
+		propertiesView.setValue(KeyValue.sicpKv);
+		propertiesView.setValue(KeyValue.simpKv);
 
 		workspaceView.selectNode(linkHasComp);
 		propertiesView.showTab("LinkType");
-		KeyValue.notSicpKv.setValue(propertiesView);
-		KeyValue.simpKv.setValue(propertiesView);
+		propertiesView.setValue(KeyValue.notSicpKv);
+		propertiesView.setValue(KeyValue.simpKv);
 
 		workspaceView.selectNode(attrRelativeUrl);
 		propertiesView.showTab("String");
-		KeyValue.sicpKv.setValue(propertiesView);
-		KeyValue.simpKv.setValue(propertiesView);
+		propertiesView.setValue(KeyValue.sicpKv);
+		propertiesView.setValue(KeyValue.simpKv);
 
 		workspaceView.selectNode(linkUses);
 		propertiesView.showTab("LinkType");
-		KeyValue.notSicpKv.setValue(propertiesView);
-		KeyValue.simpKv.setValue(propertiesView);
+		propertiesView.setValue(KeyValue.notSicpKv);
+		propertiesView.setValue(KeyValue.simpKv);
 	}
 
 	@Test
