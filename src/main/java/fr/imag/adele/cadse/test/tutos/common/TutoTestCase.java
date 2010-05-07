@@ -1,5 +1,6 @@
 package fr.imag.adele.cadse.test.tutos.common;
 
+import static fr.imag.adele.graphictests.gtworkbench_part.GTView.packageExplorerView;
 import fr.imag.adele.cadse.cadseg.managers.CadseDefinitionManager;
 import fr.imag.adele.graphictests.cadse.test.GTCadseTestCase;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;

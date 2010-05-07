@@ -1,5 +1,7 @@
 package fr.imag.adele.cadse.test.tutos.common;
 
+import static fr.imag.adele.graphictests.gtworkbench_part.GTView.packageExplorerView;
+
 import org.junit.Test;
 
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
