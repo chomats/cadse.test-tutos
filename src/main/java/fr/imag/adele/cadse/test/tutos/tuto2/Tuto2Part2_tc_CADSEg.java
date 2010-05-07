@@ -14,7 +14,6 @@ import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
 import fr.imag.adele.graphictests.cadse.test.GTCadseRTConstants;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
 import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
-import fr.imag.adele.graphictests.test.GTEclipseConstants;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
 /**
@@ -70,7 +69,7 @@ public class Tuto2Part2_tc_CADSEg extends TutoTestCase {
 
 		shell = new GTCadseShell("Import");
 		shell.selectNode(importArchiveFile);
-		shell.findButton(GTEclipseConstants.NEXT_BUTTON).click();
+		shell.next();
 		shell.setComboBoxWithLabelText("From archive file:", System.getProperty("test.resourcesPath") + File.separator
 				+ "samples.zip");
 		shell.selectNode(archivePath);
