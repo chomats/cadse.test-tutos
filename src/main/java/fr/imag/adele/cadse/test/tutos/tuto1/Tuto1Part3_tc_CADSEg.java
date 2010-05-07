@@ -10,7 +10,7 @@ import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
-import fr.imag.adele.graphictests.cadse.test.KeyValue;
+import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.KeyValue;
 import fr.imag.adele.graphictests.test.GTPreferences;
 
 /**
@@ -51,7 +51,7 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 		KeyValue kv = new KeyValue(CadseGCST.FILE_CONTENT_MODEL_at_FILE_PATH_, "/${#short-name}.jsp");
 		workspaceView.contextMenuNew(mappingJsp, "FileContentModel").click();
 		GTCadseShell shell = new GTCadseShell("FileContentModel");
-		kv.setValue(shell);
+		shell.setValue(kv);
 		shell.capture("image135");
 		shell.close();
 		workspaceView.selectNode(contentJsp);
