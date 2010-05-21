@@ -9,7 +9,7 @@ import java.io.File;
 
 import org.junit.Test;
 
-import fr.imag.adele.cadse.cadseg.pages.CADSEG_UICST;
+import fr.imag.adele.cadse.cadseg.eclipse.pages.CADSEG_UICST;
 import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
