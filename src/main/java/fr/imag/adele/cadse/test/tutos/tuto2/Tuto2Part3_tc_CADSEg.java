@@ -8,7 +8,9 @@ import org.junit.Test;
 
 import fr.imag.adele.cadse.test.tutos.common.TutoTestCase;
 import fr.imag.adele.graphictests.cadse.gtcadseworkbench_part.GTCadseShell;
+import fr.imag.adele.graphictests.cadse.test.GTCadseHelperMethods;
 import fr.imag.adele.graphictests.gtmenu.GTMenu;
+import fr.imag.adele.graphictests.gttree.GTTreePath;
 import fr.imag.adele.graphictests.gtworkbench_part.GTTextEditor;
 import fr.imag.adele.graphictests.test.GTEclipseConstants;
 
@@ -43,27 +45,8 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		GTMenu.clickPaste();
 		editor.save();
 
-		// Manifest configuration
-		packageExplorerView.findTree().collapse();
-		packageExplorerView.selectNode(manifest);
-		packageExplorerView.capture("image063");
-		packageExplorerView.findTree().doubleClick(manifest);
-		editor = new GTTextEditor("Model.Workspace.WebAppModel");
-		editor.showCTab("Dependencies");
-
-		editor.findSection("Imported Packages").findButton("Add...").click();
-		shell = new GTCadseShell("Package Selection");
-		shell.findText().typeText("fr.imag.adele.cadse.core.transaction");
-		shell.waitUntilButtonEnabled(GTEclipseConstants.OK_BUTTON);
-		shell.close();
-
-		editor.findSection("Imported Packages").findButton("Add...").click();
-		shell = new GTCadseShell("Package Selection");
-		shell.findText().typeText("fr.imag.adele.cadse.core.transaction.delta");
-		shell.waitUntilButtonEnabled(GTEclipseConstants.OK_BUTTON);
-		shell.close();
-
-		editor.save();
+		editor = GTCadseHelperMethods.addImportOnManifest("Model.Workspace.WebAppModel", "fr.imag.adele.cadse.core.transaction",
+				"fr.imag.adele.cadse.core.transaction.delta");
 		editor.capture("image064");
 
 		// Adds imports
@@ -98,6 +81,8 @@ public class Tuto2Part3_tc_CADSEg extends TutoTestCase {
 		GTMenu.clickPaste();
 		editor.save();
 	}
+
+	
 
 	@Test
 	public void test_zp23_check_compilation() throws Exception {
