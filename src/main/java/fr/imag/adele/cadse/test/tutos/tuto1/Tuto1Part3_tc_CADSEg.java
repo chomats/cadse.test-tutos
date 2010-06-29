@@ -22,7 +22,7 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 
 	/**
 	 * @throws Exception
-	 *             the exception
+	 *         the exception
 	 */
 	@Test
 	public void test_item_content() throws Exception {
@@ -41,8 +41,8 @@ public class Tuto1Part3_tc_CADSEg extends TutoTestCase {
 		shell.close();
 		workspaceView.selectNode(contentWebApp);
 
-		createJavaProjectContentModel(workspaceView, mappingLibrary, KeyValue.jpcmSrcFolderKv);
-		createJavaProjectContentModel(workspaceView, mappingServlet, KeyValue.jpcmSrcFolderKv);
+		createJavaProjectContentModel(workspaceView, mappingLibrary, KeyValue.jpcmSrcFolderKv());
+		createJavaProjectContentModel(workspaceView, mappingServlet, KeyValue.jpcmSrcFolderKv());
 
 		// For debug purpose
 		Item itemContentServlet = workspaceView.findTree().getItem(mappingServlet.concat("content-item"));
