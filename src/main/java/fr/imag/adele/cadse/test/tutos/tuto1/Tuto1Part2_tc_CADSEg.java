@@ -25,7 +25,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	 * Gives a naming constraint for new WebApp.
 	 * 
 	 * @throws Exception
-	 *             the exception
+	 *         the exception
 	 */
 	@Test
 	public void test_mapping_name_constraint() throws Exception {
@@ -47,7 +47,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	 * Adds icons to items.
 	 * 
 	 * @throws Exception
-	 *             the exception
+	 *         the exception
 	 */
 	@Test
 	public void test_icons() throws Exception {
@@ -96,7 +96,7 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 	 * Creation pages configuration.
 	 * 
 	 * @throws Exception
-	 *             the exception
+	 *         the exception
 	 */
 	@Test
 	public void test_pages_configuration() throws Exception {
@@ -106,29 +106,29 @@ public class Tuto1Part2_tc_CADSEg extends TutoTestCase {
 		workspaceView.capture("image106");
 		propertiesView.showTab("String");
 		propertiesView.findCadseField(CadseGCST.ITEM_at_NAME).scroll();
-		propertiesView.setValue(KeyValue.sicpKv);
-		propertiesView.setValue(KeyValue.simpKv);
+		propertiesView.setValue(KeyValue.sicpKv());
+		propertiesView.setValue(KeyValue.simpKv());
 		propertiesView.capture("image108");
 
 		workspaceView.selectNode(attrPackageName);
 		propertiesView.showTab("String");
-		propertiesView.setValue(KeyValue.sicpKv);
-		propertiesView.setValue(KeyValue.simpKv);
+		propertiesView.setValue(KeyValue.sicpKv());
+		propertiesView.setValue(KeyValue.simpKv());
 
 		workspaceView.selectNode(linkHasComp);
 		propertiesView.showTab("LinkType");
-		propertiesView.setValue(KeyValue.notSicpKv);
-		propertiesView.setValue(KeyValue.simpKv);
+		propertiesView.setValue(KeyValue.notSicpKv());
+		propertiesView.setValue(KeyValue.simpKv());
 
 		workspaceView.selectNode(attrRelativeUrl);
 		propertiesView.showTab("String");
-		propertiesView.setValue(KeyValue.sicpKv);
-		propertiesView.setValue(KeyValue.simpKv);
+		propertiesView.setValue(KeyValue.sicpKv());
+		propertiesView.setValue(KeyValue.simpKv());
 
 		workspaceView.selectNode(linkUses);
 		propertiesView.showTab("LinkType");
-		propertiesView.setValue(KeyValue.notSicpKv);
-		propertiesView.setValue(KeyValue.simpKv);
+		propertiesView.setValue(KeyValue.notSicpKv());
+		propertiesView.setValue(KeyValue.simpKv());
 	}
 
 	@Test
