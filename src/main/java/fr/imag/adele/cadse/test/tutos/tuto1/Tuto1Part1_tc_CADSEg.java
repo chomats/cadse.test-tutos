@@ -106,7 +106,10 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		shell.findCadseFieldName().typeText("relativeURL");
 		shell.capture("image046");
 		shell.close();
-		workspaceView.selectNode(attrRelativeUrl); /* Assert item has been displayed */
+		workspaceView.selectNode(attrRelativeUrl); /*
+													 * Assert item has been
+													 * displayed
+													 */
 		workspaceView.capture("image048");
 
 		// Other attributes
@@ -123,7 +126,10 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 		shell.findCadseField(CadseGCST.LINK_TYPE_at_REQUIRE_).check(true);
 		shell.capture("image052");
 		shell.close();
-		workspaceView.selectNode(linkHasComp); /* Assert item has been displayed */
+		workspaceView.selectNode(linkHasComp); /*
+												 * Assert item has been
+												 * displayed
+												 */
 		workspaceView.capture("image056");
 
 		// Filtering options
@@ -191,8 +197,7 @@ public class Tuto1Part1_tc_CADSEg extends TutoTestCase {
 			shell = new GTCadseShell(GTEclipseConstants.LAUNCHER_SHELL);
 			shell.capture("image078");
 			shell.close("Cancel");
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			// do nothing
 		}
 	}
